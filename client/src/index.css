@@ -1,13 +1,24 @@
+/* Under Construction Page */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Montserrat", sans-serif;
+  font-size: 1rem;
+  color: white;
 }
+content {
+  background: url("https://source.unsplash.com/jFCViYFYcus/4887×2759") center;
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+h1 {
+  letter-spacing: 0.2rem;
+  text-transform: uppercase;
+  background: black;
+  padding: 15px 20px;
+  margin: 0;
 }
