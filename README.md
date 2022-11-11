@@ -1,6 +1,4 @@
-# project-green
-
-<h1 align="center">Project Title</h1>
+<h1 align="center">EcoHabit</h1>
 <h3 align="center">
     <a href="#">Link</a> · 
     <a href="#" class="default">Another Link</a> 
@@ -20,7 +18,9 @@
 
 ## Tech Stack
 
-- list out the technologies involved in the project
+- Front End: React (JavaScript)
+- Backend: Spring Boot (Java)
+- Database: MongoDB
 
 ## Getting Started
 
