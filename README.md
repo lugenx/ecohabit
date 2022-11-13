@@ -34,7 +34,7 @@
 ### How to run
 
 - Clone the repository for this project by running the following command in a terminal: 'git clone https://github.com/lugenx/ecohabit.git'.
-- Start the backend by running the project-green/server/src/main/java/com/projectgreen/ServerApplication.java file in vscode. This will automatically start the Tomcat server.
+- Start the backend by running the ecohabit/server/src/main/java/com/ecohabit/ServerApplication.java file in vscode. This will automatically start the Tomcat server.
 
 ## Roadmap
 
