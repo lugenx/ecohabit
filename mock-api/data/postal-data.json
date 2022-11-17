@@ -1,0 +1,44 @@
+{
+  "02116": {
+    "search_time": "00.001203",
+    "num_results": 8,
+    "result": {
+      "province": "MA",
+      "city": "Boston",
+      "metro": "1120",
+      "region": "Suffolk",
+      "longitude": -71.07541448597861,
+      "postal_code": "02116",
+      "latitude": 42.35040461021285,
+      "population": 20628
+    }
+  },
+  "73102": {
+    "search_time": "00.001244",
+    "num_results": 8,
+    "result": {
+      "province": "OK",
+      "city": "Oklahoma City",
+      "metro": null,
+      "region": "Oklahoma",
+      "longitude": -97.51741673126611,
+      "postal_code": "73102",
+      "latitude": 35.46998363160485,
+      "population": 3858
+    }
+  },
+  "60611": {
+    "search_time": "00.001210",
+    "num_results": 8,
+    "result": {
+      "province": "IL",
+      "city": "Chicago",
+      "metro": "1600",
+      "region": "Cook",
+      "longitude": -87.6224356093568,
+      "postal_code": "60611",
+      "latitude": 41.89541882509946,
+      "population": 28718
+    }
+  }
+}
