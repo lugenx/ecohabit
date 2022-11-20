@@ -2,4 +2,8 @@ server:
   port: 9000
 spring:
   application:
-    name: server
+    name: ecohabit-server
+  graphql:
+    graphiql:
+      enabled: true
+      path: /graphiql

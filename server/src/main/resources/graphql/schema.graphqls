@@ -1,0 +1,14 @@
+type Query {
+    cityByPostalCode(postalCode: String): City
+}
+
+type City {
+    postalCode: String
+    province: String
+    city: String
+    metro: String
+    region: String
+    longitude: Float
+    latitude: Float
+    population: Int
+}
