@@ -28,7 +28,7 @@
 ### Prerequisites
 
 - Download the latest version of git on your system. See [https://git-scm.com/downloads](https://git-scm.com/downloads).
-- Java Development Kit (JDK) - Download and install the latest version from [https://www.oracle.com/java/technologies/java-se-glance.html](https://git-scm.com/downloads).
+- Java Development Kit (JDK) - Download and install the latest version from [https://www.oracle.com/java/technologies/java-se-glance.html](https://www.oracle.com/java/technologies/java-se-glance.html).
 - Set the 'JAVA_HOME' system environment variable value to the installation path of your JDK installation.
 - Download the latest version of Node Package Manager (NPM) by running the following on the command line: 'npm install -g npm'.
 
