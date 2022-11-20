@@ -1,6 +1,6 @@
-package com.ecohabit.city.service;
+package com.ecohabit.service;
 
-import com.ecohabit.city.entity.City;
+import com.ecohabit.entity.City;
 import org.springframework.stereotype.Service;
 
 @Service

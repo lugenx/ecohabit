@@ -1,4 +1,4 @@
-package com.ecohabit.city.entity;
+package com.ecohabit.entity;
 
 import lombok.*;
 
