@@ -10,3 +10,7 @@
 - environment-friendly online stores
 - environment-friendly events
 - environment-friendly alternatives of popular products and services
+- links to environmental charities
+- crowdfunding feature to donate to environmental charities
+- fun facts about the environment
+- a forum
