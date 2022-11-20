@@ -2,6 +2,7 @@
 
 ## This is a temporary file that includes ideas that can be converted to features, please feel free to add whatever comes to your mind.
 
+- develop understanding of 5R (reduce, reuse, repair, rot, recyle)
 - recycling instructions based on each state's local law
 - recycling locations
 - zero waste stores and businesses
