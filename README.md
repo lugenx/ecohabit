@@ -11,6 +11,7 @@
 - [Getting Started](#getting-started)
 - [Roadmap](#roadmap)
 - [Socials](#socials)
+- [Contribute](#contribute)
 
 ## MVP
 
