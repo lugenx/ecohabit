@@ -11,7 +11,6 @@
 - [Getting Started](#getting-started)
 - [Roadmap](#roadmap)
 - [Socials](#socials)
-- [Contribute](#contribute)
 
 ## MVP
 
@@ -27,8 +26,8 @@
 
 ### Prerequisites
 
-- Download the latest version of git on your system. See [https://git-scm.com/downloads](https://git-scm.com/downloads).
-- Java Development Kit (JDK) - Download and install the latest version from [https://www.oracle.com/java/technologies/java-se-glance.html](https://www.oracle.com/java/technologies/java-se-glance.html).
+- Download the latest version of git on your system. See https://git-scm.com/downloads.
+- Java Development Kit (JDK) - Download and install the latest version from https://www.oracle.com/java/technologies/java-se-glance.html.
 - Set the 'JAVA_HOME' system environment variable value to the installation path of your JDK installation.
 - Download the latest version of Node Package Manager (NPM) by running the following on the command line: 'npm install -g npm'.
 
@@ -44,9 +43,3 @@
 ## Socials
 
 - _List contributors and their social links, if any_
-
-
- ## Contribute
-
- - ECOHABIT appreciates your contribution in any aspects of project development like documenting, UI/UX design, Frontend/Backend development etc.
- - If you have some GIT experience but do not know how to contribute on a team project, we have a [beginner friendly guide](https://github.com/lugenx/ecohabit/blob/main/docs/how-to-contribute.md)
