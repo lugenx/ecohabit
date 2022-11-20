@@ -43,3 +43,9 @@
 ## Socials
 
 - _List contributors and their social links, if any_
+
+
+ ## Contribute
+
+ - ECOHABIT appreciates your contribution in any aspects of project development like documenting, UI/UX design, Frontend/Backend development etc.
+ - If you have some GIT experience but do not know how to contribute on a team project, we have a beginner friendly guide here: https://github.com/lugenx/ecohabit/blob/main/docs/how-to-contribute.md
