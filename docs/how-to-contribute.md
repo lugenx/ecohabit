@@ -37,39 +37,37 @@ Next, copy the link under the HTTPS tab by tapping the button right beside it.
 
 -- IMAGE OF COPYING
 
----
-**NOTE:** If you've linked your GitHub account with an SSH key, please copy the link under the SSH tab instead of the HTTPS tab. In fact, we HIGHLY recommend going the SSH route as it allows us to push to our repositories without having to type our username and password every single time. [Here's](https://www.theodinproject.com/lessons/foundations-setting-up-git#step-2-configure-git-and-github) a guide on how to create and set up an SSH Key. Skip to Step 2.3 and go from there until the end.
-
+If you prefer to clone via SSH, feel free to go that route instead.
 
 ---
 Another way of getting the link is to copy this format for HTTPS: 
 
 ```
-https://github.com/{YOUR GITHUB NAME}/ecohabit
+https://github.com/<YOUR GITHUB NAME>/ecohabit
 ```
 
 Or this format for SSH:
 
 ```
-git@github.com:{YOUR GITHUB NAME}/ecohabit.git
+git@github.com:<YOUR GITHUB NAME>/ecohabit.git
 ```
 
 ---
 
-Now that we have copied the link to our repo, grab your favorite terminal and navigate to the directory where you want to copy the project, then run this command:
+Now that we have copied the link to our repo, grab your favorite terminal and navigate to the directory where you want to store the project, then run this command:
 
 ```
 git clone <THE LINK THAT YOU'VE COPIED>
 ```
 
-If you receive no errors, Congratulations! You now have a local copy of the project on your computer. But we're not done yet. Before we can make changes to the program, we need to do a few more things first.
+If you receive no errors, congratulations! You now have a local copy of the project on your computer. But we're not done yet. Before we can make changes to the program, we need to do a few more things first.
 
 ### 3. Create a branch
 
 Right after cloning, run this command on your terminal:
 
 ```
-git checkout -b {YOUR BRANCH NAME}
+git checkout -b <YOUR BRANCH NAME>
 ```
 This will create a separate branch of the project, which is basically just another version of the project. This way, we have two versions, or 'branches' of the project: The 'main' branch -  which is the original branch - and the branch that we've created. As much as possible, we must apply our changes to the separate branches instead of the main branch. We can create as many branches as we want.
 
@@ -87,9 +85,9 @@ This command will kind of let your git know the direction to send your updates.
 
 ### 5. Making changes to the project and commiting those changes
 
-Now that we have set everything, you can now run your favorite editor/IDE and start making changes or adding files on the project.
+Now that we have set everything, you can now run your favorite editor/IDE and start making changes or adding files to the project.
 
-After you are done saving your changes, you may run this command:
+After you're done saving your changes, you try running this command:
 
 ```
 git status
@@ -104,7 +102,7 @@ git add .
 ```
 
 
-You can check the status of our changes by running the `git status` command again.
+You may check the status of your changes by running the `git status` command again.
 
 Now it's time to commit our changes. To commit your changes, run this command:
 
@@ -112,7 +110,7 @@ Now it's time to commit our changes. To commit your changes, run this command:
 git commit -m "your message"
 ```
 ---
-**NOTE:** It is very important to add a message to our commits!
+**NOTE:** It is very important to add a message to your commits!
 
 
 Your message should inform the other contributors about the changes that you've made and why this project needs them.
@@ -122,14 +120,14 @@ Your message should inform the other contributors about the changes that you've 
 It's time for our last terminal command:
 
 ```
-git push -u origin {YOUR BRANCH NAME}
+git push -u origin <YOUR BRANCH NAME>
 ```
 
 This will push our changes to the original repo. Now we have to make a Pull Request to make the feature that we've been working on official.
 
 ### 6. Submitting your changes for review
 
-It is time to get back to web browser. Navigate to the [ecohabit repo page](https://github.com/lugenx/ecohabit")
+It is time to get back to the web browser. Navigate to the [ecohabit repo page](https://github.com/lugenx/ecohabit")
 
 Look for a green `Compare & pull request` button. Once you've found it, click the button.
 
