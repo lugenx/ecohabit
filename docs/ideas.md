@@ -10,7 +10,16 @@
 - environment-friendly online stores
 - environment-friendly events
 - environment-friendly alternatives of popular products and services
+
 - links to environmental charities
 - crowdfunding feature to donate to environmental charities
 - fun facts about the environment
 - a forum
+
+
+- Since the platform is about recycling, we can have a section for popular articles related to the subject.
+  - Articles can be categorized based on tags.
+  - Content for articles can be fetched using RSS feeds or through scraping a publication
+  - User can subscribe to different categories and based on that they will receive notifications in their inbox.
+
+- carbon emissions estimates using the api https://docs.carboninterface.com/
