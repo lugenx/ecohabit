@@ -10,3 +10,4 @@
 - environment-friendly online stores
 - environment-friendly events
 - environment-friendly alternatives of popular products and services
+- carbon emissions estimates using the api https://docs.carboninterface.com/
