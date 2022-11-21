@@ -5,6 +5,7 @@
 - develop understanding of 5R (reduce, reuse, repair, rot, recyle)
 - recycling instructions based on each state's local law
 - recycling locations (+1)
+- Search/MAP section showing return&earn stations
 - zero waste stores and businesses (+1) 
 - "did you recycle today" anonymous survey and daily result
 - environment-friendly online stores (+1)
