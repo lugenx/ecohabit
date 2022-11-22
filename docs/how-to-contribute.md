@@ -1,8 +1,8 @@
 # How to contribute
 
-First of all, we really appreciate your intention to contribute to this project!
+First of all, we really appreciate your intention to contribute to this project! All contributions are welcome, whether it would be features, documentation, fixing typos and more.
 
-To contribute, you need a GitHub account and Git installed on your computer. Creating a GitHub account and installing Git is not the issue of this guide. 
+To contribute, you would need a GitHub account and Git installed on your computer. Creating a GitHub account and installing Git is not the issue of this guide. 
 
 This guide assumes that you are already accustomed to elementary Git/GitHub usage.
 
@@ -14,11 +14,11 @@ The most common contribution path starts with forking the project which can be e
 
 Visit the [ecohabit repo page](https://github.com/lugenx/ecohabit") on your browser. Next, find the `fork` button somewhere around the top right of the page and press this button. 
 
--- IMAGE OF THE FORK BUTTON
+![fork repo button](./assets/fork-repo.png/ "Fork Repo Button")
 
 Once you have pressed the button, GitHub will redirect you to a page that looks like this:
 
--- Image of page after fork.
+![create fork button](./assets/create-fork.png "Create Fork Button")
 
 Press the `Create fork` button to fork the repository. It should redirect you into your own copy of the repo.
 
@@ -31,11 +31,11 @@ Now that your GitHub account has an exact copy of the project via forking, it's 
 
 After forking, it should redirect you into your own copy of the repo. Select the green `Code` button somewhere in the middle of the page. It should be next to the `Add file` button, and it should be the only green button on the entire page, assuming that you're using the default GitHub theme.
 
--- IMAGE OF CODE BUTTON
+![code button](./assets/github-code.png "Code button")
 
 Next, copy the link under the HTTPS tab by tapping the button right beside it.
 
--- IMAGE OF COPYING
+![clone repo dialogue](./assets/clone-repo.png "Clone repo dialogue")
 
 If you prefer to clone via SSH, feel free to go that route instead.
 
@@ -45,13 +45,6 @@ Another way of getting the link is to copy this format for HTTPS:
 ```
 https://github.com/<YOUR GITHUB NAME>/ecohabit
 ```
-
-Or this format for SSH:
-
-```
-git@github.com:<YOUR GITHUB NAME>/ecohabit.git
-```
-
 ---
 
 Now that we have copied the link to our repo, grab your favorite terminal and navigate to the directory where you want to store the project, then run this command:
@@ -81,7 +74,7 @@ To prevent this, run this command on your terminal:
 git remote add upstream https://github.com/lugenx/ecohabit
 ```
 
-This command will kind of let your git know the direction to send your updates.
+This command will connect your fork to the original repo so that you can make and receive commits to and from the original repo.
 
 ### 5. Making changes to the project and commiting those changes
 
@@ -93,9 +86,9 @@ After you're done saving your changes, you try running this command:
 git status
 ```
 
-This command will show you the changes that you've made and their current status.
+This command will show the changes that you've made and their current status.
 
-To add all of your changes into the staging area and set their status to "to be commited", run this command:
+If you are confident with your changes, it's time to add them to the staging area. To add all of your changes into the staging area and set their status to "to be commited", run this command:
 
 ```
 git add .
@@ -131,12 +124,16 @@ It is time to get back to the web browser. Navigate to the [ecohabit repo page](
 
 Look for a green `Compare & pull request` button. Once you've found it, click the button.
 
--- IMAGE OF BUTTON
+![compare & pull request button](./assets/compare-pull-request.png "Compare & pull request button")
 
 Feel free to write some more info. Once finished, click on the `Create pull request` button.
 
--- IMAGE OF THAT
+![create pull request button](./assets/create-pull-request.png "Create pull request button")
 
-Congratulations! You have done your Pull Request. Now we have to wait for the maintainers to review and check your Pull Request. Once the maintainers have deemed your contribution to be worthy, they will accept your Pull Request. Now you have made your very first contribution!
+If there are no errors, it should redirect you to a page that looks like this:
+
+![successfull pull request](./assets/successful-pull-request.png "Successfull pull request")
+
+Congratulations! You have successfully made a Pull Request. Now we have to wait for the maintainers to review and check your Pull Request. Once the maintainers have deemed your contribution to be worthy, they will accept your Pull Request. Now you have made your very first contribution!
 
 
