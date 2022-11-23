@@ -1,6 +1,6 @@
 # How to contribute
 
-First of all, we really appreciate your intention to contribute to this project! All contributions are welcome, whether it would be adding more features, creatinglugen documentation, fixing typos and more.
+First of all, we really appreciate your intention to contribute to this project! All contributions are welcome, whether it would be adding more features, creating documentation, fixing typos and more.
 
 To contribute, you would need a GitHub account and Git installed on your computer. Creating a GitHub account and installing Git is not the issue of this guide. 
 
@@ -12,7 +12,7 @@ This guide assumes that you are already accustomed to elementary Git/GitHub usag
 
 The most common contribution path starts with forking the project which can be easily done with a web browser of your choice.
 
-Visit the [ecohabit repo page](https://github.com/lugenx/ecohabit") on your browser. Next, find the `fork` button somewhere around the top right of the page and press this button. 
+Visit the [ecohabit repo page](https://github.com/lugenx/ecohabit) on your browser. Next, find the `fork` button somewhere around the top right of the page and press this button. 
 
 ![fork repo button](./assets/fork-repo.png/ "Fork Repo Button")
 
@@ -122,7 +122,7 @@ This will push our changes to the original repo. Now we have to make a Pull Requ
 
 ### 6. Submitting your changes for review
 
-It is time to get back to the web browser. Navigate to the [ecohabit repo page](https://github.com/lugenx/ecohabit")
+It is time to get back to the web browser. Navigate to the [ecohabit repo page](https://github.com/lugenx/ecohabit)
 
 Look for a green `Compare & pull request` button. Once you've found it, click the button.
 
