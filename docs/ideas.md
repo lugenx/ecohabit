@@ -4,14 +4,15 @@
 
 - develop understanding of 5R (reduce, reuse, repair, rot, recyle)
 - recycling instructions based on each state's local law
-- recycling locations
-- zero waste stores and businesses
+- recycling locations (+1)
+- Search/MAP section showing return&earn stations
+- zero waste stores and businesses (+1) 
 - "did you recycle today" anonymous survey and daily result
-- environment-friendly online stores
+- environment-friendly online stores (+1)
 - environment-friendly events
 - environment-friendly alternatives of popular products and services
 
-- links to environmental charities
+- links to environmental charities (+1)
 - crowdfunding feature to donate to environmental charities
 - fun facts about the environment
 - a forum
