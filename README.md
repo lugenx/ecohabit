@@ -1,21 +1,25 @@
 <h1 align="center">EcoHabit</h1>
 <h3 align="center">
-    <a href="#">Link</a> · 
-    <a href="#" class="default">Another Link</a> 
+    <a href="https://www.ecohabit.org/">EcoHabit.org</a> 
+ 
 </h3>
 
 ## Table of Contents
 
-- [MVP](#mvp)
+- [Project Description](#project-description)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
 - [Roadmap](#roadmap)
 - [Socials](#socials)
 - [Contribute](#contribute)
 
-## MVP
+## Project Description
 
-- _problem description, solution, features, use cases, etc_
+EcoHabit is a web app project that aims to create awareness of the environment and help people build environmental friendly habits.
+
+It will visualize users' habits by tracking their activities (recycling, commuting, eating, etc.) and encourage them to improve their habits with better alternative options.
+
+It also targets to be users' go-to place to find the closest recycling locations and give them clear instructions about how to divide and recycle each material.
 
 ## Tech Stack
 
@@ -45,9 +49,7 @@
 
 - _List contributors and their social links, if any_
 
+## Contribute
 
-
- ## Contribute
-
- - ECOHABIT appreciates your contribution in any aspects of project development like documenting, UI/UX design, Frontend/Backend development etc.
- - If you have some GIT experience but do not know how to contribute on a team project, we have a [beginner friendly guide](https://github.com/lugenx/ecohabit/blob/main/docs/how-to-contribute.md)
+- ECOHABIT appreciates your contribution in any aspects of project development like documenting, UI/UX design, Frontend/Backend development etc.
+- If you have some GIT experience but do not know how to contribute on a team project, we have a [beginner friendly guide](https://github.com/lugenx/ecohabit/blob/main/docs/how-to-contribute.md)
