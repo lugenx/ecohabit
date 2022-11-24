@@ -2,7 +2,9 @@
 
 ## Navigation menu of the website may include items below.
 
-- ### Recycling Habits
+- ### Logo (link to homepage) --> "/"
+
+- ### Recycling Habits --> "/recycling-habits"
   - What to recycle?
     - Items
   - Why to recycle?
@@ -11,13 +13,13 @@
     - Instructions
   - Where to recycle?
     - Recycling Locations (API)
-- ### Commuting Habits
+- ### Commuting Habits --> "/commuting-habits"
 
   - Ridesharing - [add items...]
   - E-bikes, or bicycles - [add items...]
   - Use public transports - [add items...]
 
-- ### Eating habits
+- ### Eating habits --> "/eating-habits"
 
   - Reducing meat intake
     - [add items...]
@@ -26,6 +28,7 @@
   - Compost
     - [add items...]
 
-- ### Energy Consumption
-- ### Material of daily used items
+- ### Carbon Footprint --> "/carbon-footprint"
+  - Energy Consumption
+- ### Material of daily used items --> "/daily-used-materials"
 - ### [add items...]
