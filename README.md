@@ -6,9 +6,12 @@
 
 ## Table of Contents
 
+- [Table of Contents](#table-of-contents)
 - [Project Description](#project-description)
 - [Tech Stack](#tech-stack)
 - [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [How to run](#how-to-run)
 - [Roadmap](#roadmap)
 - [Socials](#socials)
 - [Contribute](#contribute)
@@ -23,7 +26,7 @@ It also targets to be users' go-to place to find the closest recycling locations
 
 ## Tech Stack
 
-- Front End: React (JavaScript)
+- Front End: React (JavaScript), Material UI
 - Backend: Spring Boot (Java)
 - Database: MongoDB
 
