@@ -89,14 +89,8 @@ time,
 mark,
 audio,
 video {
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
   margin: 0;
   padding: 0;
->>>>>>> 119f223 (initial frontend setup)
-=======
->>>>>>> 5d35f21 (add roboto font to index.html, minor edit normalization rules)
   border: 0;
   vertical-align: baseline;
 }
