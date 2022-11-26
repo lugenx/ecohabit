@@ -12,6 +12,12 @@
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [How to run](#how-to-run)
+- [Running Backend Nods JS Application:](#running-backend-nods-js-application)
+  - [`npm install`](#npm-install)
+  - [`npm start`](#npm-start)
+- [Running Frontend React JS Application:](#running-frontend-react-js-application)
+  - [`npm install`](#npm-install-1)
+  - [`npm start`](#npm-start-1)
 - [Roadmap](#roadmap)
 - [Socials](#socials)
 - [Contribute](#contribute)
@@ -27,7 +33,7 @@ It also targets to be users' go-to place to find the closest recycling locations
 ## Tech Stack
 
 - Front End: React (JavaScript), Material UI
-- Backend: Spring Boot (Java)
+- Backend: NodeJS/ExpressJS (JavaScript)
 - Database: MongoDB
 
 ## Getting Started
