@@ -1,12 +1,11 @@
-/* Under Construction Page */
-body {
+/*CSS RESET*/
+
+* {
   margin: 0;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1rem;
-  color: white;
+  padding: 0;
+  font-size: 16px;
+  box-sizing: border-box;
 }
-content {
-  background: url("https://source.unsplash.com/jFCViYFYcus/4887×2759") center;
 
 html,
 body,
@@ -89,9 +88,6 @@ time,
 mark,
 audio,
 video {
-  margin: 0;
-  padding: 0;
-  border: 0;
   vertical-align: baseline;
 }
 
