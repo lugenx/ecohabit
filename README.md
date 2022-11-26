@@ -12,8 +12,8 @@
 -   [Getting Started](#getting-started)
     -   [Prerequisites](#prerequisites)
     -   [How to run](#how-to-run)
--   [Running the Backend Node JS Application:](#running-backend-nods-js-application)
--   [Running the Frontend React JS Application:](#running-frontend-react-js-application)
+-   [Running the Backend Node JS Application](#running-the-backend-node-js-application)
+-   [Running the Frontend React JS Application](#running-the-frontend-react-js-application)
 -   [Roadmap](#roadmap)
 -   [Socials](#socials)
 -   [Contribute](#contribute)
@@ -46,7 +46,7 @@ It also targets to be users' go-to place to find the closest recycling locations
 -   Clone the repository for this project by running the following command in a terminal: 'git clone https://github.com/lugenx/ecohabit.git'.
 -   Open the cloned folder in VS Code. Open the terminal and make sure its pointing to the root of the cloned project.
 
-## Running Backend Nods JS Application:
+## Running the Backend Node JS Application:
 
 -   Change the directory to server folder using terminal command: cd .\server\
 -   In the server directory, you can run:
@@ -60,7 +60,7 @@ It also targets to be users' go-to place to find the closest recycling locations
 -   Runs the app in the development mode.\
 -   You can start making http calls to [http://localhost:3001](http://localhost:3001)
 
-## Running Frontend React JS Application:
+## Running the Frontend React JS Application:
 
 -   Change the directory to server folder using terminal command: cd .\client\
 -   In the client directory, you can run:
