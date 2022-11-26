@@ -46,36 +46,37 @@ It also targets to be users' go-to place to find the closest recycling locations
 -   Clone the repository for this project by running the following command in a terminal: 'git clone https://github.com/lugenx/ecohabit.git'.
 -   Open the cloned folder in VS Code. Open the terminal and make sure its pointing to the root of the cloned project.
 
-## Running the Backend Node JS Application:
+- Running Backend Nods JS Application:
 
--   Change the directory to server folder using terminal command: cd .\server\
--   In the server directory, you can run:
+  - Change the directory to server folder using terminal command: cd server
+  - In the server directory, you can run:
 
-### `npm install`
+  ##### `npm install`
 
--   It'll download all the packages/dependencies as defined in package.json file. Once the system completes this process, we can type below command:
+  - It'll download all the packages/dependencies as defined in package.json file. Once the system completes this process, we can type below command:
 
-### `npm start`
+  ##### `npm start`
 
--   Runs the app in the development mode.\
--   You can start making http calls to [http://localhost:3001](http://localhost:3001)
+  - Runs the app in the development mode.
+  - You can start making http calls to [http://localhost:3001](http://localhost:3001)
 
-## Running the Frontend React JS Application:
+- Running Frontend React JS Application:
 
--   Change the directory to server folder using terminal command: cd .\client\
--   In the client directory, you can run:
+  - Change the directory to server folder using terminal command: cd client
+  - In the client directory, you can run:
 
-### `npm install`
+  ##### `npm install`
 
--   It'll download all the packages/dependencies as defined in package.json file. Once the system completes this process, we can type below command:
+  - It'll download all the packages/dependencies as defined in package.json file. Once the system completes this process, we can type below command:
 
-### `npm start`
+  ##### `npm start`
 
--   Runs the app in the development mode.\
--   Open [http://localhost:3000](http://localhost:3000) to view it in the browser
+  - Runs the app in the development mode.
+  - Open [http://localhost:3000](http://localhost:3000) to view it in the browser
 
--   The page will reload if you make edits.\
--   You will also see any lint errors in the console.
+  - The page will reload if you make edits.
+  - You will also see any lint errors in the console.
+
 
 ## Roadmap
 
