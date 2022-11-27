@@ -36,12 +36,12 @@ It also targets to be users' go-to place to find the closest recycling locations
 
 ### Prerequisites
 
--   Download and install the latest version of Git on your system. See https://git-scm.com/downloads
+-   Download and install the latest version of Git on your system. See https://git-scm.com/downloads.
 	-	To make sure if your Git is on the latest version, run this command on the command line: `git --version`.
--	Download and install the latest version of NodeJS and npm on your system. See https://nodejs.org/en/
+-	Download and install the latest version of NodeJS and npm on your system. See https://nodejs.org/en/.
 	-	npm is included with the NodeJS installation. This means that you only have to download and run the NodeJS installer.
-	-	To make sure if your NodeJS is on the latest version, run this command on the command line: `node -v`
-	-	To make sure if your npm is on the latest version, run this command on the command line: `npm -v`
+	-	To make sure if your NodeJS is on the latest version, run this command on the command line: `node -v`.
+	-	To make sure if your npm is on the latest version, run this command on the command line: `npm -v`.
 
 If you prefer the command line way of downloading and installing things, then feel free to do so. Otherwise, the instructions above should get you up and running.
 
