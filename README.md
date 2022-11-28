@@ -32,10 +32,14 @@ It also targets to be users' go-to place to find the closest recycling locations
 
 ### Prerequisites
 
--   Download the latest version of git on your system. See [https://git-scm.com/downloads](https://git-scm.com/downloads).
--   Java Development Kit (JDK) - Download and install the latest version from [https://www.oracle.com/java/technologies/java-se-glance.html](https://www.oracle.com/java/technologies/java-se-glance.html).
--   Set the 'JAVA_HOME' system environment variable value to the installation path of your JDK installation.
--   Download the latest version of Node Package Manager (NPM) by running the following on the command line: 'npm install -g npm'.
+-   Download and install the latest version of Git on your system. See https://git-scm.com/downloads.
+	-	To make sure if your Git is on the latest version, run this command on the command line: `git -v`.
+-	Download and install the latest version of NodeJS and npm on your system. See https://nodejs.org/en/.
+	-	npm is included with the NodeJS installation. This means that you only have to download and run the NodeJS installer.
+	-	To make sure if your NodeJS is on the latest version, run this command on the command line: `node -v`.
+	-	To make sure if your npm is on the latest version, run this command on the command line: `npm -v`.
+
+If you prefer the command line way of downloading and installing things, then feel free to do so. Otherwise, the instructions above should get you up and running.
 
 ### How to run
 
