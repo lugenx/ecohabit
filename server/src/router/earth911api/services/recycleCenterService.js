@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-const getPostalCode = async (country, postalCode) => {
+const getPostalData = async (country, postalCode) => {
     const response = (await fetch(`${process.env.EARTH911_BASE_URL}/earth911.getPostalData?api_key=${process.env.EARTH911_API_KEY}&country=${country}&postal_code=${postalCode}`));
     return await response.json();
 }
@@ -16,12 +16,12 @@ const getLocationDetails = async (locationIds) => {
 }
 
 
-export const getCenterDataWithPostal = async (country, postal_code) => {
+const getCenterDataWithPostal = async (country, postal_code) => {
     try {
-        const postalData = await getPostalCode(country, postal_code);
-        const searchLocationsData = await searchLocations(postalData.result.longitude, postalData.result.latitude);
-        const locationDetails = await getLocationDetails(searchLocationsData.map((location) => location.location_id));
-        return searchLocationsData.map((location) => {
+        const postalData = await getPostalData(country, postal_code);
+        const locationsData = await searchLocations(postalData.result.longitude, postalData.result.latitude);
+        const locationDetails = await getLocationDetails(locationsData.map((location) => location.location_id));
+        return locationsData.map((location) => {
             const locationDetail = locationDetails.find((detail) => detail.location_id === location.location_id);
             return {
                 ...location,
@@ -33,3 +33,4 @@ export const getCenterDataWithPostal = async (country, postal_code) => {
     }
 }
 
+export default { getCenterDataWithPostal };
