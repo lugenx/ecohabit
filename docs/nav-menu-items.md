@@ -26,6 +26,7 @@
   - Compost
     - [add items...]
 
-- ### Energy Consumption
+- ### Carbon Footprint
+  - Energy Consumption
 - ### Material of daily used items
 - ### [add items...]
