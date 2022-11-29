@@ -44,4 +44,4 @@ const getCentersDetail = async (req, res, next) => {
     }
 }
 
-export default { getPostalData, getLocationDetails, searchLocations, getCentersDetail };
+export { getPostalData, getLocationDetails, searchLocations, getCentersDetail };

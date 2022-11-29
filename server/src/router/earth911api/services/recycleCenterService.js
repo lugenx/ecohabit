@@ -33,4 +33,4 @@ const getCenterDataWithPostal = async (country, postal_code) => {
     }
 }
 
-export default { getCenterDataWithPostal };
+export { getCenterDataWithPostal };
