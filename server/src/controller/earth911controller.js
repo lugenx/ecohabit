@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import { getCenterDataWithPostal } from "../services/recycleCenterService.js";
+import { getCenterDataWithPostal } from "../services/earth911services.js";
 
 const getPostalData = async (req, res, next) => {
     try {
