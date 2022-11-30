@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
 import { getCenterDataWithPostal } from "../services/recycleCenterService.js";
+
 const getPostalData = async (req, res, next) => {
     try {
         const response = (await fetch(`${process.env.EARTH911_BASE_URL}/earth911.getPostalData?api_key=${process.env.EARTH911_API_KEY}&country=${req.params.country}&postal_code=${req.params.postal}`));

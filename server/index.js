@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import {} from "dotenv/config";
-import earth911Router from "./src/router/earth911api/routes.js";
+import earth911Router from "./src/routes/routes.js";
 
 const PORT = process.env.PORT || 3001;
 const app = express();

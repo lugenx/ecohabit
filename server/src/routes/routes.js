@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { getLocationDetails, getPostalData, searchLocations, getCentersDetail } from './controller/recycleCenterController.js';
+import { getLocationDetails, getPostalData, searchLocations, getCentersDetail } from '../controller/recycleCenterController.js';
 const earth911Router = Router();
 
 /* Recycle Centes. */
