@@ -9,22 +9,29 @@ router.get(`/`, async (req, res) => {
     res.send({ err: "invalid key" });
   }
 
-  const API_KEY = process.env.API_KEY;
-  const businessOnly = req.query.business_only;
-  const hideEventOnly = req.query.hide_event_only;
-  const latitude = req.query.latitude;
-  const longitude = req.query.longitude;
-  const matchedMaterials = req.query.matched_materials;
-  const materialId = req.query.material_id;
-  const maxDistance = req.query.max_distance;
-  const maxResults = req.query.max_results;
-  const residentialOnly = req.query.residental_only;
+  const obj = {
+    api_key: process.env.API_KEY,
+    business_only: req.query.business_only,
+    hide_event_only: req.query.hide_event_only,
+    latitude: req.query.latitude,
+    longitude: req.query.longitude,
+    matched_materials: req.query.matched_materials, //DOTO: fix this.
+    material_id: req.query.material_id, //DOTO: fix this.
+    max_distance: req.query.max_distance,
+    max_results: req.query.max_results,
+    residental_only: req.query.residental_only,
+  };
+
+  const arr = Object.entries(obj);
+  const filteredArr = arr.filter(([key, value]) => value !== undefined);
+  const filteredObj = Object.fromEntries(filteredArr);
+
+  const queries = new URLSearchParams(filteredObj).toString();
+
+  const url = `http://api.earth911.com/earth911.searchLocations?${queries}`;
 
   try {
-    const data = await fetchData(
-      `http://api.earth911.com/earth911.searchLocations?api_key=${API_KEY}&business_only=${businessOnly}&hide_event_only=${hideEventOnly}&latitude=${latitude}&longitude=${longitude}&matched_materials=${matchedMaterials}&material_id=${materialId}&max_distance=${maxDistance}&max_results=${maxResults}&residental_only=${residentialOnly}`
-    );
-
+    const data = await fetchData(url);
     res.send(data);
   } catch (error) {
     console.log("ERROR: ", error);
