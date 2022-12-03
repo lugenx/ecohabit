@@ -9,22 +9,26 @@ router.get(`/`, async (req, res) => {
     res.send({ err: "invalid key" });
   }
 
-  const API_KEY = process.env.API_KEY;
-  const businessOnly = req.query.business_only;
-  const hideEventOnly = req.query.hide_event_only;
-  const latitude = req.query.latitude;
-  const longitude = req.query.longitude;
-  const matchedMaterials = req.query.matched_materials;
+  const query = req.query;
   const materialId = req.query.material_id;
-  const maxDistance = req.query.max_distance;
-  const maxResults = req.query.max_results;
-  const residentialOnly = req.query.residental_only;
+  delete query.material_id;
+  query.api_key = process.env.API_KEY;
+
+  let materialIdStr = "";
+  if (Array.isArray(materialId)) {
+    for (let id of materialId) {
+      materialIdStr = materialIdStr + `&material_id[]=${id}`;
+    }
+  } else if (materialId) {
+    materialIdStr = `&material_id=${materialId}`;
+  }
+
+  const str = new URLSearchParams(query).toString() + materialIdStr;
+
+  const url = `http://api.earth911.com/earth911.searchLocations?${str}`;
 
   try {
-    const data = await fetchData(
-      `http://api.earth911.com/earth911.searchLocations?api_key=${API_KEY}&business_only=${businessOnly}&hide_event_only=${hideEventOnly}&latitude=${latitude}&longitude=${longitude}&matched_materials=${matchedMaterials}&material_id=${materialId}&max_distance=${maxDistance}&max_results=${maxResults}&residental_only=${residentialOnly}`
-    );
-
+    const data = await fetchData(url);
     res.send(data);
   } catch (error) {
     console.log("ERROR: ", error);

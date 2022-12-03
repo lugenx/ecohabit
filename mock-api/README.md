@@ -39,11 +39,7 @@ Methods below are currently availible to use with mock api
 
 - [**earth911.getPostalData**](https://api.earth911.com/docs/method/earth911.getPostalData/)
 
-  - Limited data is availible
-
-        Availible Country: US
-
-        Availible Postal Codes: 02116, 73102, 60611
+  - All data is availible
 
 ---
 
