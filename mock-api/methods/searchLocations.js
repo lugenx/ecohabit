@@ -23,9 +23,7 @@ router.get(`/`, async (req, res) => {
     materialIdStr = `&material_id=${materialId}`;
   }
 
-  const str = materialIdStr
-    ? new URLSearchParams(query).toString() + materialIdStr
-    : new URLSearchParams(query).toString();
+  const str = new URLSearchParams(query).toString() + materialIdStr;
 
   const url = `http://api.earth911.com/earth911.searchLocations?${str}`;
 
