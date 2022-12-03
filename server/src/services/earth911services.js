@@ -11,18 +11,23 @@ const searchLocations = async (longitude, latitude) => {
 }
 
 const getLocationDetails = async (locationIds) => {
-    const response = await fetch(`${process.env.EARTH911_BASE_URL}/earth911.getLocationDetails?api_key=${process.env.EARTH911_API_KEY}&location_id=${locationIds}`);
+    const response = await fetch(`${process.env.EARTH911_BASE_URL}/earth911.getLocationDetails?api_key=${process.env.EARTH911_API_KEY}&${locationIds}`);
     return await response.json();
 }
 
 
 const getCenterDataWithPostal = async (country, postal_code) => {
     try {
-        const postalData = await getPostalData(country, postal_code);
-        const locationsData = await searchLocations(postalData.result.longitude, postalData.result.latitude);
-        const locationDetails = await getLocationDetails(locationsData.map((location) => location.location_id));
+        console.log("getCenterDataWithPostal");
+        const postalData = (await getPostalData(country, postal_code)).result;
+        if (!postalData) return [];
+        const locationsData = (await searchLocations(postalData.longitude, postalData.latitude)).result;
+        if (!locationsData) return [];
+        const query = ('location_id[]=' + locationsData.map((location) => location.location_id).join("&location_id[]="));
+        const locationDetails = (await getLocationDetails(query)).result;
+        if (!locationDetails) return [];
         return locationsData.map((location) => {
-            const locationDetail = locationDetails.find((detail) => detail.location_id === location.location_id);
+            const locationDetail = locationDetails[location.location_id] || {};
             return {
                 ...location,
                 detail: locationDetail
