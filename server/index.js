@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 const corsOptions = {
-  origin: ["http://www.ecohabit.com", "http://localhost:3001"],
+  origin: ["http://www.ecohabit.com", "http://localhost:3000"],
   credentials: true,
   optionSuccessStatus: 200,
 };
