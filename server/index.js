@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 const corsOptions = {
-  origin: "*", //<--TODO: update this for security
+  origin: ["http://www.ecohabit.com", "http://localhost:3001"],
   credentials: true,
   optionSuccessStatus: 200,
 };
@@ -15,11 +15,11 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.status(200).send('Ok!');
+app.get("/", (req, res) => {
+  res.status(200).send("Ok!");
 });
 
-app.use('/', earth911Router);
+app.use("/", earth911Router);
 
 app.listen(PORT, () => {
   console.log(`EcoHabit is running, server listening to ${PORT}`);
