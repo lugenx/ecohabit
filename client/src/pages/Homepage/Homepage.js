@@ -1,7 +1,8 @@
 import React from "react";
+import Recycle from "../../components/Recycle/Recycle";
 
 const Homepage = () => {
-  return <h2>PLACE HOLDER FOR HOMEPAGE</h2>;
+  return <Recycle />;
 };
 
 export default Homepage;
