@@ -5,8 +5,8 @@ nav {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    padding: 2rem 5rem 2rem 5rem;
     font-family: 'Montserrat', sans-serif;
+    background-color: #353b48;
 }
 
 nav > h1 {
@@ -16,7 +16,7 @@ nav > h1 {
     font-weight: 500;
 }
 
-nav > ul {
+.nav-links {
     display: flex;
     flex-grow: 1;
     flex-direction: row;
@@ -27,19 +27,50 @@ nav > ul {
 /* for hover effect */
 /* #44bd32 */
 
-nav > ul > li {
+.nav-link-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background: transparent;
+    padding: 1rem 2rem 1rem 2rem;
+    width: 100%;
+    color: #999999;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav-progressbar {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 1rem 0 1rem 0;
+    color: white;
+}
+
+.nav-end {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    background: transparent;
-    padding: 1rem;
-    margin: 0 1rem 0 1rem;
-    width: 100%;
-    color: #999999;
-    cursor: pointer;
 }
 
-.active {
-    color: #44bd32;
+.login-btn {
+    text-decoration: none;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: white;
+    background-color: lightseagreen;
+    border-radius: 5px;
+}
+
+.user-btn {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+    overflow: hidden;
+}
+
+.user-btn > img {
+    width: 3rem;
+    height: 3rem;
 }
