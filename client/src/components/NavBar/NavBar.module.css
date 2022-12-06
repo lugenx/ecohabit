@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@100;200;300;400;500;600;700;800;900&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-nav {
+.nav {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -9,13 +9,13 @@ nav {
     background-color: #353b48;
 }
 
-nav > h1 {
+.nav > h1 {
     font-size: 2.25rem;
     color: #44bd32;
     font-weight: 500;
 }
 
-.nav-links {
+.navLinks {
     display: flex;
     flex-grow: 1;
     flex-direction: row;
@@ -23,10 +23,8 @@ nav > h1 {
     list-style-type: none;
     background-color: #2f3640;
 }
-/* for hover effect */
-/* #44bd32 */
 
-.nav-link-item {
+.navLinkItem {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -39,7 +37,7 @@ nav > h1 {
     text-decoration: none;
 }
 
-.nav-progressbar {
+.navProgressbar {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -47,14 +45,14 @@ nav > h1 {
     color: white;
 }
 
-.nav-end {
+.navEnd {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
 }
 
-.login-btn {
+.loginbtn {
     text-decoration: none;
     padding: 0.5rem 1rem 0.5rem 1rem;
     color: white;
@@ -62,14 +60,14 @@ nav > h1 {
     border-radius: 5px;
 }
 
-.user-btn {
+.userBtn {
     width: 3rem;
     height: 3rem;
     border-radius: 100%;
     overflow: hidden;
 }
 
-.user-btn > img {
+.userBtn > img {
     width: 3rem;
     height: 3rem;
 }
