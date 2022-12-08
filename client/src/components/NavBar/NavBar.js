@@ -15,6 +15,8 @@ import FlashOnIcon from '@mui/icons-material/FlashOn';
 import HomeIcon from '@mui/icons-material/Home';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { faRecycle } from '@fortawesome/free-solid-svg-icons'
+// Theme
+import theme from '../../theme/index'
 
 // Title
 const Item = styled(Box)(({ theme }) => ({
@@ -46,8 +48,8 @@ const NavBar = () => {
   const [imgurl, setImgurl] = useState('https://avatars.githubusercontent.com/u/90015510?v=4')
 
   let activeStyle = {
-    color: '#44bd32',
-    backgroundColor: '#252b36',
+    color: theme.palette.primary.main,
+    backgroundColor: theme.palette.secondary.main,
   }
 
   return (
