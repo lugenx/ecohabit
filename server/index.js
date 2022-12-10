@@ -1,7 +1,11 @@
 import express from "express";
+import mongoose from "mongoose";
 import cors from "cors";
 import {} from "dotenv/config";
 import earth911Router from "./src/routes/earth911routes.js";
+import userRouter from "./src/routes/userRoutes.js";
+import habitRouter from "./src/routes/habitRoutes.js";
+import answerRouter from "./src/routes/answerRoutes.js";
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -20,7 +24,20 @@ app.get("/", (req, res) => {
 });
 
 app.use("/", earth911Router);
+app.use("/user", userRouter);
+app.use("/habit", habitRouter);
+app.use("/answer", answerRouter);
 
-app.listen(PORT, () => {
-  console.log(`EcoHabit is running, server listening to ${PORT}`);
-});
+const runServer = async () => {
+  try {
+    await mongoose.connect(process.env.MONGODB_URI);
+
+    app.listen(PORT, () => {
+      console.log(`EcoHabit is running, server listening to ${PORT}`);
+    });
+  } catch (err) {
+    console.log("Error message: ", err);
+  }
+};
+
+runServer();
