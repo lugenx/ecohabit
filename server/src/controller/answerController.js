@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import Answer from "../models/answerModel.js";
 
 const createAnswer = async (req, res) => {
@@ -5,7 +6,6 @@ const createAnswer = async (req, res) => {
     const answer = await Answer.create({
       question: req.body.question,
       answer: req.body.answer,
-      date: req.body.date,
       user: req.body.user,
     });
 
@@ -17,19 +17,49 @@ const createAnswer = async (req, res) => {
 
 const getAnswer = async (req, res) => {
   const id = req.params.id;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "answer not found, invalid request" });
+  }
+
   const answer = await Answer.findById(id);
+
+  if (!answer) {
+    return res.status(404).json({ error: "answer not found" });
+  }
+
   res.status(200).json(answer);
 };
 
 const updateAnswer = async (req, res) => {
   const id = req.params.id;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "answer not found, invalid request" });
+  }
+
   const answer = await Answer.findOneAndUpdate({ _id: id }, { ...req.body });
+
+  if (!answer) {
+    return res.status(404).json({ error: "answer not found" });
+  }
+
   res.status(200).json(answer);
 };
 
 const deleteAnswer = async (req, res) => {
   const id = req.params.id;
+
+  if (!mongoose.Types.ObjectId.isValid(id)) {
+    return res.status(404).json({ error: "answer not found, invalid request" });
+  }
+
   const answer = await Answer.findOneAndDelete({ _id: id });
+
+  if (!answer) {
+    return res.status(404).json({ error: "answer not found" });
+  }
+
   res.status(200).json(answer);
 };
 
