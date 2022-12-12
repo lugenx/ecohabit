@@ -13,15 +13,6 @@ const theme = createTheme({
       dark: "#890341",
       light: "#cf377e",
     },
-    /** TODO: Select custom colors or remove
-     * You would be able to use it like this: `<Button color="custom">`
-     */
-    custom: {
-      light: "#ffa726",
-      main: "#f57c00",
-      dark: "#ef6c00",
-      contrastText: "rgba(0, 0, 0, 0.87)",
-    },
   },
   typography: {
     fontFamily: [
