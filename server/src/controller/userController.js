@@ -8,12 +8,14 @@ const userLogin = async (req, res) => {
 const userSignUp = async (req, res) => {
   const name = req.body.name;
   const email = req.body.email;
+  const postalCode = req.body.postalCode;
   const password = req.body.password;
 
   try {
     const user = await User.create({
       name,
       email,
+      postalCode,
       password,
     });
     res.status(200).json(user);
