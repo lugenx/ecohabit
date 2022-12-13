@@ -4,9 +4,9 @@ import Answer from "../models/answerModel.js";
 const createAnswer = async (req, res) => {
   try {
     const answer = await Answer.create({
-      question: req.body.question,
       answer: req.body.answer,
       user: req.body.user,
+      habit: req.body.habit,
     });
 
     res.status(200).json(answer);

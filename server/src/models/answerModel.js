@@ -4,17 +4,17 @@ const Schema = mongoose.Schema;
 
 const answerSchema = new Schema(
   {
-    question: {
-      type: String,
-      required: true,
-    },
     answer: {
-      type: Boolean,
+      type: "String",
       required: true,
     },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
+    },
+    habit: {
+      type: Schema.Types.ObjectId,
+      ref: "Habit",
     },
   },
   { timestamps: true }

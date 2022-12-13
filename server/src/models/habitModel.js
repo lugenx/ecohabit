@@ -3,13 +3,21 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const habitSchema = new Schema({
-  habitName: {
+  category: {
     type: String,
     required: true,
   },
-  user: {
-    type: Schema.Types.ObjectId,
-    ref: "User",
+  description: {
+    type: String,
+    required: true,
+  },
+  question: {
+    type: String,
+    required: true,
+  },
+  answerOptions: {
+    type: [String],
+    required: false,
   },
 });
 

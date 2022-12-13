@@ -2,13 +2,17 @@ import mongoose from "mongoose";
 import Habit from "../models/habitModel.js";
 
 const createHabit = async (req, res) => {
-  const habitName = req.body.habitName;
-  const user = req.body.user;
+  const category = req.body.category;
+  const description = req.body.description;
+  const question = req.body.question;
+  const answerOptions = req.body.answerOptions;
 
   try {
     const habit = await Habit.create({
-      habitName,
-      user,
+      category,
+      description,
+      question,
+      answerOptions,
     });
 
     res.status(200).json(habit);
