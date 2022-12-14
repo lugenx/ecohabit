@@ -10,6 +10,7 @@ const userSignUp = async (req, res) => {
   const email = req.body.email;
   const postalCode = req.body.postalCode;
   const password = req.body.password;
+  const roles = req.body.roles;
 
   try {
     const user = await User.create({
@@ -17,6 +18,7 @@ const userSignUp = async (req, res) => {
       email,
       postalCode,
       password,
+      roles,
     });
     res.status(200).json(user);
   } catch (err) {
