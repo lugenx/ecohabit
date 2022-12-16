@@ -6,7 +6,7 @@ export { default as EBikeCycling } from "./CommutingHabits/EBikeCycling/EBikeCyc
 export { default as PublicTransport } from "./CommutingHabits/PublicTransport/PublicTransport.js";
 export { default as RideSharing } from "./CommutingHabits/Ridesharing/Ridesharing.js";
 
-export { default as DailyUsedMaterials } from "./DailyUsedMetarials/DailyUsedMaterials.js";
+export { default as DailyUsedMaterials } from "./DailyUsedMaterials/DailyUsedMaterials.js";
 
 export { default as EatingHabits } from "./EatingHabits/EatingHabits.js";
 export { default as Compost } from "./EatingHabits/Compost/Compost.js";
@@ -17,7 +17,7 @@ export { default as ErrorPage } from "./Error/ErrorPage.js";
 
 export { default as Homepage } from "./Homepage/Homepage.js";
 
-export { default as RecylingHabits } from "./RecyclingHabits/RecylingHabits.js";
+export { default as RecyclingHabits } from "./RecyclingHabits/RecyclingHabits.js";
 export { default as HowRecycle } from "./RecyclingHabits/HowRecycle/HowRecycle.js";
 export { default as WhatRecycle } from "./RecyclingHabits/WhatRecycle/WhatRecycle.js";
 export { default as WhereRecycle } from "./RecyclingHabits/WhereRecycle/WhereRecycle.js";

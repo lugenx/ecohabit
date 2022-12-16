@@ -15,7 +15,7 @@ import MainLayout from "./MainLayout/MainLayout";
 import {
   Homepage,
   ErrorPage,
-  RecylingHabits,
+  RecyclingHabits,
   HowRecycle,
   WhatRecycle,
   WhereRecycle,
@@ -43,7 +43,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<MainLayout />} errorElement={<ErrorPage />}>
       <Route index element={<Homepage />} />
       <Route path="/homepage" element={<Navigate replace to="/" />} />
-      <Route path="/recycling-habits" element={<RecylingHabits />} />
+      <Route path="/recycling-habits" element={<RecyclingHabits />} />
       <Route path="/recycling-habits/recycle-how" element={<HowRecycle />} />
       <Route path="/recycling-habits/recycle-what" element={<WhatRecycle />} />
       <Route
