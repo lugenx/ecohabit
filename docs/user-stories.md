@@ -13,8 +13,8 @@
 - As a user, I want to be able to see the statistics of my habits.
 - As a user, I want to be able to see my habit/activity score.
 - As a user, I want to be able to receive a reminder/notification to do my habits.
-- As a user, I want to be able to answer survey questons anonymously about if I did recycle today.
-- As a user, I want to be able to see other people's answers as statistics.
+- As a user, I want to be able to see other people's habit activity as statistics.
+- As a user, I want to be able to rank up and win badges as I improve my habits.
 
 ## As a user, I want to see content that is related to the environment.
 - As a user, I want to be able to find environment-friendly alternatives of popular products and services.
