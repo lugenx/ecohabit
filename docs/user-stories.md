@@ -5,7 +5,7 @@
 - User
 - Admin
 
-## As a user, I want to track my enivronemntal habits
+## As a user, I want to track my enivronmetal habits
 - As a user, I want to be able to see a list of habits to add.
 - As a user, I want to be able to add, remove and edit habits.
 - As a user, I want to be able to mark my habits as 'successful' or 'failed'.
