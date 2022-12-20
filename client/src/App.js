@@ -1,5 +1,4 @@
-//import UnderConstruction from "./UnderConstruction";
-import Routes from "./components/Routes";
+import Routes from './components/Routes';
 
 /**
  *To avoid bloated App.js component, page routes created at Routes.js component.
