@@ -30,7 +30,7 @@ app.use("/answer", answerRouter);
 
 const runServer = async () => {
   try {
-    await mongoose.connect(process.env.MONGODB_URI);
+    mongoose.connect(process.env.MONGODB_URI);
 
     app.listen(PORT, () => {
       console.log(`EcoHabit is running, server listening to ${PORT}`);
