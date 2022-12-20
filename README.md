@@ -6,13 +6,14 @@
 
 ## Table of Contents
 
--   [Table of Contents](#table-of-contents)
--   [Project Description](#project-description)
--   [Tech Stack](#tech-stack)
--   [Getting Started](#getting-started)
--   [Roadmap](#roadmap)
--   [Socials](#socials)
--   [Contribute](#contribute)
+- [Table of Contents](#table-of-contents)
+- [Project Description](#project-description)
+- [Tech Stack](#tech-stack)
+- [Getting Started](#getting-started)
+- [Roadmap](#roadmap)
+- [Socials](#socials)
+- [Contribute](#contribute)
+- [Discuss](#discuss)
 
 ## Project Description
 
@@ -24,27 +25,27 @@ It also targets to be users' go-to place to find the closest recycling locations
 
 ## Tech Stack
 
--   Front End: React (JavaScript), Material UI
--   Backend: NodeJS/ExpressJS (JavaScript)
--   Database: MongoDB
+- Front End: React (JavaScript), Material UI
+- Backend: NodeJS/ExpressJS (JavaScript)
+- Database: MongoDB
 
 ## Getting Started
 
 ### Prerequisites
 
--   Download and install the latest version of Git on your system. See https://git-scm.com/downloads.
-	-	To make sure if your Git is on the latest version, run this command on the command line: `git -v`.
--	Download and install the latest version of NodeJS and npm on your system. See https://nodejs.org/en/.
-	-	npm is included with the NodeJS installation. This means that you only have to download and run the NodeJS installer.
-	-	To make sure if your NodeJS is on the latest version, run this command on the command line: `node -v`.
-	-	To make sure if your npm is on the latest version, run this command on the command line: `npm -v`.
+- Download and install the latest version of Git on your system. See https://git-scm.com/downloads.
+  - To make sure if your Git is on the latest version, run this command on the command line: `git -v`.
+- Download and install the latest version of NodeJS and npm on your system. See https://nodejs.org/en/.
+  - npm is included with the NodeJS installation. This means that you only have to download and run the NodeJS installer.
+  - To make sure if your NodeJS is on the latest version, run this command on the command line: `node -v`.
+  - To make sure if your npm is on the latest version, run this command on the command line: `npm -v`.
 
 If you prefer the command line way of downloading and installing things, then feel free to do so. Otherwise, the instructions above should get you up and running.
 
 ### How to run
 
--   Clone the repository for this project by running the following command in a terminal: 'git clone https://github.com/lugenx/ecohabit.git'.
--   Open the cloned folder in VS Code. Open the terminal and make sure its pointing to the root of the cloned project.
+- Clone the repository for this project by running the following command in a terminal: 'git clone https://github.com/lugenx/ecohabit.git'.
+- Open the cloned folder in VS Code. Open the terminal and make sure its pointing to the root of the cloned project.
 
 - Running Backend Nods JS Application:
 
@@ -77,23 +78,27 @@ If you prefer the command line way of downloading and installing things, then fe
   - The page will reload if you make edits.
   - You will also see any lint errors in the console.
 
-
 ## Roadmap
 
--   _List any features planned_
+- _List any features planned_
 
 ## Socials
 
--   _List contributors and their social links, if any_
+- _List contributors and their social links, if any_
 
 ## Contribute
 
--   ECOHABIT appreciates your contribution in any aspects of project development like documenting, UI/UX design, Frontend/Backend development etc.
--   Please try and follow below guidelines while creating a new PR:
-	- Keep the PR size smaller(max 8 files).
-	- Each PR should be atomic in nature and should be focused on single issue only.
-	- Respective Issue shall be linked with the PR.
-	- If there's no existing Issue for which PR need to be raised, first create an Issue in the project and then create the PR.
-	- Naming conventions and folder structure shall remain consistent.
-	
--   If you have some GIT experience but do not know how to contribute on a team project, we have a [beginner friendly guide](https://github.com/lugenx/ecohabit/blob/main/docs/how-to-contribute.md)
+- ECOHABIT appreciates your contribution in any aspects of project development like documenting, UI/UX design, Frontend/Backend development etc.
+- Please try and follow below guidelines while creating a new PR:
+  - Keep the PR size smaller(max 8 files).
+  - Each PR should be atomic in nature and should be focused on single issue only.
+  - Respective Issue shall be linked with the PR.
+  - If there's no existing Issue for which PR need to be raised, first create an Issue in the project and then create the PR.
+  - Naming conventions and folder structure shall remain consistent.
+- If you have some GIT experience but do not know how to contribute on a team project, we have a [beginner friendly guide](https://github.com/lugenx/ecohabit/blob/main/docs/how-to-contribute.md)
+
+## Discuss
+
+We are always looking for new members to join our community. One way to get involved is by joining our [Discord server](https://discord.gg/2RMs6zWw4b). On Discord, you can discuss the project, ask questions, and receive support from other members of the community.
+
+[![Discord Shield](https://discordapp.com/api/guilds/1038198557150285914/widget.png?style=shield)](https://discord.gg/2RMs6zWw4b)
