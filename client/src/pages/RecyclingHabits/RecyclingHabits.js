@@ -1,7 +1,7 @@
 import React from "react";
 
-const RecylingHabits = () => {
+const RecyclingHabits = () => {
   return <div>PLACEHOLDER FOR RECYCLING HABITS PAGE</div>;
 };
 
-export default RecylingHabits;
+export default RecyclingHabits;
