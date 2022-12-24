@@ -7,13 +7,13 @@ const userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
     const user = await User.findOne({ email: email });
-    if (!user) return res.status(400).json({ msg: "User does not exist" });
+    if (!user) return res.status(403).json({ msg: "User does not exist" });
 
     const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ msg: "invalid credentials" });
+    if (!isMatch) return res.status(400).json({ msg: "Invalid credentials" });
 
     const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
-    delete user.password;
+    user.password = undefined;
     res.status(200).json({ token, user });
   } catch (error) {
     res.status(500).json({ error: error.message });
@@ -34,7 +34,8 @@ const userSignUp = async (req, res) => {
       roles,
     });
     const savedUser = await newUser.save();
-    res.status(200).json(savedUser);
+    savedUser.password = undefined;
+    res.status(201).json(savedUser);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
