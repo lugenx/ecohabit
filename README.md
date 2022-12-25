@@ -84,7 +84,16 @@ If you prefer the command line way of downloading and installing things, then fe
 
 ## Socials
 
-- _List contributors and their social links, if any_
+[![](https://avatars.githubusercontent.com/u/8403023?s=60&v=4)](https://github.com/lugenx)
+[![](https://avatars.githubusercontent.com/u/71907618?s=60&v=4)](https://github.com/LuciusHeit)
+[![](https://avatars.githubusercontent.com/u/90015510?s=60&v=4)](https://github.com/WinterSunset95)
+[![](https://avatars.githubusercontent.com/u/20146375?s=60&v=4)](https://github.com/rcamach7)
+[![](https://avatars.githubusercontent.com/u/23516601?s=60&v=4)](https://github.com/oburnett127)
+[![](https://avatars.githubusercontent.com/u/8411881?s=60&v=4)](https://github.com/mannan0819)
+[![](https://avatars.githubusercontent.com/u/113317867?s=60&v=4)](https://github.com/Ferney-Baron)
+[![](https://avatars.githubusercontent.com/u/59352318?s=60&v=4)](https://github.com/rafaover)
+[![](https://avatars.githubusercontent.com/u/25905173?s=60&v=4)](https://github.com/AbhiBajpaishek)
+[![](https://avatars.githubusercontent.com/u/95273312?s=60&v=4)](https://github.com/rufevean)
 
 ## Contribute
 
