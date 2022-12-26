@@ -10,8 +10,8 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
-      // unique: true,
       lowercase: true,
+      match: [/(.+)@(.+){2,}\.(.+){2,}/, "Please enter a valid email"],
       validate: {
         validator: async function (email) {
           const user = await this.constructor.findOne({ email });
