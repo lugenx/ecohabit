@@ -91,7 +91,7 @@ If you prefer the command line way of downloading and installing things, then fe
   - Respective Issue shall be linked with the PR.
   - If there's no existing Issue for which PR need to be raised, first create an Issue in the project and then create the PR.
   - Naming conventions and folder structure shall remain consistent.
-- If you have some GIT experience but do not know how to contribute on a team project, we have a [beginner friendly guide](https://github.com/lugenx/ecohabit/blob/main/docs/how-to-contribute.md)
+- If you have some GIT experience but do not know how to contribute on a team project, we have a [beginner friendly guide](CONTRIBUTING.md)
 
 ## Discuss
 
