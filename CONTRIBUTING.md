@@ -14,11 +14,11 @@ The most common contribution path starts with forking the project which can be e
 
 Visit the [ecohabit repo page](https://github.com/lugenx/ecohabit) on your browser. Next, find the `fork` button somewhere around the top right of the page and press this button. 
 
-![fork repo button](./assets/fork-repo.png/ "Fork Repo Button")
+![fork repo button](./docs/assets/fork-repo.png "Fork Repo Button")
 
 Once you have pressed the `fork` button, GitHub will redirect you to a page that looks like this:
 
-![create fork button](./assets/create-fork.png "Create Fork Button")
+![create fork button](./docs/assets/create-fork.png "Create Fork Button")
 
 Press the `Create fork` button to fork the repository. It should redirect you into your own copy of the repo.
 
@@ -31,11 +31,11 @@ Now that your GitHub account has an exact copy of the project via forking, it's 
 
 After forking, it should redirect you into your own copy of the repo. Select the green `Code` button somewhere in the middle of the page. It should be next to the `Add file` button, and it should be the only green button on the entire page if you're using the default GitHub theme.
 
-![code button](./assets/github-code.png "Code button")
+![code button](./docs/assets/github-code.png "Code button")
 
 Next, copy the link under the HTTPS tab by tapping the button right beside it.
 
-![clone repo dialogue](./assets/clone-repo.png "Clone repo dialogue")
+![clone repo dialogue](./docs/assets/clone-repo.png "Clone repo dialogue")
 
 If you prefer to clone via SSH, feel free to go that route instead.
 
@@ -126,16 +126,14 @@ It is time to get back to the web browser. Navigate to the [ecohabit repo page](
 
 Look for a green `Compare & pull request` button. Once you've found it, click the button.
 
-![compare & pull request button](./assets/compare-pull-request.png "Compare & pull request button")
+![compare & pull request button](./docs/assets/compare-pull-request.png "Compare & pull request button")
 
 Feel free to change the title and write some more info. Once finished, click on the `Create pull request` button.
 
-![create pull request button](./assets/create-pull-request.png "Create pull request button")
+![create pull request button](./docs/assets/create-pull-request.png "Create pull request button")
 
 If there are no errors, it should redirect you to a page that looks like this:
 
-![successfull pull request](./assets/successful-pull-request.png "Successfull pull request")
+![successfull pull request](./docs/assets/successful-pull-request.png "Successfull pull request")
 
 Congratulations! You have successfully made a Pull Request, and you did your very first contribution. Now we have to wait for the maintainers to review and check your Pull Request. Once the maintainers have deemed your contribution to be worthy, they will accept your Pull Request.
-
-
