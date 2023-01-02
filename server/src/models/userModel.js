@@ -10,7 +10,22 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
-      required: true,
+      lowercase: true,
+      match: [/(.+)@(.+){2,}\.(.+){2,}/, "Please enter a valid email"],
+      validate: {
+        validator: async function (email) {
+          const user = await this.constructor.findOne({ email });
+          if (user) {
+            if (this.id === user.id) {
+              return true;
+            }
+            return false;
+          }
+          return true;
+        },
+        message: () => "Email address already registered.",
+      },
+      required: [true, "User email required"],
     },
     postalCode: {
       type: String,
