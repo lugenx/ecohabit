@@ -11,18 +11,8 @@ const userSchema = new Schema(
     email: {
       type: String,
       lowercase: true,
-      match: [/(.+)@(.+){2,}\.(.+){2,}/, "Please enter a valid email"],
       validate: {
-        validator: async function (email) {
-          const user = await this.constructor.findOne({ email });
-          if (user) {
-            if (this.id === user.id) {
-              return true;
-            }
-            return false;
-          }
-          return true;
-        },
+        validator: validateEmail,
         message: () => "Email address already registered.",
       },
       required: [true, "User email required"],
@@ -46,3 +36,14 @@ const userSchema = new Schema(
 const User = mongoose.model("User", userSchema);
 
 export default User;
+
+async function validateEmail(email) {
+  const user = await User.findOne({ email });
+  if (user) {
+    if (User.id === user.id) {
+      return true;
+    }
+    return false;
+  }
+  return true;
+}
