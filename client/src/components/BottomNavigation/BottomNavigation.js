@@ -7,7 +7,7 @@ import RestoreIcon from "@mui/icons-material/Restore";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
-export default function BottomNavigation() {
+export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState("recents");
 
   const handleChange = (event, newValue) => {
