@@ -2,10 +2,12 @@ import * as React from "react";
 // Ui components
 import { BottomNavigation, BottomNavigationAction } from "@mui/material";
 // Icons
-import FolderIcon from "@mui/icons-material/Folder";
-import RestoreIcon from "@mui/icons-material/Restore";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import {
+  Folder as FolderIcon,
+  Restore as RestoreIcon,
+  Favorite as FavoriteIcon,
+  LocationOn as LocationOnIcon,
+} from "@mui/icons-material";
 
 export default function LabelBottomNavigation() {
   const [value, setValue] = React.useState("recents");
