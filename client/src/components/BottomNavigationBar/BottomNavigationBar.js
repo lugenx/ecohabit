@@ -9,7 +9,7 @@ import {
   LocationOn as LocationOnIcon,
 } from "@mui/icons-material";
 
-export default function LabelBottomNavigation() {
+export default function BottomNavigationBar() {
   const [value, setValue] = React.useState("recents");
 
   const handleChange = (event, newValue) => {
