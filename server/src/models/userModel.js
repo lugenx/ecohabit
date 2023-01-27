@@ -10,7 +10,13 @@ const userSchema = new Schema(
     },
     email: {
       type: String,
-      required: true,
+      lowercase: true,
+      unique: true,
+      validate: {
+        validator: validateEmail,
+        message: () => "Email address already registered.",
+      },
+      required: [true, "User email required"],
     },
     postalCode: {
       type: String,
@@ -31,3 +37,14 @@ const userSchema = new Schema(
 const User = mongoose.model("User", userSchema);
 
 export default User;
+
+async function validateEmail(email) {
+  const user = await User.findOne({ email });
+  if (user) {
+    if (User.id === user.id) {
+      return true;
+    }
+    return false;
+  }
+  return true;
+}
