@@ -11,6 +11,7 @@ const userSchema = new Schema(
     email: {
       type: String,
       lowercase: true,
+      unique: true,
       validate: {
         validator: validateEmail,
         message: () => "Email address already registered.",
