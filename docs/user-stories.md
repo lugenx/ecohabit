@@ -7,9 +7,8 @@
 
 ## As a user, I want to track my enivronmetal habits
 - As a user, I want to be able to see a list of habits to add.
-- As a user, I want to be able to add, remove and edit habits.
-- As a user, I want to be able to mark my habits as 'successful' or 'failed'.
-- As a user, I want to be able to rate my habits from easy to hard.
+- As a user, I want to be able to add and remove habits from my list.
+- As a user, I want to be able to select answers from a range of options that indicate my level of success.
 - As a user, I want to be able to see the statistics of my habits.
 - As a user, I want to be able to see my habit/activity score.
 - As a user, I want to be able to receive a reminder/notification to do my habits.
