@@ -11,7 +11,7 @@ const Recycle = () => {
     const fetchData = async () => {
         const response = await fetch(`https://api.ecohabit.org/recyclingcenters/country/${country}/postal/${postal}`);
         const data = await response.json();
-        setData(data);
+        setData(data.data);
     };
     return (
         <>
