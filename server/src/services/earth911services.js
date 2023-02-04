@@ -15,22 +15,39 @@ const getLocationDetails = async (locationIds) => {
     return await response.json();
 }
 
-
-const getCenterDataWithPostal = async (country, postal_code) => {
+const getCenterDataWithPostal = async (country, postal_code, page = undefined, limit = 10) => {
     try {
-        console.log("getCenterDataWithPostal");
         const postalData = (await getPostalData(country, postal_code)).result;
         if (!postalData) return [];
-        const locationsData = (await searchLocations(postalData.longitude, postalData.latitude)).result;
+        let locationsData = (await searchLocations(postalData.longitude, postalData.latitude)).result;
         if (!locationsData) return [];
-        const query = ('location_id[]=' + locationsData.map((location) => location.location_id).join("&location_id[]="));
+
+        const totalItems = locationsData.length;
+
+        if (page) {
+            const start = (page - 1) * limit;
+            locationsData = locationsData.slice(start, start + limit + 1);
+        }
+
+        const query = ('location_id[]=' +
+            locationsData.map((location) => location.location_id)
+                .join("&location_id[]="));
+
         const locationDetails = (await getLocationDetails(query)).result;
         if (!locationDetails) return [];
+
         return locationsData.map((location) => {
             const locationDetail = locationDetails[location.location_id] || {};
             return {
-                ...location,
-                detail: locationDetail
+                data: {
+                    ...location,
+                    detail: locationDetail
+                },
+                meta: {
+                    page,
+                    limit,
+                    remainingPages: (Math.ceil(totalItems / limit)) - page,
+                }
             }
         });
     } catch (err) {
