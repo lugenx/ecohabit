@@ -1,7 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import ResponsiveAppBar from "../ResponsiveAppBar/ResponsiveAppBar";
 
@@ -12,7 +11,7 @@ import ResponsiveAppBar from "../ResponsiveAppBar/ResponsiveAppBar";
 const MainLayout = () => {
   return (
     <div className="main-layout">
-      <NavBar />
+      <ResponsiveAppBar />
       <main>
         <Outlet />
       </main>
