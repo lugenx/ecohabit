@@ -1,11 +1,11 @@
 import React from "react";
-import Footer from "../../components/Footer/Footer";
-import NavBar from "../../components/NavBar/NavBar";
+import Footer from "../components/Footer/Footer";
+import AppBar from "../components/ResponsiveAppBar/ResponsiveAppBar";
 
 const ErrorPage = () => {
   return (
     <div className="error-page">
-      <NavBar />
+      <AppBar />
       <div>PLACE HOLDER FOR 404 PAGE</div>
       <Footer />
     </div>
