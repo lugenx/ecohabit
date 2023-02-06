@@ -1,6 +1,9 @@
 import mongoose from "mongoose";
 import Habit from "../models/habitModel.js";
 
+// @desc    Add a habit
+// @route   POST /habit
+// @access  Private
 const createHabit = async (req, res) => {
   const { category, description, question, answerOptions } = req.body;
 
@@ -18,6 +21,18 @@ const createHabit = async (req, res) => {
   }
 };
 
+// @desc    Get all habits
+// @route   GET /habit
+// @access  Private
+const getAll = async (req, res) => {
+  const habits = await Habit.find();
+
+  res.status(200).json(habits);
+};
+
+// @desc    Get habit by id
+// @route   GET /habit/:id
+// @access  Private
 const getHabit = async (req, res) => {
   const id = req.params.id;
 
@@ -36,6 +51,9 @@ const getHabit = async (req, res) => {
   res.status(200).json(habit);
 };
 
+// @desc    Update habit
+// @route   PUT /habit/:id
+// @access  Private
 const updateHabit = async (req, res) => {
   const id = req.params.id;
 
@@ -52,6 +70,9 @@ const updateHabit = async (req, res) => {
   res.status(200).json(habit);
 };
 
+// @desc    Delete a habit
+// @route   DELETE /habit/:id
+// @access  Private
 const deleteHabit = async (req, res) => {
   const id = req.params.id;
 
@@ -68,4 +89,4 @@ const deleteHabit = async (req, res) => {
   res.status(200).json(habit);
 };
 
-export { createHabit, getHabit, updateHabit, deleteHabit };
+export { createHabit, getAll, getHabit, updateHabit, deleteHabit };
