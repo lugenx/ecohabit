@@ -1,8 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
+import ResponsiveAppBar from "../ResponsiveAppBar/ResponsiveAppBar";
 
 /*
  * React-router-dom navigated page builds at "Outlet" placeholder
@@ -11,7 +11,7 @@ import Footer from "../Footer/Footer";
 const MainLayout = () => {
   return (
     <div className="main-layout">
-      <NavBar />
+      <ResponsiveAppBar />
       <main>
         <Outlet />
       </main>
