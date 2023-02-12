@@ -12,26 +12,11 @@ import {
 } from "react-router-dom";
 
 import MainLayout from "./MainLayout/MainLayout";
-import {
-  Homepage,
-  ErrorPage,
-  RecyclingHabits,
-  HowRecycle,
-  WhatRecycle,
-  WhereRecycle,
-  WhyRecycle,
-  CarbonFootprint,
-  EnergyConsumption,
-  CommutingHabits,
-  EBikeCycling,
-  PublicTransport,
-  RideSharing,
-  EatingHabits,
-  Compost,
-  FoodWasting,
-  MeatIntake,
-  DailyUsedMaterials,
-} from "../pages";
+import Homepage from "../pages/Homepage";
+import LocationsPage from "../pages/LocationsPage";
+import ErrorPage from "../pages/ErrorPage";
+import GuidesPage from "../pages/GuidesPage";
+import AboutPage from "../pages/AboutPage";
 
 /*
  * Creating routes via createBrowserRouter method makes project ready for react-router-dom 6.4 data fetching.
@@ -43,34 +28,9 @@ const router = createBrowserRouter(
     <Route path="/" element={<MainLayout />} errorElement={<ErrorPage />}>
       <Route index element={<Homepage />} />
       <Route path="/homepage" element={<Navigate replace to="/" />} />
-      <Route path="/recycling-habits" element={<RecyclingHabits />} />
-      <Route path="/recycling-habits/recycle-how" element={<HowRecycle />} />
-      <Route path="/recycling-habits/recycle-what" element={<WhatRecycle />} />
-      <Route
-        path="/recycling-habits/recycle-where"
-        element={<WhereRecycle />}
-      />
-      <Route path="/recycling-habits/recycle-why" element={<WhyRecycle />} />
-      <Route path="/commuting-habits" element={<CommutingHabits />} />
-      <Route
-        path="/commuting-habits/e-bike-cycling"
-        element={<EBikeCycling />}
-      />
-      <Route
-        path="/commuting-habits/public-transport"
-        element={<PublicTransport />}
-      />
-      <Route path="/commuting-habits/ride-sharing" element={<RideSharing />} />
-      <Route path="/eating-habits" element={<EatingHabits />} />
-      <Route path="/eating-habits/compost" element={<Compost />} />
-      <Route path="/eating-habits/food-wasting" element={<FoodWasting />} />
-      <Route path="/eating-habits/meat-intake" element={<MeatIntake />} />
-      <Route path="/carbon-footprint" element={<CarbonFootprint />} />
-      <Route
-        path="/carbon-footprint/energy-consumption"
-        element={<EnergyConsumption />}
-      />
-      <Route path="/daily-used-materials" element={<DailyUsedMaterials />} />
+      <Route path="/locations" element={<LocationsPage />} />
+      <Route path="/guides" element={<GuidesPage />} />
+      <Route path="/about" element={<AboutPage />} />
     </Route>
   )
 );
