@@ -18,7 +18,7 @@ const createHabit = async (req, res) => {
   }
 };
 
-const getAll = async (req, res) => {
+const getAllHabits = async (req, res) => {
   try {
     const habits = await Habit.find();
 
@@ -78,4 +78,4 @@ const deleteHabit = async (req, res) => {
   res.status(200).json(habit);
 };
 
-export { createHabit, getAll, getHabit, updateHabit, deleteHabit };
+export { createHabit, getAllHabits, getHabit, updateHabit, deleteHabit };

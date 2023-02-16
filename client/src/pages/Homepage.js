@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { Grid } from "@mui/material";
 import HabitCard from "../components/HabitCard/HabitCard";
 
 const Homepage = () => {
   const [habits, setHabits] = useState([]);
 
-  /* TEMPORARY: Move to separate with other requests when implementing state management */
+  /* TEMPORARY: Move to separate folder with other requests when implementing state management */
   const API_URL = process.env.REACT_APP_API_URL;
   const TOKEN = process.env.REACT_APP_TOKEN;
 
@@ -17,28 +18,28 @@ const Homepage = () => {
     const response = await fetch(API_URL + "/habit", config);
     const data = await response.json();
     setHabits(data);
-    console.log(data);
   };
-  ////////////////////////////////////
+  //
 
   useEffect(() => {
     getAllHabits();
-  }, [habits]);
+  }, []);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: "10px",
-      }}
+    <Grid
+      container
+      sx={{ mt: 5 }}
+      spacing={2}
+      direction="row"
+      justifyContent="center"
+      alignItems="center"
     >
       {habits.map((habit) => (
-        <HabitCard key={habit._id} habit={habit} />
+        <Grid key={habit._id} item>
+          <HabitCard habit={habit} />
+        </Grid>
       ))}
-    </div>
+    </Grid>
   );
 };
 
