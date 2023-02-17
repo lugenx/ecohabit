@@ -29,8 +29,9 @@ export default function MediaCard({ habit }) {
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
+        {habit.answerOptions.map((option) => (
+          <Button size="small">{option}</Button>
+        ))}
       </CardActions>
     </Card>
   );
