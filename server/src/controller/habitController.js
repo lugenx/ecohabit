@@ -18,6 +18,16 @@ const createHabit = async (req, res) => {
   }
 };
 
+const getAllHabits = async (req, res) => {
+  try {
+    const habits = await Habit.find();
+
+    res.status(200).json(habits);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
 const getHabit = async (req, res) => {
   const id = req.params.id;
 
@@ -68,4 +78,4 @@ const deleteHabit = async (req, res) => {
   res.status(200).json(habit);
 };
 
-export { createHabit, getHabit, updateHabit, deleteHabit };
+export { createHabit, getAllHabits, getHabit, updateHabit, deleteHabit };
