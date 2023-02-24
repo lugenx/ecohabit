@@ -28,18 +28,16 @@ const Recycle = () => {
             required
             id="outlined-required"
             label="Country"
-            value={country}
+            value={country ?? "US"}
             onChange={(e) => setCountry(e.target.value)}
-            defaultValue="US"
             sx={{ m: 1 }}
           />
           <TextField
             required
             id="outlined-required"
             label="Postal Code"
-            value={postal}
+            value={postal ?? "02116"}
             onChange={(e) => setPostal(e.target.value)}
-            defaultValue="02116"
             sx={{ m: 1 }}
           />
           <Button
@@ -52,8 +50,8 @@ const Recycle = () => {
         </Box>
       </Box>
       <Box sx={{}}>
-        {data.map((recyclingCenter) => (
-          <LocationCard recyclingCenter={recyclingCenter} />
+        {data.map((recyclingCenter, index) => (
+          <LocationCard key={index} recyclingCenter={recyclingCenter} />
         ))}
       </Box>
     </>
