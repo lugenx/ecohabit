@@ -17,6 +17,7 @@ import LocationsPage from "../pages/LocationsPage";
 import ErrorPage from "../pages/ErrorPage";
 import GuidesPage from "../pages/GuidesPage";
 import AboutPage from "../pages/AboutPage";
+import ProfilePage from "../pages/ProfilePage";
 
 /*
  * Creating routes via createBrowserRouter method makes project ready for react-router-dom 6.4 data fetching.
@@ -31,6 +32,7 @@ const router = createBrowserRouter(
       <Route path="/locations" element={<LocationsPage />} />
       <Route path="/guides" element={<GuidesPage />} />
       <Route path="/about" element={<AboutPage />} />
+      <Route path="/profile" element={<ProfilePage />} />
     </Route>
   )
 );
