@@ -3,11 +3,18 @@ import request from "supertest";
 
 const TOKEN = process.env.TOKEN;
 
-const habitData = {
+const dummyHabitData = {
   category: "Test category",
   description: "Test description",
   question: "Test question?",
   answerOptions: ["Test answer 1", "Test answer 2"],
+};
+
+const invalidHabitData = {
+  // category is missing
+  description: "Invalid Input Test description",
+  question: "Invalid Input Test question?",
+  answerOptions: ["Invalid Input Test answer 1", "Invalid Input Test answer 2"],
 };
 
 describe("POST habit", () => {
@@ -17,17 +24,25 @@ describe("POST habit", () => {
     res = await request(app)
       .post("/habit/")
       .set("Authorization", `Bearer ${TOKEN}`)
-      .send(habitData);
+      .send(dummyHabitData);
   });
 
   test("should respond with status code 200", async () => {
     expect(res.statusCode).toEqual(200);
   });
+
   test("should respond JSON data", async () => {
     expect(res.header["content-type"]).toMatch(/application\/json/);
   });
+
   test("should respond data with correct key and value", async () => {
     expect(res.body).toHaveProperty("category", "Test category");
+  });
+
+  afterAll(async () => {
+    await request(app)
+      .delete(`/habit/${res.body._id}`)
+      .set("Authorization", `Bearer ${TOKEN}`);
   });
 });
 
@@ -36,11 +51,7 @@ describe("POST habit with invalid inputs", () => {
     const res = await request(app)
       .post("/habit/")
       .set("Authorization", `Bearer ${TOKEN}`)
-      .send({
-        description: "Test description",
-        question: "Test question?",
-        answerOptions: ["Test answer 1", "Test answer 2"],
-      });
+      .send(invalidHabitData);
     expect(res.statusCode).toEqual(400);
     expect(res.body.error).toMatch(/category.*required/);
   });
@@ -48,6 +59,7 @@ describe("POST habit with invalid inputs", () => {
 });
 
 describe("GET all habits", () => {
+  //TODO: post multiple habits before test so it works with empty db and delete them after test.
   test("should return JSON data with status 200", async () => {
     const res = await request(app)
       .get("/habit/")
@@ -60,34 +72,39 @@ describe("GET all habits", () => {
 
 describe("GET habit", () => {
   let habitId;
+
   beforeAll(async () => {
-    const resToPost = await request(app)
+    const postedToGet = await request(app)
       .post("/habit/")
       .set("Authorization", `Bearer ${TOKEN}`)
-      .send(habitData);
+      .send(dummyHabitData);
 
-    habitId = resToPost.body._id;
+    habitId = postedToGet.body._id;
   });
 
-  const makeRequest = async () => {
-    const res = await request(app)
+  let res;
+
+  beforeEach(async () => {
+    res = await request(app)
       .get(`/habit/${habitId}`)
       .set("Authorization", `Bearer ${TOKEN}`);
-    return res;
-  };
+  });
 
   test("should respond with status code 200", async () => {
-    const res = await makeRequest();
     expect(res.statusCode).toEqual(200);
   });
 
   test("should respond JSON data", async () => {
-    const res = await makeRequest();
     expect(res.header["content-type"]).toMatch(/application\/json/);
   });
 
   test("should respond data with correct key and value", async () => {
-    const res = await makeRequest();
     expect(res.body).toHaveProperty("category", "Test category");
+  });
+
+  afterAll(async () => {
+    await request(app)
+      .delete(`/habit/${habitId}`)
+      .set("Authorization", `Bearer ${TOKEN}`);
   });
 });
