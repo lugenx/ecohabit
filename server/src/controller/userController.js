@@ -47,8 +47,13 @@ const userSignUp = async (req, res) => {
 // Get user data
 const getMe = async (req, res) => {
   try {
+    const user = await User.findById(req.user.id);
+
+    // Check if user exists
+    if (!user) return res.status(403).json({ msg: "User does not exist" });
+
     const { _id, name, email, postalCode, roles } = await User.findById(
-      req.user.id
+      user.id
     );
 
     res.status(200).json({
@@ -66,8 +71,13 @@ const getMe = async (req, res) => {
 // Update user data
 const updateMe = async (req, res) => {
   try {
+    const user = await User.findById(req.user.id);
+
+    // Check if user exists
+    if (!user) return res.status(403).json({ msg: "User does not exist" });
+
     const { _id, name, email, postalCode, roles } = await User.findOneAndUpdate(
-      { _id: req.user.id },
+      { _id: user.id },
       { ...req.body },
       { new: true }
     );
@@ -84,4 +94,27 @@ const updateMe = async (req, res) => {
   }
 };
 
-export { userLogin, userSignUp, getMe, updateMe };
+// Delete a user
+const deleteMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+
+    // Check if user exists
+    if (!user) return res.status(403).json({ msg: "User does not exist" });
+
+    const { _id, name, email, postalCode, roles } =
+      await User.findByIdAndDelete(user.id);
+
+    res.status(200).json({
+      id: _id,
+      name,
+      email,
+      postalCode,
+      roles,
+    });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+export { userLogin, userSignUp, getMe, updateMe, deleteMe };
