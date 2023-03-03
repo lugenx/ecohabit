@@ -1,7 +1,8 @@
 import React from "react";
-import { Box, Typography, Button } from "@mui/material";
+import { Box, Typography, Button, IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
+import { Person } from "@mui/icons-material";
 
 const MainBox = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
@@ -33,12 +34,29 @@ const LinkText = styled(Link)({
   color: "white",
 });
 
-const Main = () => {
+const Main = ({ setShowLogin }) => {
+  const handleClick = () => {
+    setShowLogin(true);
+  };
   return (
     <MainBox>
-      <Typography fontFamily="Kalam" fontSize="1.25rem" fontWeight="700">
-        EcoHabit
-      </Typography>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        <Typography fontFamily="Kalam" fontSize="1.25rem" fontWeight="700">
+          EcoHabit
+        </Typography>
+        <IconButton
+          onClick={handleClick}
+          sx={{ display: { xs: "block", md: "none" } }}
+        >
+          <Person sx={{ color: "white" }} />
+        </IconButton>
+      </Box>
       <Box sx={{ width: { xs: "100%", md: "340px" } }}>
         <Typography
           variant="h2"
