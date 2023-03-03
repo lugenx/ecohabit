@@ -2,7 +2,7 @@ import React from "react";
 import { Box, Typography, Button, IconButton } from "@mui/material";
 import { Link } from "react-router-dom";
 import styled from "@emotion/styled";
-import { Person } from "@mui/icons-material";
+import { Person, Menu } from "@mui/icons-material";
 
 const MainBox = styled(Box)(({ theme }) => ({
   backgroundColor: theme.palette.primary.light,
@@ -55,6 +55,7 @@ const Main = ({ setShowLogin }) => {
           sx={{ display: { xs: "block", md: "none" } }}
         >
           <Person sx={{ color: "white" }} />
+          <Menu sx={{ color: "white" }} />
         </IconButton>
       </Box>
       <Box sx={{ width: { xs: "100%", md: "340px" } }}>

@@ -27,10 +27,12 @@ const Register = () => {
     password: "",
   });
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [accept, setAccept] = useState(false);
   const [err, setErr] = useState("");
   const clearData = () => {
     setLoginData({ fname: "", email: "", password: "" });
     setConfirmPassword("");
+    setAccept(false);
     setErr("");
   };
   const handleChange = (e) => {
@@ -45,6 +47,11 @@ const Register = () => {
       setErr("Password does not match");
       return;
     }
+    if (!accept) {
+      setErr("You should accept the terms and conditions of use to register");
+      return;
+    }
+    //for testing
     console.log(loginData);
     clearData();
   };
@@ -108,8 +115,19 @@ const Register = () => {
             fullWidth
           />
           <FormControlLabel
-            control={<Checkbox size="small" />}
-            label="I accept the terms and conditions"
+            control={
+              <Checkbox
+                size="small"
+                checked={accept}
+                onChange={(e) => setAccept(e.target.checked)}
+              />
+            }
+            label={
+              <div>
+                <span>I accept the </span>
+                <Link to={"/terms"}>terms and conditions</Link>
+              </div>
+            }
             sx={{ color: "#7e7e7e", fornSize: 18 }}
           />
           <FormControlLabel
