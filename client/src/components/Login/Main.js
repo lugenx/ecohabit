@@ -13,7 +13,7 @@ const MainBox = styled(Box)(({ theme }) => ({
   padding: "48px 115px",
   color: "white",
   minHeight: "630px",
-  [theme.breakpoints.down("md")]: {
+  [theme.breakpoints.down("sm")]: {
     flex: 1,
     padding: "15px",
     justifyContent: "flex-start",
@@ -27,7 +27,7 @@ const TrackButton = styled(Button)(({ theme }) => ({
   marginBottom: "16rem",
   color: "white",
   backgroundColor: theme.palette.secondary.main,
-  [theme.breakpoints.up("md")]: { display: "none" },
+  [theme.breakpoints.up("sm")]: { display: "none" },
 }));
 const LinkText = styled(Link)({
   textDecoration: "none",
@@ -52,20 +52,20 @@ const Main = ({ setShowLogin }) => {
         </Typography>
         <IconButton
           onClick={handleClick}
-          sx={{ display: { xs: "block", md: "none" } }}
+          sx={{ display: { xs: "block", sm: "none" } }}
         >
           <Person sx={{ color: "white" }} />
           <Menu sx={{ color: "white" }} />
         </IconButton>
       </Box>
-      <Box sx={{ width: { xs: "100%", md: "340px" } }}>
+      <Box sx={{ width: { xs: "100%", sm: "340px" } }}>
         <Typography
           variant="h2"
           fontFamily="Roboto"
           fontWeight="700"
           sx={{
-            fontSize: { xs: "1.8rem", md: "3.2rem" },
-            lineHeight: { xs: "1.8rem", md: "3.25rem" },
+            fontSize: { xs: "1.8rem", sm: "3.2rem" },
+            lineHeight: { xs: "1.8rem", sm: "3.25rem" },
             marginTop: { xs: "2rem" },
           }}
         >
@@ -82,7 +82,7 @@ const Main = ({ setShowLogin }) => {
       </Box>
       <Box
         sx={{
-          display: { xs: "none", md: "flex" },
+          display: { xs: "none", sm: "flex" },
           justifyContent: "space-between",
         }}
       >

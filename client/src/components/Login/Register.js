@@ -128,12 +128,12 @@ const Register = () => {
                 <Link to={"/terms"}>terms and conditions</Link>
               </div>
             }
-            sx={{ color: "#7e7e7e", fornSize: 18 }}
+            sx={{ color: "#7e7e7e", fontSize: 18 }}
           />
           <FormControlLabel
             control={<Checkbox size="small" />}
             label="Stay updated with email notifications!"
-            sx={{ color: "#7e7e7e", fornSize: 18 }}
+            sx={{ color: "#7e7e7e", fontSize: 18 }}
           />
           <Button
             type="submit"
@@ -161,6 +161,7 @@ const Register = () => {
                 height: "1rem",
                 padding: "0 20px",
                 margin: "3px",
+                minWidth: "max-content",
               }}
             >
               SIGN IN WITH GOOGLE

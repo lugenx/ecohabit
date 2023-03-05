@@ -9,7 +9,7 @@ const RegisterPage = () => {
       <Stack direction="row">
         <Box
           sx={{
-            display: { xs: "none", md: "block" },
+            display: { xs: "none", sm: "block" },
             flex: 2,
           }}
         >

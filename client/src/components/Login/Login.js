@@ -38,7 +38,7 @@ const Login = ({ showLogin, setShowLogin }) => {
     clearData();
   };
   return (
-    <LoginBox sx={{ display: { xs: showLogin ? "flex" : "none", md: "flex" } }}>
+    <LoginBox sx={{ display: { xs: showLogin ? "flex" : "none", sm: "flex" } }}>
       <Box width="100%">
         <Typography variant="h5">
           <strong>Welcome back</strong>
@@ -72,7 +72,7 @@ const Login = ({ showLogin, setShowLogin }) => {
           <FormControlLabel
             control={<Checkbox size="small" />}
             label="Keep me signed in for the future"
-            sx={{ color: "#7e7e7e", fornSize: 20 }}
+            sx={{ color: "#7e7e7e", fontSize: 20 }}
           />
           <Button
             type="submit"
@@ -99,7 +99,8 @@ const Login = ({ showLogin, setShowLogin }) => {
                 backgroundRepeat: "no-repeat",
                 height: "1rem",
                 padding: "0 20px",
-                margin: "5px",
+                margin: "3px",
+                minWidth: "max-content",
               }}
             >
               SIGN IN WITH GOOGLE
