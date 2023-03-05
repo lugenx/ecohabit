@@ -1,0 +1,16 @@
+{
+  "validHabit": {
+    "category": "Test category",
+    "description": "Test description",
+    "question": "Test question?",
+    "answerOptions": ["Test answer 1", "Test answer 2"]
+  },
+  "categoryMissingHabit": {
+    "description": "Invalid Input Test description",
+    "question": "Invalid Input Test question?",
+    "answerOptions": [
+      "Invalid Input Test answer 1",
+      "Invalid Input Test answer 2"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "newUser": {
+    "name": "Test User",
+    "email": "testuser@gmail.com",
+    "postalCode": "01234",
+    "password": "theTestUser&1234",
+    "roles": ["user", "admin"]
+  }
+}

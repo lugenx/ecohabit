@@ -1,21 +1,31 @@
 import app from "../index.js";
 import request from "supertest";
+import userData from "./data/userData.json";
+import habitData from "./data/habitData.json";
 
-const TOKEN = process.env.TOKEN;
+const newUser = userData.newUser;
+const validHabit = habitData.validHabit;
+const categoryMissingHabit = habitData.categoryMissingHabit;
 
-const dummyHabitData = {
-  category: "Test category",
-  description: "Test description",
-  question: "Test question?",
-  answerOptions: ["Test answer 1", "Test answer 2"],
-};
+let token;
 
-const invalidHabitData = {
-  // category is missing
-  description: "Invalid Input Test description",
-  question: "Invalid Input Test question?",
-  answerOptions: ["Invalid Input Test answer 1", "Invalid Input Test answer 2"],
-};
+//create a temporary user
+beforeAll(async () => {
+  const signupResponse = await request(app).post("/user/signup").send(newUser);
+
+  if (!signupResponse.ok) {
+    throw new Error("Temporary user sign up failed");
+  }
+
+  const loginResponse = await request(app)
+    .post("/user/login")
+    .send({ email: newUser.email, password: newUser.password });
+
+  if (!loginResponse.ok) {
+    throw new Error("Temporary user sign up failed");
+  }
+  token = await loginResponse.body.token;
+});
 
 describe("POST habit", () => {
   let res;
@@ -23,8 +33,8 @@ describe("POST habit", () => {
   beforeAll(async () => {
     res = await request(app)
       .post("/habit/")
-      .set("Authorization", `Bearer ${TOKEN}`)
-      .send(dummyHabitData);
+      .set("Authorization", `Bearer ${token}`)
+      .send(validHabit);
   });
 
   test("should respond with status code 200", async () => {
@@ -42,7 +52,7 @@ describe("POST habit", () => {
   afterAll(async () => {
     await request(app)
       .delete(`/habit/${res.body._id}`)
-      .set("Authorization", `Bearer ${TOKEN}`);
+      .set("Authorization", `Bearer ${token}`);
   });
 });
 
@@ -50,8 +60,8 @@ describe("POST habit with invalid inputs", () => {
   test("should return 400 Bad Request for missing category", async () => {
     const res = await request(app)
       .post("/habit/")
-      .set("Authorization", `Bearer ${TOKEN}`)
-      .send(invalidHabitData);
+      .set("Authorization", `Bearer ${token}`)
+      .send(categoryMissingHabit);
     expect(res.statusCode).toEqual(400);
     expect(res.body.error).toMatch(/category.*required/);
   });
@@ -63,7 +73,7 @@ describe("GET all habits", () => {
   test("should return JSON data with status 200", async () => {
     const res = await request(app)
       .get("/habit/")
-      .set("Authorization", `Bearer ${TOKEN}`);
+      .set("Authorization", `Bearer ${token}`);
 
     expect(res.statusCode).toEqual(200);
     expect(res.header["content-type"]).toMatch(/application\/json/);
@@ -76,8 +86,8 @@ describe("GET habit", () => {
   beforeAll(async () => {
     const postedToGet = await request(app)
       .post("/habit/")
-      .set("Authorization", `Bearer ${TOKEN}`)
-      .send(dummyHabitData);
+      .set("Authorization", `Bearer ${token}`)
+      .send(validHabit);
 
     habitId = postedToGet.body._id;
   });
@@ -87,7 +97,7 @@ describe("GET habit", () => {
   beforeEach(async () => {
     res = await request(app)
       .get(`/habit/${habitId}`)
-      .set("Authorization", `Bearer ${TOKEN}`);
+      .set("Authorization", `Bearer ${token}`);
   });
 
   test("should respond with status code 200", async () => {
@@ -105,6 +115,8 @@ describe("GET habit", () => {
   afterAll(async () => {
     await request(app)
       .delete(`/habit/${habitId}`)
-      .set("Authorization", `Bearer ${TOKEN}`);
+      .set("Authorization", `Bearer ${token}`);
   });
 });
+
+//TODO: afterAll delete the temporary user
