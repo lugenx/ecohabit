@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 //TODO: improve code below with validations
+
+// Authenticate a user
 const userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -20,6 +22,7 @@ const userLogin = async (req, res) => {
   }
 };
 
+// Register a new user
 const userSignUp = async (req, res) => {
   const { name, email, postalCode, password, roles } = req.body;
   try {
@@ -41,4 +44,77 @@ const userSignUp = async (req, res) => {
   }
 };
 
-export { userLogin, userSignUp };
+// Get user data
+const getMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+
+    // Check if user exists
+    if (!user) return res.status(403).json({ msg: "User does not exist" });
+
+    const { _id, name, email, postalCode, roles } = await User.findById(
+      user.id
+    );
+
+    res.status(200).json({
+      id: _id,
+      name,
+      email,
+      postalCode,
+      roles,
+    });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+// Update user data
+const updateMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+
+    // Check if user exists
+    if (!user) return res.status(403).json({ msg: "User does not exist" });
+
+    const { _id, name, email, postalCode, roles } = await User.findOneAndUpdate(
+      { _id: user.id },
+      { ...req.body },
+      { new: true }
+    );
+
+    res.status(200).json({
+      id: _id,
+      name,
+      email,
+      postalCode,
+      roles,
+    });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+// Delete a user
+const deleteMe = async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id);
+
+    // Check if user exists
+    if (!user) return res.status(403).json({ msg: "User does not exist" });
+
+    const { _id, name, email, postalCode, roles } =
+      await User.findByIdAndDelete(user.id);
+
+    res.status(200).json({
+      id: _id,
+      name,
+      email,
+      postalCode,
+      roles,
+    });
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+export { userLogin, userSignUp, getMe, updateMe, deleteMe };
