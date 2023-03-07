@@ -18,6 +18,8 @@ const LoginBox = styled(Box)(({ theme }) => ({
   flex: 1,
   alignItems: "center",
   padding: "1rem 2.5rem",
+  minHeight: "630px",
+  maxWidth: "40rem",
 }));
 
 const Register = () => {

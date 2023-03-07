@@ -14,17 +14,18 @@ import styled from "@emotion/styled";
 
 const LoginBox = styled(Box)(({ theme }) => ({
   bgcolor: "white",
+  display: "flex",
   flex: 1,
-  minHeight: "100vh",
+  minHeight: "630px",
   alignItems: "center",
   padding: "2.5rem",
+  maxWidth: "40rem",
 }));
 
-const Login = ({ showLogin, setShowLogin }) => {
+const Login = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
   const clearData = () => {
     setLoginData({ email: "", password: "" });
-    setShowLogin(false);
   };
   const handleChange = (e) => {
     setLoginData((prevState) => ({
@@ -38,7 +39,7 @@ const Login = ({ showLogin, setShowLogin }) => {
     clearData();
   };
   return (
-    <LoginBox sx={{ display: { xs: showLogin ? "flex" : "none", sm: "flex" } }}>
+    <LoginBox>
       <Box width="100%">
         <Typography variant="h5">
           <strong>Welcome back</strong>

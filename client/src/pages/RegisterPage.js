@@ -6,15 +6,8 @@ import Register from "../components/Login/Register";
 const RegisterPage = () => {
   return (
     <Box>
-      <Stack direction="row">
-        <Box
-          sx={{
-            display: { xs: "none", sm: "block" },
-            flex: 2,
-          }}
-        >
-          <Main />
-        </Box>
+      <Stack direction="row" justifyContent="center">
+        <Main sx={{ display: { xs: "none", sm: "block" } }} />
         <Register />
       </Stack>
     </Box>
