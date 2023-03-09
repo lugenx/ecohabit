@@ -8,17 +8,17 @@ export default function Browser() {
       setAvailableHeight(calculateAvailableHeight());
     };
 
-    window.addEventListener("resize", handleWindowResize)
+    window.addEventListener("resize", handleWindowResize);
 
     return () => {
-      window.removeEventListener('resize', handleWindowResize);
-    }
+      window.removeEventListener("resize", handleWindowResize);
+    };
   });
 
   function calculateAvailableHeight() {
     const appBarHeight = document.getElementById("app-bar").offsetHeight,
-          windowHeight = window.innerHeight;
-    const availableHeight = windowHeight - appBarHeight;
+          windowHeight = window.innerHeight,
+          availableHeight = windowHeight - appBarHeight;
 
     return availableHeight > 0 ? availableHeight : 0;
   }
