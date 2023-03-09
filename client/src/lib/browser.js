@@ -18,7 +18,9 @@ export default function Browser() {
   function calculateAvailableHeight() {
     const appBarHeight = document.getElementById("app-bar").offsetHeight,
           windowHeight = window.innerHeight;
-    return windowHeight - appBarHeight;
+    const availableHeight = windowHeight - appBarHeight;
+
+    return availableHeight > 0 ? availableHeight : 0;
   }
 
   return availableHeight;
