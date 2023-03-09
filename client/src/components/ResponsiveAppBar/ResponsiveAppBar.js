@@ -17,7 +17,7 @@ import {
 } from "@mui/material";
 
 const pages = ["Home", "Locations", "Guides", "About"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const settings = ["Profile", "Account", "Dashboard", "Login"];
 
 function ResponsiveAppBar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
