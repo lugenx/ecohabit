@@ -8,6 +8,9 @@ import habitRouter from "./src/routes/habitRoutes.js";
 import answerRouter from "./src/routes/answerRoutes.js";
 import verifyToken from "./src/middleware/auth.js";
 
+// Handle Unexpected error module
+import { unexpectedErrorHandler } from "./src/middleware/catch.js";
+
 const PORT = process.env.PORT || 3001;
 const app = express();
 
@@ -28,6 +31,13 @@ app.use("/", earth911Router);
 app.use("/user", userRouter);
 app.use("/habit", verifyToken, habitRouter);
 app.use("/answer", verifyToken, answerRouter);
+
+// Error route
+app.get("/error", (req, res) => {
+  throw new Error("Intentional error");
+});
+
+app.use(unexpectedErrorHandler);
 
 const runServer = async () => {
   try {
