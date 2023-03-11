@@ -9,7 +9,7 @@ import answerRouter from "./src/routes/answerRoutes.js";
 import verifyToken from "./src/middleware/auth.js";
 
 // Handle Unexpected error module
-import { unexpectedErrorHandler } from "./src/middleware/catch.js";
+import { errorHandler } from "./src/middleware/errorHandler.js";
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -32,12 +32,7 @@ app.use("/user", userRouter);
 app.use("/habit", verifyToken, habitRouter);
 app.use("/answer", verifyToken, answerRouter);
 
-// Error route
-app.get("/error", (req, res) => {
-  throw new Error("Intentional error");
-});
-
-app.use(unexpectedErrorHandler);
+app.use(errorHandler);
 
 const runServer = async () => {
   try {
