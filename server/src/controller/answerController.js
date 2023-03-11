@@ -21,7 +21,6 @@ const getAnswer = async (req, res) => {
   const id = req.params.id;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    //400 Bad Request I'm 
     return res.status(404).json({ error: "answer not found, invalid request" });
   }
 
@@ -49,7 +48,8 @@ const updateAnswer = async (req, res) => {
     return res.status(404).json({ error: "answer not found" });
   }
 
-  res.status(200).json(answer);
+  //send 201 Created status code for updateAnswer success
+  res.status(201).json(answer);
 };
 
 const deleteAnswer = async (req, res) => {

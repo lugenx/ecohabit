@@ -12,10 +12,10 @@ const createHabit = async (req, res) => {
       answerOptions,
     });
 
-    //send 201 Created status code for  createHabit success
+    //send 201 Created status code for createHabit success
     res.status(201).json(habit);
   } catch (err) {
-    //send 500 Internal Server Error status code for  createHabit fail
+    //send 500 Internal Server Error status code for createHabit fail
     res.status(500).json({ error: err.message });
   }
 };
@@ -26,7 +26,7 @@ const getAllHabits = async (req, res) => {
 
     res.status(200).json(habits);
   } catch (err) {
-    //send 500 Internal Server Error status code for  getAllHabits fail
+    //send 500 Internal Server Error status code for getAllHabits fail
     res.status(500).json({ error: err.message });
   }
 };
@@ -46,13 +46,13 @@ const getHabit = async (req, res) => {
 
     //check if habit exist in db
     if (!habit) {
-      //send 404 Not Found status code for  getHabit fail (habit is null)
+      //send 404 Not Found status code for getHabit fail (habit is null)
       return res.status(404).json({ error: "habit not found" });
     }
 
     res.status(200).json(habit);
   } catch (err) {
-    //send 500 Internal Server Error status code for  getAllHabits fail
+    //send 500 Internal Server Error status code for getAllHabits fail
     res.status(500).json({ error: err.message });
   }
 };
@@ -70,13 +70,13 @@ const updateHabit = async (req, res) => {
     const habit = await Habit.findOneAndUpdate({ _id: id }, { ...req.body });
 
     if (!habit) {
-      //send 404 Not Found status code for  getHabit fail (habit is null)
+      //send 404 Not Found status code for getHabit fail (habit is null)
       return res.status(404).json({ error: "habit not found" });
     }
-
-    res.status(200).json(habit);
+    //send 201 Created status code for updateHabit success
+    res.status(201).json(habit);
   } catch (err) {
-    //send 500 Internal Server Error status code for  getAllHabits fail
+    //send 500 Internal Server Error status code for getAllHabits fail
     res.status(500).json({ error: err.message });
   }
 };
@@ -94,13 +94,13 @@ const deleteHabit = async (req, res) => {
     const habit = await Habit.findOneAndDelete({ _id: id });
 
     if (!habit) {
-      //send 404 Not Found status code for  getHabit fail (habit is null)
+      //send 404 Not Found status code for getHabit fail (habit is null)
       return res.status(404).json({ error: "habit not found" });
     }
 
     res.status(200).json(habit);
   } catch (err) {
-    //send 500 Internal Server Error status code for  getAllHabits fail
+    //send 500 Internal Server Error status code for getAllHabits fail
     res.status(400).json({ error: err.message });
   }
 };

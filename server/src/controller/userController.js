@@ -18,7 +18,8 @@ const userLogin = async (req, res) => {
     user.password = undefined;
     res.status(200).json({ token, user });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    //send 401 Unauthorized status code for userLogin fail(not a valid user)
+    res.status(401).json({ error: error.message });
   }
 };
 
@@ -40,7 +41,8 @@ const userSignUp = async (req, res) => {
     savedUser.password = undefined;
     res.status(201).json(savedUser);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    //send 500 Internal Server Error status code for userSignUp fail
+    res.status(500).json({ error: err.message });
   }
 };
 
@@ -50,7 +52,8 @@ const getMe = async (req, res) => {
     const user = await User.findById(req.user.id);
 
     // Check if user exists
-    if (!user) return res.status(403).json({ msg: "User does not exist" });
+    //send 401 Unauthorized status code for getMe fail(user not found)
+    if (!user) return res.status(401).json({ msg: "User does not exist" });
 
     const { _id, name, email, postalCode, roles } = await User.findById(
       user.id
@@ -64,7 +67,8 @@ const getMe = async (req, res) => {
       roles,
     });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    //send 401 Unauthorized status code for getMe fail(user not found)
+    res.status(401).json({ error: err.message });
   }
 };
 
@@ -74,7 +78,8 @@ const updateMe = async (req, res) => {
     const user = await User.findById(req.user.id);
 
     // Check if user exists
-    if (!user) return res.status(403).json({ msg: "User does not exist" });
+    //send 401 Unauthorized status code for updateMe fail(user not found)
+    if (!user) return res.status(401).json({ msg: "User does not exist" });
 
     const { _id, name, email, postalCode, roles } = await User.findOneAndUpdate(
       { _id: user.id },
@@ -82,7 +87,8 @@ const updateMe = async (req, res) => {
       { new: true }
     );
 
-    res.status(200).json({
+    //send 201 Created status code for updateMe success
+    res.status(201).json({
       id: _id,
       name,
       email,
@@ -90,7 +96,8 @@ const updateMe = async (req, res) => {
       roles,
     });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    //send 500 Internal Server Error status code for updateMe fail
+    res.status(500).json({ error: err.message });
   }
 };
 
@@ -100,7 +107,8 @@ const deleteMe = async (req, res) => {
     const user = await User.findById(req.user.id);
 
     // Check if user exists
-    if (!user) return res.status(403).json({ msg: "User does not exist" });
+    //send 401 Unauthorized status code for deleteMe fail(user not found)
+    if (!user) return res.status(401).json({ msg: "User does not exist" });
 
     const { _id, name, email, postalCode, roles } =
       await User.findByIdAndDelete(user.id);
@@ -113,7 +121,8 @@ const deleteMe = async (req, res) => {
       roles,
     });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    //send 500 Internal Server Error status code for deleteMe fail
+    res.status(500).json({ error: err.message });
   }
 };
 
