@@ -9,9 +9,11 @@ const createAnswer = async (req, res) => {
       habit: req.body.habit,
     });
 
-    res.status(200).json(answer);
+    //send 201 Created status code for  createAnswer success
+    res.status(201).json(answer);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    //send 500 Internal Server Error status code for  createAnswer fail
+    res.status(500).json({ error: err.message });
   }
 };
 
@@ -19,12 +21,14 @@ const getAnswer = async (req, res) => {
   const id = req.params.id;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
+    //400 Bad Request I'm 
     return res.status(404).json({ error: "answer not found, invalid request" });
   }
 
   const answer = await Answer.findById(id);
 
   if (!answer) {
+    //send 404 Not Found status code for  getAnswer fail (answer is null)
     return res.status(404).json({ error: "answer not found" });
   }
 
@@ -41,6 +45,7 @@ const updateAnswer = async (req, res) => {
   const answer = await Answer.findOneAndUpdate({ _id: id }, { ...req.body });
 
   if (!answer) {
+    //send 404 Not Found status code for  getAnswer fail (answer is null)
     return res.status(404).json({ error: "answer not found" });
   }
 
@@ -57,6 +62,7 @@ const deleteAnswer = async (req, res) => {
   const answer = await Answer.findOneAndDelete({ _id: id });
 
   if (!answer) {
+    //send 404 Not Found status code for  getAnswer fail (answer is null)
     return res.status(404).json({ error: "answer not found" });
   }
 
