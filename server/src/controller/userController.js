@@ -52,8 +52,8 @@ const getMe = async (req, res) => {
     const user = await User.findById(req.user.id);
 
     // Check if user exists
-    //send 401 Unauthorized status code for getMe fail(user not found)
-    if (!user) return res.status(401).json({ msg: "User does not exist" });
+    //send 500 Internal Server Error status code for getMe fail
+    if (!user) return res.status(500).json({ msg: "Unable to find the user" });
 
     const { _id, name, email, postalCode, roles } = await User.findById(
       user.id
