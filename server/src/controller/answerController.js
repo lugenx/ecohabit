@@ -21,7 +21,7 @@ const getAnswer = async (req, res) => {
   const id = req.params.id;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "answer not found, invalid request" });
+    return res.status(400).json({ error: "Bad Request" });
   }
 
   const answer = await Answer.findById(id);
@@ -38,7 +38,7 @@ const updateAnswer = async (req, res) => {
   const id = req.params.id;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "answer not found, invalid request" });
+    return res.status(400).json({ error: "Bad Request" });
   }
 
   const answer = await Answer.findOneAndUpdate({ _id: id }, { ...req.body });
@@ -56,7 +56,7 @@ const deleteAnswer = async (req, res) => {
   const id = req.params.id;
 
   if (!mongoose.Types.ObjectId.isValid(id)) {
-    return res.status(404).json({ error: "answer not found, invalid request" });
+    return res.status(400).json({ error: "Bad Request" });
   }
 
   const answer = await Answer.findOneAndDelete({ _id: id });

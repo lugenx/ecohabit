@@ -18,8 +18,8 @@ const userLogin = async (req, res) => {
     user.password = undefined;
     res.status(200).json({ token, user });
   } catch (error) {
-    //send 401 Unauthorized status code for userLogin fail(not a valid user)
-    res.status(401).json({ error: error.message });
+    //send 500 Internal Server Error status code for userLogin fail
+    res.status(500).json({ error: error.message });
   }
 };
 
