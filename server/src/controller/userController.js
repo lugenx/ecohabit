@@ -64,7 +64,7 @@ const getMe = async (req, res) => {
       roles,
     });
   } catch (err) {
-    res.status(401).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
 
