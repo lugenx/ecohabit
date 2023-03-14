@@ -44,7 +44,8 @@ If you prefer the command line way of downloading and installing things, then fe
 
 ### How to run
 
-- Clone the repository for this project by running the following command in a terminal: 'git clone https://github.com/lugenx/ecohabit.git'.
+- Clone the repository for this project by running the following command in a terminal: 
+  ##### `git clone https://github.com/lugenx/ecohabit.git`.
 - Open the cloned folder in VS Code. Open the terminal and make sure its pointing to the root of the cloned project.
 
 - Running Backend Nods JS Application:
