@@ -40,7 +40,7 @@ const userSignUp = async (req, res) => {
     savedUser.password = undefined;
     res.status(201).json(savedUser);
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(400).json({ error: err.message });
   }
 };
 
