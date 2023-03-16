@@ -12,7 +12,7 @@ const createHabit = async (req, res) => {
       answerOptions,
     });
 
-    res.status(200).json(habit);
+    res.status(201).json(habit);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -24,7 +24,7 @@ const getAllHabits = async (req, res) => {
 
     res.status(200).json(habits);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
 
@@ -35,8 +35,8 @@ const getHabit = async (req, res) => {
     //check if string format is correct
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res
-        .status(404)
-        .json({ error: "habit not found, invalid request" });
+        .status(400)
+        .json({ error: "Bad Request" });
     }
 
     const habit = await Habit.findById(id);
@@ -48,7 +48,7 @@ const getHabit = async (req, res) => {
 
     res.status(200).json(habit);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
 
@@ -58,8 +58,8 @@ const updateHabit = async (req, res) => {
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res
-        .status(404)
-        .json({ error: "habit not found, invalid request" });
+        .status(400)
+        .json({ error: "Bad Request" });
     }
 
     const habit = await Habit.findOneAndUpdate({ _id: id }, { ...req.body });
@@ -67,10 +67,9 @@ const updateHabit = async (req, res) => {
     if (!habit) {
       return res.status(404).json({ error: "habit not found" });
     }
-
-    res.status(200).json(habit);
+    res.status(201).json(habit);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
 
@@ -80,8 +79,8 @@ const deleteHabit = async (req, res) => {
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res
-        .status(404)
-        .json({ error: "habit not found, invalid request" });
+        .status(400)
+        .json({ error: "Bad Request" });
     }
 
     const habit = await Habit.findOneAndDelete({ _id: id });
@@ -92,7 +91,7 @@ const deleteHabit = async (req, res) => {
 
     res.status(200).json(habit);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
 

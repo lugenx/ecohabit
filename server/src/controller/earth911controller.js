@@ -10,7 +10,7 @@ const getPostalData = async (req, res, next) => {
     res.status(200).send(data);
   } catch (err) {
     console.error(`Error fetching from EARTH911 Api`, err.message);
-    res.status(500).send(`Error fetching from EARTH911 Api`);
+    res.status(502).send(`Error fetching from EARTH911 Api`);
   }
 };
 
@@ -23,7 +23,7 @@ const getLocationDetails = async (req, res, next) => {
     res.status(200).send(data);
   } catch (err) {
     console.error(`Error fetching from EARTH911 Api`, err.message);
-    res.status(500).send(`Error fetching from EARTH911 Api`);
+    res.status(502).send(`Error fetching from EARTH911 Api`);
   }
 };
 
@@ -36,7 +36,7 @@ const searchLocations = async (req, res, next) => {
     res.status(200).send(data);
   } catch (err) {
     console.error(`Error fetching from EARTH911 Api`, err.message);
-    res.status(500).send(`Error fetching from EARTH911 Api`);
+    res.status(502).send(`Error fetching from EARTH911 Api`);
   }
 };
 
@@ -50,7 +50,7 @@ const getCentersDetail = async (req, res, next) => {
     res.status(200).send(centersData);
   } catch (err) {
     console.error(`Error fetching from EARTH911 Api`, err.message);
-    res.status(500).send(`Error fetching from EARTH911 Api`);
+    res.status(502).send(`Error fetching from EARTH911 Api`);
   }
 };
 

@@ -50,7 +50,7 @@ const getMe = async (req, res) => {
     const user = await User.findById(req.user.id);
 
     // Check if user exists
-    if (!user) return res.status(403).json({ msg: "User does not exist" });
+    if (!user) return res.status(401).json({ msg: "User does not exist" });
 
     const { _id, name, email, postalCode, roles } = await User.findById(
       user.id
@@ -64,7 +64,7 @@ const getMe = async (req, res) => {
       roles,
     });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
 
@@ -74,7 +74,7 @@ const updateMe = async (req, res) => {
     const user = await User.findById(req.user.id);
 
     // Check if user exists
-    if (!user) return res.status(403).json({ msg: "User does not exist" });
+    if (!user) return res.status(401).json({ msg: "User does not exist" });
 
     const { _id, name, email, postalCode, roles } = await User.findOneAndUpdate(
       { _id: user.id },
@@ -82,7 +82,7 @@ const updateMe = async (req, res) => {
       { new: true }
     );
 
-    res.status(200).json({
+    res.status(201).json({
       id: _id,
       name,
       email,
@@ -90,7 +90,7 @@ const updateMe = async (req, res) => {
       roles,
     });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
 
@@ -100,7 +100,7 @@ const deleteMe = async (req, res) => {
     const user = await User.findById(req.user.id);
 
     // Check if user exists
-    if (!user) return res.status(403).json({ msg: "User does not exist" });
+    if (!user) return res.status(401).json({ msg: "User does not exist" });
 
     const { _id, name, email, postalCode, roles } =
       await User.findByIdAndDelete(user.id);
@@ -113,7 +113,7 @@ const deleteMe = async (req, res) => {
       roles,
     });
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    res.status(500).json({ error: err.message });
   }
 };
 
