@@ -24,7 +24,7 @@ const LoginBox = styled(Box)(({ theme }) => ({
 
 const Register = () => {
   const [loginData, setLoginData] = useState({
-    fname: "",
+    name: "",
     email: "",
     password: "",
   });
@@ -32,7 +32,7 @@ const Register = () => {
   const [accept, setAccept] = useState(false);
   const [err, setErr] = useState("");
   const clearData = () => {
-    setLoginData({ fname: "", email: "", password: "" });
+    setLoginData({ name: "", email: "", password: "" });
     setConfirmPassword("");
     setAccept(false);
     setErr("");
@@ -72,10 +72,10 @@ const Register = () => {
             margin="normal"
             size="small"
             variant="outlined"
-            name="fname"
-            value={loginData.fname}
+            name="name"
+            value={loginData.name}
             onChange={handleChange}
-            label="First Name"
+            label="Name"
             type="text"
             autoComplete="off"
             fullWidth
