@@ -23,8 +23,8 @@ It will visualize users' habits by tracking their activities (recycling, commuti
 
 It also targets to be users' go-to place to find the closest recycling locations and give them clear instructions about how to divide and recycle each material.
 
-## Tech Stack
 
+<h2 id="tech-stack">Tech Stack</h2>
 <ul>
 <li><strong>Front End:</strong> <a href="https://reactjs.org/" target="_blank">React</a>, <a href="https://mui.com/" target="_blank">Material UI</a>  (JavaScript)</li>
 <li><strong>Backend:</strong> <a href="https://nodejs.org/en/docs" target="_blank">NodeJS</a>/<a href="https://expressjs.com/" target="_blank">ExpressJS</a> (JavaScript)</li>
