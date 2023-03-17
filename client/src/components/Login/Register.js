@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { register } from "../../services/auth.js";
 import {
   Box,
   Typography,
@@ -12,7 +13,7 @@ import {
 } from "@mui/material";
 import styled from "@emotion/styled";
 
-const LoginBox = styled(Box)(({ theme }) => ({
+const RegisterBox = styled(Box)(({ theme }) => ({
   display: "flex",
   bgcolor: "white",
   flex: 1,
@@ -23,7 +24,7 @@ const LoginBox = styled(Box)(({ theme }) => ({
 }));
 
 const Register = () => {
-  const [loginData, setLoginData] = useState({
+  const [registerData, setRegisterData] = useState({
     name: "",
     email: "",
     password: "",
@@ -31,21 +32,25 @@ const Register = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [accept, setAccept] = useState(false);
   const [err, setErr] = useState("");
+  const navigate = useNavigate();
+
   const clearData = () => {
-    setLoginData({ name: "", email: "", password: "" });
+    setRegisterData({ name: "", email: "", password: "" });
     setConfirmPassword("");
     setAccept(false);
     setErr("");
   };
+
   const handleChange = (e) => {
-    setLoginData((prevState) => ({
+    setRegisterData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (confirmPassword !== loginData.password) {
+    if (confirmPassword !== registerData.password) {
       setErr("Password does not match");
       return;
     }
@@ -53,12 +58,17 @@ const Register = () => {
       setErr("You should accept the terms and conditions of use to register");
       return;
     }
-    //for testing
-    console.log(loginData);
+
+    const res = await register(registerData);
+
+    if (res.status === 201) {
+      navigate("/login");
+    }
     clearData();
   };
+
   return (
-    <LoginBox>
+    <RegisterBox>
       <Box width="100%">
         <Typography variant="h5">
           <strong>Create your account</strong>
@@ -73,7 +83,7 @@ const Register = () => {
             size="small"
             variant="outlined"
             name="name"
-            value={loginData.name}
+            value={registerData.name}
             onChange={handleChange}
             label="Name"
             type="text"
@@ -85,7 +95,7 @@ const Register = () => {
             size="small"
             variant="outlined"
             name="email"
-            value={loginData.email}
+            value={registerData.email}
             onChange={handleChange}
             label="Email address"
             type="email"
@@ -98,7 +108,7 @@ const Register = () => {
             type="password"
             name="password"
             variant="outlined"
-            value={loginData.password}
+            value={registerData.password}
             onChange={handleChange}
             label="Password"
             autoComplete="off"
@@ -176,7 +186,7 @@ const Register = () => {
           </Typography>
         </Box>
       </Box>
-    </LoginBox>
+    </RegisterBox>
   );
 };
 
