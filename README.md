@@ -25,9 +25,12 @@ It also targets to be users' go-to place to find the closest recycling locations
 
 ## Tech Stack
 
-- Front End: [React](https://reactjs.org/), [Material UI](https://mui.com/)  (JavaScript)
-- Backend: [NodeJS](https://nodejs.org/en/docs)/[ExpressJS](https://expressjs.com/) (JavaScript)
-- Database: [MongoDB](https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjbkKiXmOL9AhUGmWYCHTVNBA0YABAAGgJzbQ&ohost=www.google.com&cid=CAASJuRoPXQHwswO-Z51bFJxJzJQgk5pfhUHekUpyg4nhr0O165dFo0C&sig=AOD64_0as2Ii1qr1y7WdpN8D6ldm4-qj8A&q&adurl&ved=2ahUKEwi566KXmOL9AhVTTHwKHaNBC0kQ0Qx6BAgIEAE)
+<ul>
+<li><strong>Front End:</strong> <a href="https://reactjs.org/" target="_blank">React</a>, <a href="https://mui.com/" target="_blank">Material UI</a>  (JavaScript)</li>
+<li><strong>Backend:</strong> <a href="https://nodejs.org/en/docs" target="_blank">NodeJS</a>/<a href="https://expressjs.com/" target="_blank">ExpressJS</a> (JavaScript)</li>
+<li><strong>Database:</strong> <a href="https://www.googleadservices.com/pagead/aclk?sa=L&amp;ai=DChcSEwjbkKiXmOL9AhUGmWYCHTVNBA0YABAAGgJzbQ&amp;ohost=www.google.com&amp;cid=CAASJuRoPXQHwswO-Z51bFJxJzJQgk5pfhUHekUpyg4nhr0O165dFo0C&amp;sig=AOD64_0as2Ii1qr1y7WdpN8D6ldm4-qj8A&amp;q&amp;adurl&amp;ved=2ahUKEwi566KXmOL9AhVTTHwKHaNBC0kQ0Qx6BAgIEAE" target="_blank">MongoDB</a></li>
+</ul>
+
 
 ## Getting Started
 
