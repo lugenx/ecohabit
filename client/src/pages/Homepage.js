@@ -7,12 +7,13 @@ const Homepage = () => {
 
   /* TEMPORARY: Move to separate folder with other requests when implementing state management */
   const API_URL = process.env.REACT_APP_API_URL;
-  const TOKEN = process.env.REACT_APP_TOKEN;
+
+  const token = localStorage.getItem("token");
 
   const getAllHabits = async () => {
     const config = {
       headers: {
-        Authorization: `Bearer ${TOKEN}`,
+        Authorization: `Bearer ${token}`,
       },
     };
     const response = await fetch(API_URL + "/habit", config);

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../../services/auth.js";
 import {
   Box,
   Typography,
@@ -22,8 +23,10 @@ const LoginBox = styled(Box)(({ theme }) => ({
   maxWidth: "40rem",
 }));
 
+// TODO: Fix login
 const Login = () => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const navigate = useNavigate();
   const clearData = () => {
     setLoginData({ email: "", password: "" });
   };
@@ -33,9 +36,18 @@ const Login = () => {
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(loginData);
+
+    const res = await login(loginData);
+
+    if (res.status === 200) {
+      const json = await res.json();
+      const token = await json.token;
+      localStorage.setItem("token", token);
+      navigate("/");
+    }
+
     clearData();
   };
   return (
