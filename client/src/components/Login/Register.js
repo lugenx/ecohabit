@@ -59,9 +59,9 @@ const Register = () => {
       return;
     }
 
-    const res = await register(registerData);
+    const isSuccessful = await register(registerData);
 
-    if (res.status === 201) {
+    if (isSuccessful) {
       navigate("/login");
     }
     clearData();

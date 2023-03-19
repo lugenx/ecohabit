@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../services/auth.js";
+import { LoginContext } from "../../contexts/LoginContext.js";
+
 import {
   Box,
   Typography,
@@ -25,7 +27,7 @@ const LoginBox = styled(Box)(({ theme }) => ({
 
 // TODO: Fix login
 const Login = () => {
-  const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const { loginData, setLoginData, setLoggedIn } = useContext(LoginContext);
   const navigate = useNavigate();
   const clearData = () => {
     setLoginData({ email: "", password: "" });
@@ -39,12 +41,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await login(loginData);
+    const isSuccessful = await login(loginData);
 
-    if (res.status === 200) {
-      const json = await res.json();
-      const token = await json.token;
-      localStorage.setItem("token", token);
+    if (isSuccessful) {
+      setLoggedIn(true);
       navigate("/");
     }
 
