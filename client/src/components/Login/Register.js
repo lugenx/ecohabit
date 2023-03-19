@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../services/auth.js";
+import { RegisterContext } from "../../contexts/RegisterContext.js";
 import {
   Box,
   Typography,
@@ -24,11 +25,13 @@ const RegisterBox = styled(Box)(({ theme }) => ({
 }));
 
 const Register = () => {
-  const [registerData, setRegisterData] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
+  const { registerData, setRegisterData, setRegistered } =
+    useContext(RegisterContext);
+  // const [registerData, setRegisterData] = useState({
+  //   name: "",
+  //   email: "",
+  //   password: "",
+  // });
   const [confirmPassword, setConfirmPassword] = useState("");
   const [accept, setAccept] = useState(false);
   const [err, setErr] = useState("");
@@ -63,6 +66,7 @@ const Register = () => {
 
     if (isSuccessful) {
       navigate("/login");
+      setRegistered(true);
     }
     clearData();
   };
