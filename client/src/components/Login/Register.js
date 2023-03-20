@@ -25,13 +25,9 @@ const RegisterBox = styled(Box)(({ theme }) => ({
 }));
 
 const Register = () => {
-  const { registerData, setRegisterData, setRegistered } =
+  const { registerData, setRegisterData, setRegisterSuccessMessageVisible } =
     useContext(RegisterContext);
-  // const [registerData, setRegisterData] = useState({
-  //   name: "",
-  //   email: "",
-  //   password: "",
-  // });
+
   const [confirmPassword, setConfirmPassword] = useState("");
   const [accept, setAccept] = useState(false);
   const [err, setErr] = useState("");
@@ -66,7 +62,7 @@ const Register = () => {
 
     if (isSuccessful) {
       navigate("/login");
-      setRegistered(true);
+      setRegisterSuccessMessageVisible(true);
     }
     clearData();
   };

@@ -8,11 +8,18 @@ const RegisterContextProvider = (props) => {
     email: "",
     password: "",
   });
-  const [registered, setRegistered] = useState(false);
+
+  const [registerSuccessMessageVisible, setRegisterSuccessMessageVisible] =
+    useState(false);
 
   return (
     <RegisterContext.Provider
-      value={{ registerData, setRegisterData, registered, setRegistered }}
+      value={{
+        registerData,
+        setRegisterData,
+        registerSuccessMessageVisible,
+        setRegisterSuccessMessageVisible,
+      }}
     >
       {props.children}
     </RegisterContext.Provider>

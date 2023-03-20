@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../services/auth.js";
 import { LoginContext } from "../../contexts/LoginContext.js";
-
+import { RegisterContext } from "../../contexts/RegisterContext.js";
+import Alert from "../Alert.js";
 import {
   Box,
   Typography,
@@ -12,7 +13,9 @@ import {
   Button,
   Divider,
   Paper,
+  Snackbar,
 } from "@mui/material";
+
 import styled from "@emotion/styled";
 
 const LoginBox = styled(Box)(({ theme }) => ({
@@ -25,9 +28,10 @@ const LoginBox = styled(Box)(({ theme }) => ({
   maxWidth: "40rem",
 }));
 
-// TODO: Fix login
 const Login = () => {
   const { loginData, setLoginData, setLoggedIn } = useContext(LoginContext);
+  const { registerSuccessMessageVisible, setRegisterSuccessMessageVisible } =
+    useContext(RegisterContext);
   const navigate = useNavigate();
   const clearData = () => {
     setLoginData({ email: "", password: "" });
@@ -38,6 +42,14 @@ const Login = () => {
       [e.target.name]: e.target.value,
     }));
   };
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setRegisterSuccessMessageVisible(false);
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -54,6 +66,19 @@ const Login = () => {
     <LoginBox>
       <Box width="100%">
         <Typography variant="h5">
+          <Snackbar
+            open={registerSuccessMessageVisible}
+            autoHideDuration={12000}
+            onClose={handleSnackbarClose}
+          >
+            <Alert
+              onClose={handleSnackbarClose}
+              severity="success"
+              sx={{ width: "100%" }}
+            >
+              Success! You have successfully registered. Welcome to EcoHabit!
+            </Alert>
+          </Snackbar>
           <strong>Welcome back</strong>
         </Typography>
         <Typography>Have you been staying green?</Typography>
