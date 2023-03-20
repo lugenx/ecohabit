@@ -1,9 +1,10 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../services/auth.js";
 import { LoginContext } from "../../contexts/LoginContext.js";
 import { RegisterContext } from "../../contexts/RegisterContext.js";
 import Alert from "../Alert.js";
+
 import {
   Box,
   Typography,
@@ -29,13 +30,23 @@ const LoginBox = styled(Box)(({ theme }) => ({
 }));
 
 const Login = () => {
-  const { loginData, setLoginData, setLoggedIn } = useContext(LoginContext);
+  const {
+    loginData,
+    setLoginData,
+    setLoggedIn,
+    loginFailMessage,
+    setLoginFailMessage,
+  } = useContext(LoginContext);
+
   const { registerSuccessMessageVisible, setRegisterSuccessMessageVisible } =
     useContext(RegisterContext);
+
   const navigate = useNavigate();
+
   const clearData = () => {
     setLoginData({ email: "", password: "" });
   };
+
   const handleChange = (e) => {
     setLoginData((prevState) => ({
       ...prevState,
@@ -52,16 +63,28 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const responseStatus = await login(loginData);
 
-    const isSuccessful = await login(loginData);
-
-    if (isSuccessful) {
-      setLoggedIn(true);
-      navigate("/");
+      if (responseStatus === 200) {
+        setLoggedIn(true);
+        navigate("/");
+      } else if (responseStatus === 403) {
+        setLoginFailMessage("User does not exist");
+      } else if (responseStatus === 400) {
+        setLoginFailMessage("Username or password is incorrect");
+      }
+    } catch (error) {
+      console.log(error);
     }
 
     clearData();
   };
+
+  useEffect(() => {
+    setLoginFailMessage(null);
+  }, []);
+
   return (
     <LoginBox>
       <Box width="100%">
@@ -107,11 +130,18 @@ const Login = () => {
             autoComplete="off"
             fullWidth
           />
+
+          {loginFailMessage && (
+            <Alert variant="outlined" severity="warning">
+              {loginFailMessage}
+            </Alert>
+          )}
           <FormControlLabel
             control={<Checkbox size="small" />}
             label="Keep me signed in for the future"
             sx={{ color: "#7e7e7e", fontSize: 20 }}
           />
+
           <Button
             type="submit"
             variant="contained"

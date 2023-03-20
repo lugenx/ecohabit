@@ -32,19 +32,19 @@ const login = async (userData) => {
       }
     );
 
-    if (!response.ok) {
-      const errorResponse = await response.json();
-      throw new Error(errorResponse.error);
-    }
+    // if (!response.ok) {
+    //   const errorResponse = await response.json();
+    //   throw new Error(errorResponse.error);
+    // }
 
     const json = await response.json();
     const token = await json.token;
     localStorage.setItem("token", token);
 
-    return true;
+    return response.status;
   } catch (error) {
-    console.error(error);
-    return false;
+    console.error("------------", error);
+    return error;
   }
 };
 
