@@ -7,7 +7,7 @@ import userRouter from "./src/routes/userRoutes.js";
 import habitRouter from "./src/routes/habitRoutes.js";
 import answerRouter from "./src/routes/answerRoutes.js";
 import verifyToken from "./src/middleware/auth.js";
-import { notFound, errorHandler } from "./src/middleware/errMiddleware.js";
+import { notFound, errorHandler } from "./src/middleware/errorHandler.js";
 
 const PORT = process.env.PORT || 3001;
 const app = express();
