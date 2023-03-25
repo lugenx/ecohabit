@@ -33,6 +33,7 @@ const Login = () => {
   const {
     loginData,
     setLoginData,
+    setLoginPending,
     setLoggedIn,
     loginFailMessage,
     setLoginFailMessage,
@@ -63,6 +64,7 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoginPending(true);
     try {
       const responseStatus = await login(loginData);
 
@@ -77,7 +79,7 @@ const Login = () => {
     } catch (error) {
       console.log(error);
     }
-
+    setLoginPending(false);
     clearData();
   };
 

@@ -4,6 +4,7 @@ const LoginContext = createContext();
 
 const LoginContextProvider = (props) => {
   const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const [loginPending, setLoginPending] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
   const [loginFailMessage, setLoginFailMessage] = useState(null);
 
@@ -12,6 +13,8 @@ const LoginContextProvider = (props) => {
       value={{
         loginData,
         setLoginData,
+        loginPending,
+        setLoginPending,
         loggedIn,
         setLoggedIn,
         loginFailMessage,

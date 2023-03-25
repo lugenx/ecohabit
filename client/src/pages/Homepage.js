@@ -1,14 +1,26 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Grid } from "@mui/material";
 import HabitCard from "../components/HabitCard/HabitCard";
+import { LoginContext } from "../contexts/LoginContext";
+import { useNavigate } from "react-router-dom";
 
 const Homepage = () => {
   const [habits, setHabits] = useState([]);
+  const { loginPending, loggedIn, setLoggedIn } = useContext(LoginContext);
+  const navigate = useNavigate();
 
   /* TEMPORARY: Move to separate folder with other requests when implementing state management */
   const API_URL = process.env.REACT_APP_API_URL;
 
   const token = localStorage.getItem("token");
+
+  useEffect(() => {
+    if (!loginPending && !loggedIn && !token) {
+      navigate("/login");
+    } else {
+      setLoggedIn(true);
+    }
+  }, []);
 
   const getAllHabits = async () => {
     const config = {
