@@ -9,15 +9,9 @@ const register = async (userData) => {
       }
     );
 
-    if (!response.ok) {
-      const errorResponse = await response.json();
-      throw new Error(errorResponse.error);
-    }
-
-    return true;
+    return response;
   } catch (error) {
-    console.error(error);
-    return false;
+    return error;
   }
 };
 
@@ -32,18 +26,12 @@ const login = async (userData) => {
       }
     );
 
-    // if (!response.ok) {
-    //   const errorResponse = await response.json();
-    //   throw new Error(errorResponse.error);
-    // }
-
     const json = await response.json();
     const token = await json.token;
     localStorage.setItem("token", token);
 
     return response.status;
   } catch (error) {
-    console.error("------------", error);
     return error;
   }
 };

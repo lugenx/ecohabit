@@ -11,7 +11,7 @@ const RegisterContextProvider = (props) => {
 
   const [registerSuccessMessageVisible, setRegisterSuccessMessageVisible] =
     useState(false);
-
+  const [registerFailMessage, setRegisterFailMessage] = useState(null);
   return (
     <RegisterContext.Provider
       value={{
@@ -19,6 +19,8 @@ const RegisterContextProvider = (props) => {
         setRegisterData,
         registerSuccessMessageVisible,
         setRegisterSuccessMessageVisible,
+        registerFailMessage,
+        setRegisterFailMessage,
       }}
     >
       {props.children}

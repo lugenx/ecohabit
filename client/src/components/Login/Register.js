@@ -2,6 +2,8 @@ import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../services/auth.js";
 import { RegisterContext } from "../../contexts/RegisterContext.js";
+import Alert from "../Alert.js";
+
 import {
   Box,
   Typography,
@@ -25,8 +27,13 @@ const RegisterBox = styled(Box)(({ theme }) => ({
 }));
 
 const Register = () => {
-  const { registerData, setRegisterData, setRegisterSuccessMessageVisible } =
-    useContext(RegisterContext);
+  const {
+    registerData,
+    setRegisterData,
+    setRegisterSuccessMessageVisible,
+    registerFailMessage,
+    setRegisterFailMessage,
+  } = useContext(RegisterContext);
 
   const [confirmPassword, setConfirmPassword] = useState("");
   const [accept, setAccept] = useState(false);
@@ -57,13 +64,20 @@ const Register = () => {
       setErr("You should accept the terms and conditions of use to register");
       return;
     }
-
-    const isSuccessful = await register(registerData);
-
-    if (isSuccessful) {
-      navigate("/login");
-      setRegisterSuccessMessageVisible(true);
+    try {
+      const res = await register(registerData);
+      if (res.status === 201) {
+        navigate("/login");
+        setRegisterSuccessMessageVisible(true);
+      } else if (res.status === 400) {
+        const json = await res.json();
+        setRegisterFailMessage(json.error);
+      }
+    } catch (error) {
+      console.error(error);
+      setRegisterFailMessage("Something went wrong");
     }
+
     clearData();
   };
 
@@ -126,6 +140,11 @@ const Register = () => {
             autoComplete="off"
             fullWidth
           />
+          {registerFailMessage && (
+            <Alert variant="outlined" severity="warning">
+              {registerFailMessage}
+            </Alert>
+          )}
           <FormControlLabel
             control={
               <Checkbox
