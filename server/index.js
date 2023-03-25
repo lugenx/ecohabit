@@ -7,6 +7,7 @@ import userRouter from "./src/routes/userRoutes.js";
 import habitRouter from "./src/routes/habitRoutes.js";
 import answerRouter from "./src/routes/answerRoutes.js";
 import verifyToken from "./src/middleware/auth.js";
+import { notFound, errorHandler } from "./src/middleware/errorHandler.js";
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -28,6 +29,9 @@ app.use("/", earth911Router);
 app.use("/user", userRouter);
 app.use("/habit", verifyToken, habitRouter);
 app.use("/answer", verifyToken, answerRouter);
+
+app.use(notFound);
+app.use(errorHandler);
 
 const runServer = async () => {
   try {
