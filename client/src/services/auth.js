@@ -38,7 +38,12 @@ const login = async (userData) => {
 
 const logout = () => {
   localStorage.removeItem("token");
-  return true;
+  const tokenExists = localStorage.getItem("token");
+  if (!tokenExists) {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 export { register, login, logout };
