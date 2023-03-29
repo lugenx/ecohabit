@@ -28,7 +28,7 @@ It also targets to be users' go-to place to find the closest recycling locations
 
 *   **Front End:** [React](https://reactjs.org/), [Material UI](https://mui.com/) (JavaScript)
 *   **Backend:** [NodeJS](https://nodejs.org/en/docs)/[ExpressJS](https://expressjs.com/) (JavaScript)
-*   **Database:** [MongoDB](https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwjbkKiXmOL9AhUGmWYCHTVNBA0YABAAGgJzbQ&ohost=www.google.com&cid=CAASJuRoPXQHwswO-Z51bFJxJzJQgk5pfhUHekUpyg4nhr0O165dFo0C&sig=AOD64_0as2Ii1qr1y7WdpN8D6ldm4-qj8A&q&adurl&ved=2ahUKEwi566KXmOL9AhVTTHwKHaNBC0kQ0Qx6BAgIEAE)
+*   **Database:** [MongoDB](https://www.mongodb.com/docs/)
 
 ## Getting Started
 
