@@ -36,14 +36,14 @@ const Register = () => {
   } = useContext(RegisterContext);
 
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [accept, setAccept] = useState(false);
+  const [acceptTerms, setAcceptTerms] = useState(false);
   const [err, setErr] = useState("");
   const navigate = useNavigate();
 
   const clearData = () => {
     setRegisterData({ name: "", email: "", password: "" });
     setConfirmPassword("");
-    setAccept(false);
+    setAcceptTerms(false);
     setErr("");
   };
 
@@ -60,7 +60,7 @@ const Register = () => {
       setErr("Password does not match");
       return;
     }
-    if (!accept) {
+    if (!acceptTerms) {
       setErr("You should accept the terms and conditions of use to register");
       return;
     }
@@ -149,8 +149,8 @@ const Register = () => {
             control={
               <Checkbox
                 size="small"
-                checked={accept}
-                onChange={(e) => setAccept(e.target.checked)}
+                checked={acceptTerms}
+                onChange={(e) => setAcceptTerms(e.target.checked)}
               />
             }
             label={
