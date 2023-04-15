@@ -1,12 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Grid } from "@mui/material";
 import HabitCard from "../components/HabitCard/HabitCard";
-import { LoginContext } from "../contexts/LoginContext";
+import { useLoginContext } from "../contexts/LoginContext";
 import { useNavigate } from "react-router-dom";
 
 const Homepage = () => {
   const [habits, setHabits] = useState([]);
-  const { loginPending, loggedIn, setLoggedIn } = useContext(LoginContext);
+  const { loginPending, loggedIn, setLoggedIn } = useLoginContext();
   const navigate = useNavigate();
 
   /* TEMPORARY: Move to separate folder with other requests when implementing state management */

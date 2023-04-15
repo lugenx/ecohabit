@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../../services/auth.js";
-import { LoginContext } from "../../contexts/LoginContext.js";
-import { RegisterContext } from "../../contexts/RegisterContext.js";
+import { useLoginContext } from "../../contexts/LoginContext.js";
+import { useRegisterContext } from "../../contexts/RegisterContext.js";
 import Alert from "../Alert.js";
 
 import {
@@ -37,10 +37,10 @@ const Login = () => {
     setLoggedIn,
     loginFailMessage,
     setLoginFailMessage,
-  } = useContext(LoginContext);
+  } = useLoginContext();
 
   const { registerSuccessMessageVisible, setRegisterSuccessMessageVisible } =
-    useContext(RegisterContext);
+    useRegisterContext();
 
   const navigate = useNavigate();
 

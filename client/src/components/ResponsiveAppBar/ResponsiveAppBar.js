@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { LoginContext } from "../../contexts/LoginContext.js";
+import { useLoginContext } from "../../contexts/LoginContext.js";
 import { Adb as AdbIcon, Menu as MenuIcon } from "@mui/icons-material";
 import {
   AppBar,
@@ -27,7 +27,7 @@ function ResponsiveAppBar() {
     "Dashboard",
     "Login",
   ]);
-  const { loggedIn } = useContext(LoginContext);
+  const { loggedIn } = useLoginContext();
 
   useEffect(() => {
     if (loggedIn) {

@@ -1,7 +1,7 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { register } from "../../services/auth.js";
-import { RegisterContext } from "../../contexts/RegisterContext.js";
+import { useRegisterContext } from "../../contexts/RegisterContext.js";
 import Alert from "../Alert.js";
 
 import {
@@ -33,7 +33,7 @@ const Register = () => {
     setRegisterSuccessMessageVisible,
     registerFailMessage,
     setRegisterFailMessage,
-  } = useContext(RegisterContext);
+  } = useRegisterContext();
 
   const [confirmPassword, setConfirmPassword] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);

@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
-import { LoginContext } from "../contexts/LoginContext";
+import React, { useState, useEffect } from "react";
+import { useLoginContext } from "../contexts/LoginContext";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -25,7 +25,7 @@ const ProfilePage = () => {
     roles: [],
   });
 
-  const { loginPending, loggedIn } = useContext(LoginContext);
+  const { loginPending, loggedIn } = useLoginContext();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({

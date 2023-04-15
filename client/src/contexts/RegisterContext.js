@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const RegisterContext = createContext();
 
@@ -28,4 +28,14 @@ const RegisterContextProvider = (props) => {
   );
 };
 
-export { RegisterContext, RegisterContextProvider };
+const useRegisterContext = () => {
+  const context = useContext(RegisterContext);
+  if (context === undefined) {
+    throw new Error(
+      "useRegisterContext must be used within a RegisterContextProvider. Make sure your component is wrapped in a RegisterContextProvider."
+    );
+  }
+  return context;
+};
+
+export { useRegisterContext, RegisterContextProvider };

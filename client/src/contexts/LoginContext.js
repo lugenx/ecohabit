@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 const LoginContext = createContext();
 
@@ -26,4 +26,14 @@ const LoginContextProvider = (props) => {
   );
 };
 
-export { LoginContext, LoginContextProvider };
+const useLoginContext = () => {
+  const context = useContext(LoginContext);
+  if (context === undefined) {
+    throw new Error(
+      "useLoginContext must be used within a LoginContextProvider. Make sure your component is wrapped in a LoginContextProvider."
+    );
+  }
+  return context;
+};
+
+export { useLoginContext, LoginContextProvider };
