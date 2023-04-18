@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useLoginContext } from "../contexts/LoginContext";
+import { useNavigate } from "react-router-dom";
+
 import {
   Card,
   CardActions,
@@ -22,6 +25,9 @@ const ProfilePage = () => {
     roles: [],
   });
 
+  const { loginPending, loggedIn } = useLoginContext();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -31,6 +37,11 @@ const ProfilePage = () => {
 
   const [showForm, setShowForm] = useState(false);
 
+  useEffect(() => {
+    if (!loginPending && !loggedIn) {
+      navigate("/login");
+    }
+  });
   // Clears all form fields and opens/closes form modal
   const toggleForm = () => {
     setFormData({

@@ -1,6 +1,7 @@
 import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import mongoose from "mongoose";
 
 //TODO: improve code below with validations
 
@@ -40,7 +41,14 @@ const userSignUp = async (req, res) => {
     savedUser.password = undefined;
     res.status(201).json(savedUser);
   } catch (err) {
-    res.status(400).json({ error: err.message });
+    if (err instanceof mongoose.Error.ValidationError) {
+      const errors = Object.values(err.errors).map((error) => error.message);
+      return res.status(400).json({ error: errors.join(", ") });
+    } else if (err.code === 11000) {
+      return res.status(400).json({ error: "Email is already registered." });
+    } else {
+      return res.status(500).json({ error: "Server Error" });
+    }
   }
 };
 

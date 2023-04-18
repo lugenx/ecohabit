@@ -1,5 +1,10 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { login } from "../../services/auth.js";
+import { useLoginContext } from "../../contexts/LoginContext.js";
+import { useRegisterContext } from "../../contexts/RegisterContext.js";
+import Alert from "../Alert.js";
+
 import {
   Box,
   Typography,
@@ -9,7 +14,9 @@ import {
   Button,
   Divider,
   Paper,
+  Snackbar,
 } from "@mui/material";
+
 import styled from "@emotion/styled";
 
 const LoginBox = styled(Box)(({ theme }) => ({
@@ -23,25 +30,80 @@ const LoginBox = styled(Box)(({ theme }) => ({
 }));
 
 const Login = () => {
-  const [loginData, setLoginData] = useState({ email: "", password: "" });
+  const {
+    loginData,
+    setLoginData,
+    setLoginPending,
+    setLoggedIn,
+    loginFailMessage,
+    setLoginFailMessage,
+  } = useLoginContext();
+
+  const { registerSuccessMessageVisible, setRegisterSuccessMessageVisible } =
+    useRegisterContext();
+
+  const navigate = useNavigate();
+
   const clearData = () => {
     setLoginData({ email: "", password: "" });
   };
+
   const handleChange = (e) => {
     setLoginData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = (e) => {
+
+  const handleSnackbarClose = (event, reason) => {
+    if (reason === "clickaway") {
+      return;
+    }
+    setRegisterSuccessMessageVisible(false);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(loginData);
+    setLoginPending(true);
+    try {
+      const responseStatus = await login(loginData);
+
+      if (responseStatus === 200) {
+        setLoggedIn(true);
+        navigate("/");
+      } else if (responseStatus === 403) {
+        setLoginFailMessage("User does not exist");
+      } else if (responseStatus === 400) {
+        setLoginFailMessage("Username or password is incorrect");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setLoginPending(false);
     clearData();
   };
+
+  useEffect(() => {
+    setLoginFailMessage(null);
+  }, []);
+
   return (
     <LoginBox>
       <Box width="100%">
         <Typography variant="h5">
+          <Snackbar
+            open={registerSuccessMessageVisible}
+            autoHideDuration={12000}
+            onClose={handleSnackbarClose}
+          >
+            <Alert
+              onClose={handleSnackbarClose}
+              severity="success"
+              sx={{ width: "100%" }}
+            >
+              Success! You have successfully registered. Welcome to EcoHabit!
+            </Alert>
+          </Snackbar>
           <strong>Welcome back</strong>
         </Typography>
         <Typography>Have you been staying green?</Typography>
@@ -70,11 +132,18 @@ const Login = () => {
             autoComplete="off"
             fullWidth
           />
+
+          {loginFailMessage && (
+            <Alert variant="outlined" severity="warning">
+              {loginFailMessage}
+            </Alert>
+          )}
           <FormControlLabel
             control={<Checkbox size="small" />}
             label="Keep me signed in for the future"
             sx={{ color: "#7e7e7e", fontSize: 20 }}
           />
+
           <Button
             type="submit"
             variant="contained"
