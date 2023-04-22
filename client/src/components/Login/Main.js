@@ -36,7 +36,7 @@ const Main = () => {
             variant="h2"
             fontFamily="Roboto"
             fontWeight="700"
-            fontSize="3.2rem"
+            fontSize="4rem"
             lineHeight="3.25rem"
           >
             Lorem ipsum dolor sit amet,{" "}
@@ -45,7 +45,11 @@ const Main = () => {
             </Box>
             .
           </Typography>
-          <Typography mt={2} variant="subtitle2">
+          <Typography
+            fontSize = "1.3rem"
+            mt={2} 
+            variant="subtitle2"
+          >
             Join a community of like-minded individuals and make a positive impact
             on the planet &rarr;
           </Typography>
