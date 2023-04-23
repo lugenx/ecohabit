@@ -2,6 +2,7 @@ import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
+import validator from "validator";
 
 //TODO: improve code below with validations
 
@@ -9,6 +10,13 @@ import mongoose from "mongoose";
 const userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    // Validate the email
+    const isValidEmail = validator.isEmail(email);
+    if (!isValidEmail) {
+      return res.status(400).json({ error: "Invalid email." });
+    }
+
     const user = await User.findOne({ email: email });
     if (!user) return res.status(403).json({ msg: "User does not exist" });
 
