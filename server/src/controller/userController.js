@@ -26,6 +26,24 @@ const userLogin = async (req, res) => {
 // Register a new user
 const userSignUp = async (req, res) => {
   const { name, email, postalCode, password, roles } = req.body;
+
+  // Validate the email
+  const isValidEmail = validator.isEmail(email);
+  if (!isValidEmail) {
+    return res.status(400).json({ error: "Invalid email." });
+  }
+
+  // Validate the password
+  const isValidPassword = validator.isStrongPassword(password);
+  if (!isValidPassword) {
+    return res
+      .status(400)
+      .json({
+        error:
+          "Password not strong enough. A strong password is minimum 8 characters long containing at least 1 lower case character, 1 upper case character, 1 number and 1 special character each.",
+      });
+  }
+
   try {
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
