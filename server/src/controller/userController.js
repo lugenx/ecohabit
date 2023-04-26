@@ -42,14 +42,19 @@ const userSignUp = async (req, res) => {
   }
 
   // Validate the password
-  const isValidPassword = validator.isStrongPassword(password);
+  const isValidPassword = validator.isStrongPassword(password, {
+    minLength: 8,
+    minNumbers: 1,
+    minSymbols: 1,
+    minLowercase: 0,
+    minUppercase: 0,
+  });
+
   if (!isValidPassword) {
-    return res
-      .status(400)
-      .json({
-        error:
-          "Password not strong enough. A strong password is minimum 8 characters long containing at least 1 lower case character, 1 upper case character, 1 number and 1 special character each.",
-      });
+    return res.status(400).json({
+      error:
+        "Password not strong enough. A strong password is minimum 8 characters long containing at least 1 number and 1 special character.",
+    });
   }
 
   try {
