@@ -4,11 +4,12 @@ import {
   CardActions,
   CardContent,
   CardMedia,
+  Box,
   Button,
   Typography,
 } from "@mui/material";
 
-export default function MediaCard({ habit }) {
+export default function MediaCard({ habit, onDelete }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -17,9 +18,27 @@ export default function MediaCard({ habit }) {
         title="green iguana"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          {habit.category}
-        </Typography>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <Typography gutterBottom variant="h5" component="div">
+            {habit.category}
+          </Typography>
+          <Button
+            onClick={() => onDelete(habit._id)}
+            sx={{
+              color: "#05c46b",
+              cursor: "pointer",
+              fontSize: "24px",
+            }}
+          >
+            &times;
+          </Button>
+        </Box>
         <Typography variant="body2" color="text.secondary">
           {habit.description}
         </Typography>
@@ -30,7 +49,9 @@ export default function MediaCard({ habit }) {
       </CardContent>
       <CardActions>
         {habit.answerOptions.map((option, index) => (
-          <Button size="small" key={index}>{option}</Button>
+          <Button size="small" key={index}>
+            {option}
+          </Button>
         ))}
       </CardActions>
     </Card>
