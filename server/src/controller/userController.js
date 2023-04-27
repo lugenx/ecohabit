@@ -2,6 +2,7 @@ import User from "../models/userModel.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import mongoose from "mongoose";
+import validator from "validator";
 
 //TODO: improve code below with validations
 
@@ -9,6 +10,13 @@ import mongoose from "mongoose";
 const userLogin = async (req, res) => {
   try {
     const { email, password } = req.body;
+
+    // Validate the email
+    const isValidEmail = validator.isEmail(email);
+    if (!isValidEmail) {
+      return res.status(400).json({ error: "Invalid email." });
+    }
+
     const user = await User.findOne({ email: email });
     if (!user) return res.status(403).json({ msg: "User does not exist" });
 
@@ -26,6 +34,29 @@ const userLogin = async (req, res) => {
 // Register a new user
 const userSignUp = async (req, res) => {
   const { name, email, postalCode, password, roles } = req.body;
+
+  // Validate the email
+  const isValidEmail = validator.isEmail(email);
+  if (!isValidEmail) {
+    return res.status(400).json({ error: "Invalid email." });
+  }
+
+  // Validate the password
+  const isValidPassword = validator.isStrongPassword(password, {
+    minLength: 8,
+    minNumbers: 1,
+    minSymbols: 1,
+    minLowercase: 0,
+    minUppercase: 0,
+  });
+
+  if (!isValidPassword) {
+    return res.status(400).json({
+      error:
+        "Please choose a stronger password that is at least 8 characters long and includes a mix of letters, numbers, and symbols.",
+    });
+  }
+
   try {
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
