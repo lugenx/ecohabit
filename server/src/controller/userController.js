@@ -53,7 +53,7 @@ const userSignUp = async (req, res) => {
   if (!isValidPassword) {
     return res.status(400).json({
       error:
-        "Password not strong enough. A strong password is minimum 8 characters long containing at least 1 number and 1 special character.",
+        "Please choose a stronger password that is at least 8 characters long and includes a mix of letters, numbers, and symbols.",
     });
   }
 
