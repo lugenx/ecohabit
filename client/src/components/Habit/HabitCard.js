@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function MediaCard({ habit, onDelete }) {
+export default function MediaCard({ habit, removeHabit }) {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -29,7 +29,7 @@ export default function MediaCard({ habit, onDelete }) {
             {habit.category}
           </Typography>
           <Button
-            onClick={() => onDelete(habit._id)}
+            onClick={() => removeHabit(habit._id)}
             sx={{
               color: "#05c46b",
               cursor: "pointer",

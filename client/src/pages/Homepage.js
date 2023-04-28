@@ -15,9 +15,9 @@ const Homepage = () => {
   const navigate = useNavigate();
 
   // Store categories in an array
-  const habitCats = habits.map((habit) => habit.category);
+  const habitCategories = habits.map((habit) => habit.category);
   // Remove duplicate categories from array
-  const categories = [...new Set(habitCats)];
+  const categories = [...new Set(habitCategories)];
 
   /* TEMPORARY: Move to separate folder with other requests when implementing state management */
   const API_URL = process.env.REACT_APP_API_URL;
@@ -120,7 +120,7 @@ const Homepage = () => {
           >
             {myHabits.map((habit, index) => (
               <Grid key={index} item>
-                <HabitCard habit={habit} onDelete={removeHabit} />
+                <HabitCard habit={habit} removeHabit={removeHabit} />
               </Grid>
             ))}
           </Grid>
