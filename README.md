@@ -23,11 +23,12 @@ It will visualize users' habits by tracking their activities (recycling, commuti
 
 It also targets to be users' go-to place to find the closest recycling locations and give them clear instructions about how to divide and recycle each material.
 
+
 ## Tech Stack
 
-- Front End: React (JavaScript), Material UI
-- Backend: NodeJS/ExpressJS (JavaScript)
-- Database: MongoDB
+*   **Front End:** [React](https://reactjs.org/), [Material UI](https://mui.com/) (JavaScript)
+*   **Backend:** [NodeJS](https://nodejs.org/en/docs)/[ExpressJS](https://expressjs.com/) (JavaScript)
+*   **Database:** [MongoDB](https://www.mongodb.com/docs/)
 
 ## Getting Started
 

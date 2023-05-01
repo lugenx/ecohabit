@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { register } from "../../services/auth.js";
+import { useRegisterContext } from "../../contexts/RegisterContext.js";
+import Alert from "../Alert.js";
+
 import {
   Box,
   Typography,
@@ -12,7 +16,7 @@ import {
 } from "@mui/material";
 import styled from "@emotion/styled";
 
-const LoginBox = styled(Box)(({ theme }) => ({
+const RegisterBox = styled(Box)(({ theme }) => ({
   display: "flex",
   bgcolor: "white",
   flex: 1,
@@ -23,42 +27,62 @@ const LoginBox = styled(Box)(({ theme }) => ({
 }));
 
 const Register = () => {
-  const [loginData, setLoginData] = useState({
-    fname: "",
-    email: "",
-    password: "",
-  });
+  const {
+    registerData,
+    setRegisterData,
+    setRegisterSuccessMessageVisible,
+    registerFailMessage,
+    setRegisterFailMessage,
+  } = useRegisterContext();
+
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [accept, setAccept] = useState(false);
+  const [acceptTerms, setAcceptTerms] = useState(false);
   const [err, setErr] = useState("");
+  const navigate = useNavigate();
+
   const clearData = () => {
-    setLoginData({ fname: "", email: "", password: "" });
+    setRegisterData({ name: "", email: "", password: "" });
     setConfirmPassword("");
-    setAccept(false);
+    setAcceptTerms(false);
     setErr("");
   };
+
   const handleChange = (e) => {
-    setLoginData((prevState) => ({
+    setRegisterData((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (confirmPassword !== loginData.password) {
+    if (confirmPassword !== registerData.password) {
       setErr("Password does not match");
       return;
     }
-    if (!accept) {
+    if (!acceptTerms) {
       setErr("You should accept the terms and conditions of use to register");
       return;
     }
-    //for testing
-    console.log(loginData);
+    try {
+      const res = await register(registerData);
+      if (res.status === 201) {
+        navigate("/login");
+        setRegisterSuccessMessageVisible(true);
+      } else if (res.status === 400) {
+        const json = await res.json();
+        setRegisterFailMessage(json.error);
+      }
+    } catch (error) {
+      console.error(error);
+      setRegisterFailMessage("Something went wrong");
+    }
+
     clearData();
   };
+
   return (
-    <LoginBox>
+    <RegisterBox>
       <Box width="100%">
         <Typography variant="h5">
           <strong>Create your account</strong>
@@ -72,10 +96,10 @@ const Register = () => {
             margin="normal"
             size="small"
             variant="outlined"
-            name="fname"
-            value={loginData.fname}
+            name="name"
+            value={registerData.name}
             onChange={handleChange}
-            label="First Name"
+            label="Name"
             type="text"
             autoComplete="off"
             fullWidth
@@ -85,7 +109,7 @@ const Register = () => {
             size="small"
             variant="outlined"
             name="email"
-            value={loginData.email}
+            value={registerData.email}
             onChange={handleChange}
             label="Email address"
             type="email"
@@ -98,7 +122,7 @@ const Register = () => {
             type="password"
             name="password"
             variant="outlined"
-            value={loginData.password}
+            value={registerData.password}
             onChange={handleChange}
             label="Password"
             autoComplete="off"
@@ -116,12 +140,17 @@ const Register = () => {
             autoComplete="off"
             fullWidth
           />
+          {registerFailMessage && (
+            <Alert variant="outlined" severity="warning">
+              {registerFailMessage}
+            </Alert>
+          )}
           <FormControlLabel
             control={
               <Checkbox
                 size="small"
-                checked={accept}
-                onChange={(e) => setAccept(e.target.checked)}
+                checked={acceptTerms}
+                onChange={(e) => setAcceptTerms(e.target.checked)}
               />
             }
             label={
@@ -176,7 +205,7 @@ const Register = () => {
           </Typography>
         </Box>
       </Box>
-    </LoginBox>
+    </RegisterBox>
   );
 };
 

@@ -1,6 +1,6 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { useLoginContext } from "../../contexts/LoginContext.js";
 import { Adb as AdbIcon, Menu as MenuIcon } from "@mui/icons-material";
 import {
   AppBar,
@@ -17,12 +17,25 @@ import {
 } from "@mui/material";
 
 const pages = ["Home", "Locations", "Guides", "About"];
-const settings = ["Profile", "Account", "Dashboard", "Login"];
 
 function ResponsiveAppBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const [anchorElNav, setAnchorElNav] = useState(null);
+  const [anchorElUser, setAnchorElUser] = useState(null);
+  const [settings, setSettings] = useState([
+    "Profile",
+    "Account",
+    "Dashboard",
+    "Login",
+  ]);
+  const { loggedIn } = useLoginContext();
 
+  useEffect(() => {
+    if (loggedIn) {
+      setSettings([...settings.slice(0, settings.length - 1), "Logout"]);
+    } else {
+      setSettings([...settings.slice(0, settings.length - 1), "Login"]);
+    }
+  }, [loggedIn]);
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -39,7 +52,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" id="app-bar">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
