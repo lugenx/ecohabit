@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 
-export default function MediaCard({ habit, removeHabit }) {
+const HabitCard = ({ habit, removeHabit }) => {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
@@ -57,3 +57,5 @@ export default function MediaCard({ habit, removeHabit }) {
     </Card>
   );
 }
+
+export default HabitCard;
