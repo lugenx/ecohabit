@@ -65,7 +65,7 @@ If you prefer the command line way of downloading and installing things, then fe
 
 - Running Frontend React JS Application:
 
-  - Change the directory to server folder using terminal command: cd client
+  - Change the directory to client folder using terminal command: cd client
   - In the client directory, you can run:
 
   ##### `npm install`
