@@ -44,8 +44,12 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const clearData = () => {
-    setLoginData({ email: "", password: "" });
+  const clearData = (shoulClearAll) => {
+    if (shoulClearAll) {
+      setLoginData({ email: "", password: "" });
+    } else {
+      setLoginData({ email: loginData.email, password: "" });
+    }
   };
 
   const handleChange = (e) => {
@@ -67,20 +71,24 @@ const Login = () => {
     setLoginPending(true);
     try {
       const responseStatus = await login(loginData);
-
+      
       if (responseStatus === 200) {
+        clearData(true);
         setLoggedIn(true);
         navigate("/");
       } else if (responseStatus === 403) {
         setLoginFailMessage("User does not exist");
+        clearData(false);
       } else if (responseStatus === 400) {
         setLoginFailMessage("Username or password is incorrect");
+        clearData(false);
+      } else {
+        clearData(false);
       }
     } catch (error) {
       console.log(error);
     }
     setLoginPending(false);
-    clearData();
   };
 
   useEffect(() => {
