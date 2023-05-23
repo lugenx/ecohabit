@@ -23,12 +23,11 @@ It will visualize users' habits by tracking their activities (recycling, commuti
 
 It also targets to be users' go-to place to find the closest recycling locations and give them clear instructions about how to divide and recycle each material.
 
-
 ## Tech Stack
 
-*   **Front End:** [React](https://reactjs.org/), [Material UI](https://mui.com/) (JavaScript)
-*   **Backend:** [NodeJS](https://nodejs.org/en/docs)/[ExpressJS](https://expressjs.com/) (JavaScript)
-*   **Database:** [MongoDB](https://www.mongodb.com/docs/)
+- **Front End:** [React](https://reactjs.org/), [Material UI](https://mui.com/) (JavaScript)
+- **Backend:** [NodeJS](https://nodejs.org/en/docs)/[ExpressJS](https://expressjs.com/) (JavaScript)
+- **Database:** [MongoDB](https://www.mongodb.com/docs/)
 
 ## Getting Started
 
@@ -45,14 +44,19 @@ If you prefer the command line way of downloading and installing things, then fe
 
 ### How to run
 
-- Clone the repository for this project by running the following command in a terminal: 
+- Clone the repository for this project by running the following command in a terminal:
   ##### `git clone https://github.com/lugenx/ecohabit.git`
 - Open the cloned folder in VS Code. Open the terminal and make sure its pointing to the root of the cloned project.
+- At the root of the project, you can run:
+
+  #### `npm install`
+
+  - It'll download all the dev dependencies as defined in package.json file.
 
 - Running Backend Node JS Application:
 
   - Change the directory to server folder using terminal command: `cd server`
-  - At the root of the server directory, create an .env file and copy the content from .env.example into the new .env file. 
+  - At the root of the server directory, create an .env file and copy the content from .env.example into the new .env file.
   - In the server directory, you can run:
 
   ##### `npm install`

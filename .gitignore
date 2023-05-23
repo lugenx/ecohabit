@@ -1,1 +1,4 @@
 .vscode/
+
+# dev dependencies
+/node_modules

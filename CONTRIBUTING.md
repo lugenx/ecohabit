@@ -2,7 +2,7 @@
 
 First of all, we really appreciate your intention to contribute to this project! All contributions are welcome, whether it would be adding more features, creating documentation, fixing typos and more.
 
-To contribute, you would need a GitHub account and Git installed on your computer. Creating a GitHub account and installing Git is not the issue of this guide. 
+To contribute, you would need a GitHub account and Git installed on your computer. Creating a GitHub account and installing Git is not the issue of this guide.
 
 This guide assumes that you are already accustomed to elementary Git/GitHub usage.
 
@@ -12,7 +12,7 @@ This guide assumes that you are already accustomed to elementary Git/GitHub usag
 
 The most common contribution path starts with forking the project which can be easily done with a web browser of your choice.
 
-Visit the [ecohabit repo page](https://github.com/lugenx/ecohabit) on your browser. Next, find the `fork` button somewhere around the top right of the page and press this button. 
+Visit the [ecohabit repo page](https://github.com/lugenx/ecohabit) on your browser. Next, find the `fork` button somewhere around the top right of the page and press this button.
 
 ![fork repo button](./docs/assets/fork-repo.png "Fork Repo Button")
 
@@ -23,7 +23,6 @@ Once you have pressed the `fork` button, GitHub will redirect you to a page that
 Press the `Create fork` button to fork the repository. It should redirect you into your own copy of the repo.
 
 By doing this, you are creating a copy of the ecohabit repo into your account. This way, you can make changes to the codebase without affecting the original repo.
-
 
 ### 2. Clone this repository
 
@@ -40,11 +39,13 @@ Next, copy the link under the HTTPS tab by tapping the button right beside it.
 If you prefer to clone via SSH, feel free to go that route instead.
 
 ---
-Another way of getting the link for cloning is to use this format: 
+
+Another way of getting the link for cloning is to use this format:
 
 ```
 https://github.com/<YOUR GITHUB NAME>/ecohabit
 ```
+
 ---
 
 Now that we have copied the link to our repo, grab your favorite terminal and navigate to the directory where you want to store the project, then run this command:
@@ -62,7 +63,8 @@ Right after cloning, run this command on your terminal:
 ```
 git checkout -b <YOUR BRANCH NAME>
 ```
-This will create a separate branch of the project, which is basically just another version of the project. This way, we have two versions, or 'branches' of the project: The 'main' branch -  which is the original branch - and the branch that we've created. As much as possible, we must apply our changes to the separate branches instead of the main branch. We can create as many branches as we want.
+
+This will create a separate branch of the project, which is basically just another version of the project. This way, we have two versions, or 'branches' of the project: The 'main' branch - which is the original branch - and the branch that we've created. As much as possible, we must apply our changes to the separate branches instead of the main branch. We can create as many branches as we want.
 
 ### 4. Making sure that your copy of the repo is always up to date
 
@@ -96,7 +98,6 @@ If you are confident with your changes, it's time to add them to the staging are
 git add .
 ```
 
-
 You may check the status of your changes by running the `git status` command again.
 
 Now it's time to commit our changes. To commit your changes, run this command:
@@ -104,9 +105,10 @@ Now it's time to commit our changes. To commit your changes, run this command:
 ```
 git commit -m "your message"
 ```
----
-**NOTE:** It is very important to add a message to your commits!
 
+---
+
+**NOTE:** It is very important to add a message to your commits!
 
 Your message should inform the other contributors about the changes that you've made and why this project needs them.
 
