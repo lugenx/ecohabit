@@ -49,7 +49,7 @@ If you prefer the command line way of downloading and installing things, then fe
   ##### `git clone https://github.com/lugenx/ecohabit.git`
 - Open the cloned folder in VS Code. Open the terminal and make sure its pointing to the root of the cloned project.
 
-- Running Backend Nods JS Application:
+- Running Backend Node JS Application:
 
   - Change the directory to server folder using terminal command: cd server
   - In the server directory, you can run:
