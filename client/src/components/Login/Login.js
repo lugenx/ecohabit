@@ -44,8 +44,8 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const clearData = (shoulClearAll) => {
-    if (shoulClearAll) {
+  const clearData = (shouldClearAll) => {
+    if (shouldClearAll) {
       setLoginData({ email: "", password: "" });
     } else {
       setLoginData({ email: loginData.email, password: "" });

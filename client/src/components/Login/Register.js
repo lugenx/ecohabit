@@ -40,9 +40,9 @@ const Register = () => {
   const [err, setErr] = useState("");
   const navigate = useNavigate();
 
-  const clearData = (shoulClearAll) => {
+  const clearData = (shouldClearAll) => {
     const { name, email } = registerData;
-    if (shoulClearAll) {
+    if (shouldClearAll) {
       setRegisterData({ name: "", email: "", password: "" });
       setConfirmPassword("");
       setAcceptTerms(false);
