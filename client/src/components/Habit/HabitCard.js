@@ -56,6 +56,6 @@ const HabitCard = ({ habit, removeHabit }) => {
       </CardActions>
     </Card>
   );
-}
+};
 
 export default HabitCard;
