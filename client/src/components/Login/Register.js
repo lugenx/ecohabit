@@ -40,19 +40,11 @@ const Register = () => {
   const [err, setErr] = useState("");
   const navigate = useNavigate();
 
-  const clearData = (shouldClearAll) => {
-    const { name, email } = registerData;
-    if (shouldClearAll) {
-      setRegisterData({ name: "", email: "", password: "" });
-      setConfirmPassword("");
-      setAcceptTerms(false);
-      setErr("");
-    } else {
-      setRegisterData({ name, email, password: "" });
-      setConfirmPassword("");
-      setAcceptTerms(false);
-      setErr("");
-    }
+  const clearData = () => {
+    setRegisterData((prevState) => ({ ...prevState, password: "" }));
+    setConfirmPassword("");
+    setAcceptTerms(false);
+    setErr("");
   };
 
   const handleChange = (e) => {
@@ -65,7 +57,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (confirmPassword !== registerData.password) {
-      clearData(false);
+      clearData();
       setErr("Password does not match");
       return;
     }
@@ -76,19 +68,17 @@ const Register = () => {
     try {
       const res = await register(registerData);
       if (res.status === 201) {
-        clearData(true);
         navigate("/login");
         setRegisterSuccessMessageVisible(true);
       } else if (res.status === 400) {
-        clearData(false);
         const json = await res.json();
         setRegisterFailMessage(json.error);
-      } else {
-        clearData(false);
       }
     } catch (error) {
       console.error(error);
       setRegisterFailMessage("Something went wrong");
+    } finally {
+      clearData();
     }
   };
 
