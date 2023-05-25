@@ -37,11 +37,11 @@ const Main = () => {
             fontFamily="Roboto"
             fontWeight="700"
             fontSize="4rem"
-            lineHeight="3.25rem"
+            lineHeight="4rem"
           >
-            Lorem ipsum dolor sit amet,{" "}
+            Spreading awareness through,{" "}
             <Box component="span" color="secondary.main">
-              consectetur
+               Sustainable actions
             </Box>
             .
           </Typography>
