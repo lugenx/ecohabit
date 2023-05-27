@@ -41,7 +41,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   const clearData = () => {
-    setRegisterData({ name: "", email: "", password: "" });
+    setRegisterData((prevState) => ({ ...prevState, password: "" }));
     setConfirmPassword("");
     setAcceptTerms(false);
     setErr("");
@@ -57,6 +57,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (confirmPassword !== registerData.password) {
+      clearData();
       setErr("Password does not match");
       return;
     }
@@ -76,9 +77,9 @@ const Register = () => {
     } catch (error) {
       console.error(error);
       setRegisterFailMessage("Something went wrong");
+    } finally {
+      clearData();
     }
-
-    clearData();
   };
 
   return (

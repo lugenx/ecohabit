@@ -45,7 +45,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const clearData = () => {
-    setLoginData({ email: "", password: "" });
+    setLoginData((prevState) => ({ ...prevState, password: "" }));
   };
 
   const handleChange = (e) => {
@@ -78,9 +78,11 @@ const Login = () => {
       }
     } catch (error) {
       console.log(error);
+    } finally {
+      clearData();
+      setLoginPending(false);
     }
-    setLoginPending(false);
-    clearData();
+    
   };
 
   useEffect(() => {
