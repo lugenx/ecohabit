@@ -39,9 +39,9 @@ const Main = () => {
             fontSize="4rem"
             lineHeight="3.25rem"
           >
-            Lorem ipsum dolor sit amet,{" "}
+            Spreading awareness through,{" "}
             <Box component="span" color="secondary.main">
-              consectetur
+              sustainable actions
             </Box>
             .
           </Typography>
