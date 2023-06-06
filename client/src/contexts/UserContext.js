@@ -10,7 +10,9 @@ const UserContextProvider = (props) => {
   });
 
   useEffect(() => {
+    if(token){
     console.log("fetching user data");
+    }
   }, [token]);
 
   return (
@@ -24,7 +26,7 @@ const useUserContext = () => {
   const context = useContext(UserContext);
   if (context === undefined) {
     throw new Error(
-      "useUserContext must be used within a userContextProvider. Make sure your component is wrapped in userContextProvider."
+      "useUserContext must be used within a UserContextProvider. Make sure your component is wrapped in UserContextProvider."
     );
   }
   return context;
