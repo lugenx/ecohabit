@@ -3,7 +3,7 @@ import { createContext, useState, useContext, useEffect } from "react";
 const UserContext = createContext();
 
 const UserContextProvider = (props) => {
-  const [user, setUser] = useState("Victor");
+  const [user, setUser] = useState("");
   const [token, setToken] = useState(() => {
     const tokenValue = localStorage.getItem("token");
     return tokenValue;
