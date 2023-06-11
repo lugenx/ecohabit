@@ -30,7 +30,6 @@ const UserContextProvider = (props) => {
         }
       };
       fetchUserData();
-      // console.log("fetching user data");
     }
   }, [token]);
 

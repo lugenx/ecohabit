@@ -17,15 +17,6 @@ import {
 } from "@mui/material";
 
 const ProfilePage = () => {
-  // TEMPORARY: PLACEHOLDER DATA
-  // const [user, setUser] = useState({
-  //   name: "Ralph Macchio",
-  //   email: "thekaratekid@gmail.com",
-  //   createdAt: "02/24/2023",
-  //   postalCode: "02116",
-  //   roles: [],
-  // });
-
   const { loginPending, loggedIn } = useLoginContext();
   const { user, setUser, error } = useUserContext();
   const navigate = useNavigate();
