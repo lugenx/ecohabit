@@ -49,9 +49,10 @@ If you prefer the command line way of downloading and installing things, then fe
   ##### `git clone https://github.com/lugenx/ecohabit.git`
 - Open the cloned folder in VS Code. Open the terminal and make sure its pointing to the root of the cloned project.
 
-- Running Backend Nods JS Application:
+- Running Backend Node JS Application:
 
-  - Change the directory to server folder using terminal command: cd server
+  - Change the directory to server folder using terminal command: `cd server`
+  - At the root of the server directory, create an .env file and copy the content from .env.example into the new .env file. 
   - In the server directory, you can run:
 
   ##### `npm install`
@@ -65,7 +66,7 @@ If you prefer the command line way of downloading and installing things, then fe
 
 - Running Frontend React JS Application:
 
-  - Change the directory to server folder using terminal command: cd client
+  - Change the directory to client folder using terminal command: `cd client`
   - In the client directory, you can run:
 
   ##### `npm install`

@@ -7,7 +7,7 @@ import Typography from "@mui/material/Typography";
 
 export default function BasicCard({ recyclingCenter }) {
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ width: 450, height: 200, position: "relative" }}>
       <CardContent>
         <Typography variant="h5" component="div">
           {recyclingCenter.description}
@@ -21,7 +21,7 @@ export default function BasicCard({ recyclingCenter }) {
           {recyclingCenter.detail.city}, {recyclingCenter.detail.province}
         </Typography>
       </CardContent>
-      <CardActions sx={{ justifyContent: "center" }}>
+      <CardActions sx={{ position: "absolute", bottom: "5%", right: "5%" }}>
         <Button size="small">
           <a href={recyclingCenter.detail.url}>Learn More</a>
         </Button>

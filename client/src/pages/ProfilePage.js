@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLoginContext } from "../contexts/LoginContext";
+import { useUserContext } from "../contexts/UserContext";
 import { useNavigate } from "react-router-dom";
 
 import {
@@ -16,16 +17,8 @@ import {
 } from "@mui/material";
 
 const ProfilePage = () => {
-  // TEMPORARY: PLACEHOLDER DATA
-  const [user, setUser] = useState({
-    name: "Ralph Macchio",
-    email: "thekaratekid@gmail.com",
-    createdAt: "02/24/2023",
-    postalCode: "02116",
-    roles: [],
-  });
-
   const { loginPending, loggedIn } = useLoginContext();
+  const { user, setUser, error } = useUserContext();
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
@@ -125,17 +118,14 @@ const ProfilePage = () => {
               </Box>
               <hr></hr>
               <Typography variant="body2" color="text.secondary">
-                <strong>Joined:</strong> {user.createdAt}
+                <strong>Joined:</strong>{" "}
+                {new Date(user.createdAt).toLocaleDateString()}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 <strong>Email:</strong> {user.email}
               </Typography>
               <Typography variant="body2" color="text.secondary">
                 <strong>Postal Code:</strong> {user.postalCode}
-              </Typography>
-              <Typography variant="body2" color="text.secondary">
-                <strong>Roles: </strong>
-                {user.roles.length ? user.roles : <em>No roles specified</em>}
               </Typography>
             </CardContent>
             <CardActions>
