@@ -21,6 +21,7 @@ import ProfilePage from "../pages/ProfilePage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import TermsConditionPage from "../pages/TermsConditionPage";
+import Demo from "../pages/Demo";
 import Logout from "../components/Login/Logout";
 
 /*
@@ -41,6 +42,7 @@ const router = createBrowserRouter(
       <Route path="/logout" element={<Logout />} />
       <Route path="/register" element={<RegisterPage />} />
       <Route path="/terms" element={<TermsConditionPage />} />
+      <Route path="/Demo" element={<Demo />} />
     </Route>
   )
 );
