@@ -15,11 +15,11 @@ This API created to simulate [Earth911 API](https://api.earth911.com/), for deve
 
 ## Differnce between real Earth911 API and Mock API:
 
-|                 | **Real API**                                                      | **Mock API**                                                                               |
-| --------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
-| **Base URL**    | `api.earth911.com`                                                | `mockapi-earth911-ecohabit.up.railway.app`                                                 |
-| **API Key**     | _Hidden and only used for deployment_                             | `dummykey`                                                                                 |
-| **Example URL** | `http://api.earth911.com/earth911.methodName?arg1=val1&arg2=val2` | `https://mockapi-earth911-ecohabit.up.railway.app/earth911.methodName?arg1=val1&arg2=val2` |
+|                 | **Real API**                                                      | **Mock API**                                                                    |
+| --------------- | ----------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| **Base URL**    | `api.earth911.com`                                                | `mockapi-earth911.ecohabit.org`                                                 |
+| **API Key**     | _Hidden and only used for deployment_                             | `dummykey`                                                                      |
+| **Example URL** | `http://api.earth911.com/earth911.methodName?arg1=val1&arg2=val2` | `https://mockapi-earth911.ecohabit.org/earth911.methodName?arg1=val1&arg2=val2` |
 
 </br>
 </br>
