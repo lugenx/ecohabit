@@ -30,6 +30,13 @@ const userSchema = new Schema(
       type: [String],
       required: false,
     },
+    // Represents habits chosen by the user, distinct from the Habit model which represents all available habits
+    habits: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Habit",
+      },
+    ],
   },
   { timestamps: true }
 );
