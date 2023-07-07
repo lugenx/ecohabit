@@ -46,12 +46,14 @@ const User = mongoose.model("User", userSchema);
 export default User;
 
 async function validateEmail(email) {
-  const user = await User.findOne({ email });
-  if (user) {
-    if (User.id === user.id) {
-      return true;
+  if (this.isModified("email")) {
+    const user = await User.findOne({ email });
+    if (user) {
+      if (this._id.equals(user._id)) {
+        return true;
+      }
+      return false;
     }
-    return false;
   }
   return true;
 }
