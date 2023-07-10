@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { login } from "../../services/auth.js";
-import { useLoginContext } from "../../contexts/LoginContext.js";
-import { useRegisterContext } from "../../contexts/RegisterContext.js";
-import Alert from "../Alert.js";
+import { login } from "../services/auth.js";
+import { useLoginContext } from "../contexts/LoginContext.js";
+import { useRegisterContext } from "../contexts/RegisterContext.js";
+import Alert from "./Alert.js";
 
 import {
   Box,

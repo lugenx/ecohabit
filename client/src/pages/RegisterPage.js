@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Stack } from "@mui/material";
-import Main from "../components/Login/Main";
-import Register from "../components/Login/Register";
+import Main from "../components/Main";
+import Register from "../components/Register";
 
 const RegisterPage = () => {
   return (

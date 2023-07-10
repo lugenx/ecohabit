@@ -11,7 +11,7 @@ import {
   Navigate,
 } from "react-router-dom";
 
-import MainLayout from "./MainLayout/MainLayout";
+import MainLayout from "./MainLayout";
 import Homepage from "../pages/Homepage";
 import LocationsPage from "../pages/LocationsPage";
 import ErrorPage from "../pages/ErrorPage";
@@ -22,7 +22,7 @@ import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 import TermsConditionPage from "../pages/TermsConditionPage";
 import Demo from "../pages/Demo";
-import Logout from "../components/Login/Logout";
+import Logout from "./Logout";
 
 /*
  * Creating routes via createBrowserRouter method makes project ready for react-router-dom 6.4 data fetching.

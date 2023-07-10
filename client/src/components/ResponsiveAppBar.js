@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useLoginContext } from "../../contexts/LoginContext.js";
+import { useLoginContext } from "../contexts/LoginContext.js";
 import { Adb as AdbIcon, Menu as MenuIcon } from "@mui/icons-material";
 import {
   AppBar,

@@ -1,8 +1,8 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
 
-import Footer from "../Footer/Footer";
-import ResponsiveAppBar from "../ResponsiveAppBar/ResponsiveAppBar";
+import Footer from "./Footer";
+import ResponsiveAppBar from "./ResponsiveAppBar";
 
 /*
  * React-router-dom navigated page builds at "Outlet" placeholder

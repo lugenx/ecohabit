@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { register } from "../../services/auth.js";
-import { useRegisterContext } from "../../contexts/RegisterContext.js";
-import Alert from "../Alert.js";
+import { register } from "../services/auth.js";
+import { useRegisterContext } from "../contexts/RegisterContext.js";
+import Alert from "./Alert.js";
 
 import {
   Box,
