@@ -1,6 +1,6 @@
 import React from "react";
-import Footer from "../components/Footer/Footer";
-import AppBar from "../components/ResponsiveAppBar/ResponsiveAppBar";
+import Footer from "../components/Footer";
+import AppBar from "../components/ResponsiveAppBar";
 
 const ErrorPage = () => {
   return (

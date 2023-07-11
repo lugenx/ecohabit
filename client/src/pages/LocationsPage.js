@@ -1,5 +1,5 @@
 import React from "react";
-import Recycle from "../components/Recycle/Recycle";
+import Recycle from "../components/Recycle";
 
 const LocationsPage = () => {
   return <Recycle />;

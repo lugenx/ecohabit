@@ -1,7 +1,7 @@
 import React from "react";
 import { Stack, Box } from "@mui/material";
-import Main from "../components/Login/Main";
-import Login from "../components/Login/Login";
+import Main from "../components/Main";
+import Login from "../components/Login";
 const LoginPage = () => {
   return (
     <Box>

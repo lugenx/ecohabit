@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Box, Button } from "@mui/material";
-import HabitCard from "../components/Habit/HabitCard";
+import HabitCard from "../components/HabitCard";
 import { useLoginContext } from "../contexts/LoginContext";
 import { useNavigate } from "react-router-dom";
-import UserHabitForm from "../components/Habit/UserHabitForm";
+import UserHabitForm from "../components/UserHabitForm";
 
 const Homepage = () => {
   // Habits from server
