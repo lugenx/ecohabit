@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Box, Button } from "@mui/material";
-import HabitCard from "../components/HabitCard";
 import { useLoginContext } from "../contexts/LoginContext";
 import { useNavigate } from "react-router-dom";
 import UserHabitForm from "../components/UserHabitForm";
+import HabitCard from "../components/HabitCard";
+import Weekbar from "../components/WeekBar";
 
 const Homepage = () => {
   // Habits from server
@@ -73,6 +74,7 @@ const Homepage = () => {
         padding: 3,
       }}
     >
+      <Weekbar />
       {/* Main Grid */}
       <Grid container spacing={3}>
         {/* Left inner grid */}
