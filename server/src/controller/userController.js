@@ -249,6 +249,19 @@ const removeHabit = async (req, res) => {
   }
 };
 
+const userHabit = async (req, res) => {
+  try {
+    // get user id from URL Parameters
+    const userId = req.params["userId"];
+    const user = await User.findById(userId);
+    
+    const habits = (await user.populate("habits")).habits;
+    res.status(200).json(habits);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+};
+
 export {
   userLogin,
   userSignUp,
@@ -257,4 +270,5 @@ export {
   deleteMe,
   addHabit,
   removeHabit,
+  userHabit,
 };
