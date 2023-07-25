@@ -76,8 +76,8 @@ const Weekbar = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "space-evenly",
-                width: isDesktop ? "55px" : "44px",
-                height: isDesktop ? "55px" : "44px",
+                width: isDesktop ? "55px" : "40px",
+                height: isDesktop ? "55px" : "40px",
                 padding: 2.25,
                 margin: 0.25,
               }}

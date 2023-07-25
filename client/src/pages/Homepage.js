@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Grid, Box, Button } from "@mui/material";
+import { Grid, Box, Button, Typography } from "@mui/material";
 import { useLoginContext } from "../contexts/LoginContext";
 import { useNavigate } from "react-router-dom";
 import UserHabitForm from "../components/UserHabitForm";
@@ -16,6 +16,7 @@ const Homepage = () => {
   const navigate = useNavigate();
 
   // Store categories in an array
+  // 5 Categories: (Recycle, Commute, Water, Energy, and Food)
   const habitCategories = habits.map((habit) => habit.category);
   // Remove duplicate categories from array
   const categories = [...new Set(habitCategories)];
@@ -75,43 +76,49 @@ const Homepage = () => {
       }}
     >
       <Weekbar />
+      <Typography
+        gutterBottom
+        variant="h5"
+        component="div"
+        color="text.secondary"
+        sx={{ textAlign: "center", mt: 3 }}
+      >
+        {myHabits.length ? "Today's habits" : "You're not tracking any habits"}
+      </Typography>
+      {/* Add habits form */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+        }}
+      >
+        {!showHabitForm && (
+          <Button
+            size="large"
+            variant="outlined"
+            onClick={toggleForm}
+            sx={{ mt: 3 }}
+          >
+            Track habit
+          </Button>
+        )}
+        {showHabitForm && (
+          <UserHabitForm
+            toggleForm={toggleForm}
+            categories={categories}
+            onAdd={addHabit}
+            onRemove={removeHabit}
+            habits={habits}
+            myHabits={myHabits}
+          />
+        )}
+      </Box>
       {/* Main Grid */}
       <Grid container spacing={3}>
-        {/* Left inner grid */}
-        <Grid item xs={12} sm={4}>
-          {/* Add habits form */}
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "center",
-              alignItems: "center",
-              width: "100%",
-            }}
-          >
-            {!showHabitForm && (
-              <Button
-                size="large"
-                variant="outlined"
-                onClick={toggleForm}
-                sx={{ mt: 3 }}
-              >
-                Add a Habit
-              </Button>
-            )}
-            {showHabitForm && (
-              <UserHabitForm
-                toggleForm={toggleForm}
-                categories={categories}
-                onAdd={addHabit}
-                habits={habits}
-                myHabits={myHabits}
-              />
-            )}
-          </Box>
-        </Grid>
-        <Grid item xs={12} sm={8}>
-          {/* Right inner grid */}
+        <Grid item>
           <Grid
             container
             sx={{ mt: 3 }}
@@ -121,8 +128,8 @@ const Homepage = () => {
             alignItems="center"
           >
             {myHabits.map((habit, index) => (
-              <Grid key={index} item>
-                <HabitCard habit={habit} removeHabit={removeHabit} />
+              <Grid key={index} item sx={{ width: "320px" }}>
+                <HabitCard habit={habit} />
               </Grid>
             ))}
           </Grid>
