@@ -78,11 +78,13 @@ const Login = () => {
       }
     } catch (error) {
       console.log(error);
+      setLoginFailMessage(
+        "An unexpected error occurred - please try again later"
+      );
     } finally {
       clearData();
       setLoginPending(false);
     }
-    
   };
 
   useEffect(() => {
