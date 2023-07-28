@@ -30,11 +30,6 @@ const ProfilePage = () => {
 
   const [showForm, setShowForm] = useState(false);
 
-  useEffect(() => {
-    if (!loginPending && !loggedIn) {
-      navigate("/login");
-    }
-  });
   // Clears all form fields and opens/closes form modal
   const toggleForm = () => {
     setFormData({

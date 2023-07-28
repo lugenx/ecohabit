@@ -18,6 +18,7 @@ import {
 } from "@mui/material";
 
 import styled from "@emotion/styled";
+import { useUserContext } from "../contexts/UserContext.js";
 
 const LoginBox = styled(Box)(({ theme }) => ({
   bgcolor: "white",
@@ -38,6 +39,7 @@ const Login = () => {
     loginFailMessage,
     setLoginFailMessage,
   } = useLoginContext();
+  const { setUser } = useUserContext()
 
   const { registerSuccessMessageVisible, setRegisterSuccessMessageVisible } =
     useRegisterContext();
@@ -69,6 +71,7 @@ const Login = () => {
       const responseStatus = await login(loginData);
 
       if (responseStatus === 200) {
+        setUser({})  // store user in state because user is checked to determine private route access
         setLoggedIn(true);
         navigate("/");
       } else if (responseStatus === 403) {

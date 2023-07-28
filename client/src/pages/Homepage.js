@@ -26,14 +26,6 @@ const Homepage = () => {
 
   const token = localStorage.getItem("token");
 
-  useEffect(() => {
-    if (!loginPending && !loggedIn && !token) {
-      navigate("/login");
-    } else {
-      setLoggedIn(true);
-    }
-  }, []);
-
   // Fetch all habits from back end
   const getAllHabits = async () => {
     const config = {
