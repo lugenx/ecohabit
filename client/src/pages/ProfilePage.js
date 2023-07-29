@@ -1,7 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useLoginContext } from "../contexts/LoginContext";
+import React, { useState, } from "react";
 import { useUserContext } from "../contexts/UserContext";
-import { useNavigate } from "react-router-dom";
 
 import {
   Card,
@@ -17,9 +15,7 @@ import {
 } from "@mui/material";
 
 const ProfilePage = () => {
-  const { loginPending, loggedIn } = useLoginContext();
-  const { user, setUser, error } = useUserContext();
-  const navigate = useNavigate();
+  const { user, setUser } = useUserContext();
 
   const [formData, setFormData] = useState({
     name: "",

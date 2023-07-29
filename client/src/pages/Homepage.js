@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Grid, Box, Button, Typography } from "@mui/material";
-import { useLoginContext } from "../contexts/LoginContext";
-import { useNavigate } from "react-router-dom";
 import UserHabitForm from "../components/UserHabitForm";
 import HabitCard from "../components/HabitCard";
 import Weekbar from "../components/WeekBar";
@@ -12,8 +10,6 @@ const Homepage = () => {
   // User specific habits
   const [myHabits, setMyHabits] = useState([]);
   const [showHabitForm, setShowHabitForm] = useState(false);
-  const { loginPending, loggedIn, setLoggedIn } = useLoginContext();
-  const navigate = useNavigate();
 
   // Store categories in an array
   // 5 Categories: (Recycle, Commute, Water, Energy, and Food)
