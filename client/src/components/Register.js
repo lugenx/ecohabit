@@ -26,7 +26,7 @@ const RegisterBox = styled(Box)(({ theme }) => ({
   maxWidth: "40rem",
 }));
 
-const Register = () => {
+const Register = ({ toggleForm }) => {
   const {
     registerData,
     setRegisterData,
@@ -76,7 +76,9 @@ const Register = () => {
       }
     } catch (error) {
       console.error(error);
-      setRegisterFailMessage("Something went wrong");
+      setRegisterFailMessage(
+        "An unexpected error occurred - please try again later"
+      );
     } finally {
       clearData();
     }
@@ -201,7 +203,8 @@ const Register = () => {
           </Paper>
           <Typography color="#7e7e7e" component="div">
             <center>
-              Already have an account? <Link to="/login">Sign in</Link>
+              Already have an account?
+              <Button onClick={toggleForm}>Sign in</Button>
             </center>
           </Typography>
         </Box>

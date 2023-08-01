@@ -11,7 +11,7 @@ const register = async (userData) => {
 
     return response;
   } catch (error) {
-    return error;
+    return Promise.reject(error);
   }
 };
 
@@ -32,7 +32,7 @@ const login = async (userData) => {
 
     return response.status;
   } catch (error) {
-    return error;
+    return Promise.reject(error);
   }
 };
 
