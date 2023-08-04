@@ -29,7 +29,7 @@ const LoginBox = styled(Box)(({ theme }) => ({
   maxWidth: "40rem",
 }));
 
-const Login = () => {
+const Login = ({ toggleForm }) => {
   const {
     loginData,
     setLoginData,
@@ -78,11 +78,13 @@ const Login = () => {
       }
     } catch (error) {
       console.log(error);
+      setLoginFailMessage(
+        "An unexpected error occurred - please try again later"
+      );
     } finally {
       clearData();
       setLoginPending(false);
     }
-    
   };
 
   useEffect(() => {
@@ -180,7 +182,7 @@ const Login = () => {
           </Paper>
           <Typography color="#7e7e7e" component="div">
             <center>
-              Are you new here ? <Link to="/register">Sign Up</Link>
+              Are you new here ? <Button onClick={toggleForm}>Sign Up</Button>
             </center>
           </Typography>
         </Box>
