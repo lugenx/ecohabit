@@ -1,0 +1,70 @@
+#!/usr/bin/env node
+
+const { execSync } = require("child_process");
+const { existsSync, promises: fsPromises } = require("fs");
+const { join, resolve } = require("path");
+
+const excludedDirs = ["node_modules"];
+
+const getAllJsFiles = async (dir) => {
+  const getFilesRecursively = async (currentDir) => {
+    const files = await fsPromises.readdir(currentDir);
+    let jsFiles = [];
+
+    for (const file of files) {
+      const filePath = join(currentDir, file);
+      const fileStat = await fsPromises.stat(filePath);
+
+      if (fileStat.isDirectory() && !excludedDirs.includes(file)) {
+        jsFiles.push(...(await getFilesRecursively(filePath)));
+      } else if (file.endsWith(".js")) {
+        jsFiles.push(filePath);
+      }
+    }
+
+    return jsFiles;
+  };
+
+  try {
+    return await getFilesRecursively(dir);
+  } catch (error) {
+    console.error("Error occurred while getting JS files:", error.message);
+    throw error;
+  }
+};
+
+const runPrettierOnAllJsFiles = async () => {
+  try {
+    const projectDir = resolve(process.cwd());
+    const allJsFiles = await getAllJsFiles(projectDir);
+
+    console.log("Code formatting...");
+
+    if (allJsFiles.length > 0) {
+      let prettierCmd = "npx prettier";
+      const localPrettierPath = resolve(projectDir, "node_modules/.bin/prettier");
+      if (existsSync(localPrettierPath)) {
+        prettierCmd = localPrettierPath;
+      }
+
+      prettierCmd += ` --config ${resolve(projectDir, ".prettierrc.json")} --write ${allJsFiles.join(" ")}`;
+
+      execSync(prettierCmd, { stdio: "inherit" });
+
+      console.log("Prettier formatting applied to all JS files.");
+
+      const gitAddCmd = `git add ${allJsFiles.join(" ")}`;
+      execSync(gitAddCmd);
+
+      console.log("Staged all JS files.");
+    } else {
+      console.log("No JS files found in the repository.");
+    }
+  } catch (error) {
+    console.error("An error occurred during Prettier execution:", error.message);
+    process.exit(1);
+  }
+};
+
+runPrettierOnAllJsFiles();
+

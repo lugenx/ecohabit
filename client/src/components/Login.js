@@ -82,7 +82,6 @@ const Login = () => {
       clearData();
       setLoginPending(false);
     }
-    
   };
 
   useEffect(() => {
