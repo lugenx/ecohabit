@@ -32,17 +32,8 @@ const Homepage = () => {
   // getting user specific habits from backend
   const getMyHabits = async () => {
     try {
-      const config = {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const response = await fetch(
-        `${API_URL}/user/${user.id}/userHabit`,
-        config
-      );
-      const data = await response.json();
-      setMyHabits(data)
+      const habitIds = user.habits;
+      setMyHabits(habits.filter((habit) => habitIds.includes(habit._id)))
     } catch (error) {
       console.log(error);
     }
@@ -102,7 +93,7 @@ const Homepage = () => {
         setMyHabits([...myHabits, habit]);
         return;
       }
-     
+
     } catch (err) {
       console.log(err);
     }

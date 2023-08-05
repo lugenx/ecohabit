@@ -8,7 +8,6 @@ import {
   deleteMe,
   addHabit,
   removeHabit,
-  userHabit,
 } from "../controller/userController.js";
 const userRouter = Router();
 
@@ -19,6 +18,5 @@ userRouter.patch("/me", verifyToken, updateMe);
 userRouter.delete("/me", verifyToken, deleteMe);
 userRouter.post("/:userId/myhabits/:habitId", verifyToken, addHabit);
 userRouter.delete("/:userId/myhabits/:habitId", verifyToken, removeHabit);
-userRouter.get("/:userId/userHabit", verifyToken, userHabit);
 
 export default userRouter;

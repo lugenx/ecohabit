@@ -92,7 +92,7 @@ const getMe = async (req, res) => {
     // Check if user exists
     if (!user) return res.status(401).json({ msg: "User does not exist" });
 
-    const { _id, name, email, postalCode, roles, createdAt } =
+    const { _id, name, email, postalCode, roles, habits, createdAt } =
       await User.findById(user.id);
 
     res.status(200).json({
@@ -101,6 +101,7 @@ const getMe = async (req, res) => {
       email,
       postalCode,
       roles,
+      habits,
       createdAt,
     });
   } catch (err) {
@@ -249,19 +250,6 @@ const removeHabit = async (req, res) => {
   }
 };
 
-const userHabit = async (req, res) => {
-  try {
-    // get user id from URL Parameters
-    const userId = req.params["userId"];
-    const user = await User.findById(userId);
-    
-    const habits = (await user.populate("habits")).habits;
-    res.status(200).json(habits);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-};
-
 export {
   userLogin,
   userSignUp,
@@ -270,5 +258,4 @@ export {
   deleteMe,
   addHabit,
   removeHabit,
-  userHabit,
 };
