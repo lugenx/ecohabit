@@ -27,10 +27,10 @@ const login = async (userData) => {
     );
 
     const json = await response.json();
-    const token = await json.token;
+    const { token, user } = json;
     localStorage.setItem("token", token);
 
-    return response.status;
+    return { responseStatus: response.status, user };
   } catch (error) {
     return Promise.reject(error);
   }
