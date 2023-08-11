@@ -40,10 +40,10 @@ const Homepage = () => {
   };
 
   useEffect(() => {
-    if (loggedIn && user !== undefined && token !== undefined) {
+    if (user !== undefined && token !== undefined && habits) {
       getMyHabits();
     }
-  }, [user]);
+  }, [user, habits]);
 
   useEffect(() => {
     if (!loginPending && !loggedIn && !token) {
