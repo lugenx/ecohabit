@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { login } from "../services/auth.js";
 import { useLoginContext } from "../contexts/LoginContext.js";
 import { useRegisterContext } from "../contexts/RegisterContext.js";
+import { useUserContext } from "../contexts/UserContext.js"
 import Alert from "./Alert.js";
 
 import {
@@ -42,6 +43,8 @@ const Login = ({ toggleForm }) => {
   const { registerSuccessMessageVisible, setRegisterSuccessMessageVisible } =
     useRegisterContext();
 
+    const { setUser } = useUserContext()
+
   const navigate = useNavigate();
 
   const clearData = () => {
@@ -66,11 +69,12 @@ const Login = ({ toggleForm }) => {
     e.preventDefault();
     setLoginPending(true);
     try {
-      const responseStatus = await login(loginData);
+      const { responseStatus, user } = await login(loginData);
 
       if (responseStatus === 200) {
+        setUser(user)  // store user in state because user is checked to determine private route access
         setLoggedIn(true);
-        navigate("/");
+        navigate("/", { state:user }); // store user in route state because "/" route will render with the old user state at this point
       } else if (responseStatus === 403) {
         setLoginFailMessage("User does not exist");
       } else if (responseStatus === 400) {
