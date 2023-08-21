@@ -11,7 +11,7 @@ const Homepage = () => {
   // Habits from server
   const [habits, setHabits] = useState([]);
   // user data
-  const { user } = useUserContext();
+  const { user, setUser } = useUserContext();
   // User specific habits
   const [myHabits, setMyHabits] = useState([]);
   const [showHabitForm, setShowHabitForm] = useState(false);
@@ -28,22 +28,6 @@ const Homepage = () => {
   const API_URL = process.env.REACT_APP_API_URL;
 
   const token = localStorage.getItem("token");
-
-  // getting user specific habits from backend
-  const getMyHabits = async () => {
-    try {
-      const habitIds = user.habits;
-      setMyHabits(habits.filter((habit) => habitIds.includes(habit._id)))
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    if (user !== undefined && token !== undefined && habits) {
-      getMyHabits();
-    }
-  }, [user, habits]);
 
   useEffect(() => {
     if (!loginPending && !loggedIn && !token) {
@@ -62,12 +46,16 @@ const Homepage = () => {
     };
     const response = await fetch(API_URL + "/habit", config);
     const data = await response.json();
+    const habitIds = user.habits;
+    setMyHabits(data.filter((habit) => habitIds.includes(habit._id)));
     setHabits(data);
   };
 
   useEffect(() => {
-    getAllHabits();
-  }, []);
+    if (user) {
+      getAllHabits();
+    }
+  }, [user]);
 
   // Close/open HabitForm
   const toggleForm = () => {
@@ -90,10 +78,10 @@ const Homepage = () => {
         },
       });
       if (response.ok) {
+        setUser({ ...user, habits: [...user.habits, habit._id] });
         setMyHabits([...myHabits, habit]);
         return;
       }
-
     } catch (err) {
       console.log(err);
     }
@@ -111,6 +99,10 @@ const Homepage = () => {
         },
       });
       if (response.ok) {
+        setUser({
+          ...user,
+          habits: user.habits.filter((habitId) => habitId !== id),
+        });
         setMyHabits(myHabits.filter((habit) => habit._id !== id));
         return;
       }
