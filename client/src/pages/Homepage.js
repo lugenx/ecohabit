@@ -38,22 +38,22 @@ const Homepage = () => {
   }, []);
 
   // Fetch all habits from back end
-  const getAllHabits = async () => {
+  const syncHabits = async () => {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
     const response = await fetch(API_URL + "/habit", config);
-    const data = await response.json();
-    const habitIds = user.habits;
-    setMyHabits(data.filter((habit) => habitIds.includes(habit._id)));
-    setHabits(data);
+    const allHabits = await response.json();
+    const myHabitIds = user.habits;
+    setMyHabits(allHabits.filter((habit) => myHabitIds.includes(habit._id)));
+    setHabits(allHabits);
   };
 
   useEffect(() => {
     if (user) {
-      getAllHabits();
+      syncHabits();
     }
   }, [user]);
 
