@@ -5,10 +5,13 @@ import { useNavigate } from "react-router-dom";
 import UserHabitForm from "../components/UserHabitForm";
 import HabitCard from "../components/HabitCard";
 import Weekbar from "../components/WeekBar";
+import { useUserContext } from "../contexts/UserContext";
 
 const Homepage = () => {
   // Habits from server
   const [habits, setHabits] = useState([]);
+  // user data
+  const { user, setUser } = useUserContext();
   // User specific habits
   const [myHabits, setMyHabits] = useState([]);
   const [showHabitForm, setShowHabitForm] = useState(false);
@@ -35,20 +38,24 @@ const Homepage = () => {
   }, []);
 
   // Fetch all habits from back end
-  const getAllHabits = async () => {
+  const syncHabits = async () => {
     const config = {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     };
     const response = await fetch(API_URL + "/habit", config);
-    const data = await response.json();
-    setHabits(data);
+    const allHabits = await response.json();
+    const myHabitIds = user.habits;
+    setMyHabits(allHabits.filter((habit) => myHabitIds.includes(habit._id)));
+    setHabits(allHabits);
   };
 
   useEffect(() => {
-    getAllHabits();
-  }, []);
+    if (user) {
+      syncHabits();
+    }
+  }, [user]);
 
   // Close/open HabitForm
   const toggleForm = () => {
@@ -56,17 +63,52 @@ const Homepage = () => {
   };
 
   // Add new habit
-  const addHabit = (habit) => {
+  const addHabit = async (habit) => {
     // Check if habit already exists
     if (myHabits.some((item) => item._id === habit._id)) {
       return;
     }
-    setMyHabits([...myHabits, habit]);
+    try {
+      const HABIT_URL = `${API_URL}/user/${user.id}/myhabits/${habit._id}`;
+      const response = await fetch(HABIT_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.ok) {
+        setUser({ ...user, habits: [...user.habits, habit._id] });
+        setMyHabits([...myHabits, habit]);
+        return;
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   // Remove a habit
-  const removeHabit = (id) => {
-    setMyHabits(myHabits.filter((habit) => habit._id !== id));
+  const removeHabit = async (id) => {
+    try {
+      const HABIT_DEL_URL = `${API_URL}/user/${user.id}/myhabits/${id}`;
+      const response = await fetch(HABIT_DEL_URL, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.ok) {
+        setUser({
+          ...user,
+          habits: user.habits.filter((habitId) => habitId !== id),
+        });
+        setMyHabits(myHabits.filter((habit) => habit._id !== id));
+        return;
+      }
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

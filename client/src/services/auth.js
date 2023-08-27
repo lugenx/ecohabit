@@ -30,7 +30,10 @@ const login = async (userData) => {
     const token = await json.token;
     localStorage.setItem("token", token);
 
-    return response.status;
+    return {
+      status: response.status,
+      data: json,
+    };
   } catch (error) {
     return Promise.reject(error);
   }

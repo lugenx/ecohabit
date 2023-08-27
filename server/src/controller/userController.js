@@ -92,7 +92,7 @@ const getMe = async (req, res) => {
     // Check if user exists
     if (!user) return res.status(401).json({ msg: "User does not exist" });
 
-    const { _id, name, email, postalCode, roles, createdAt } =
+    const { _id, name, email, postalCode, roles, habits, createdAt } =
       await User.findById(user.id);
 
     res.status(200).json({
@@ -101,6 +101,7 @@ const getMe = async (req, res) => {
       email,
       postalCode,
       roles,
+      habits,
       createdAt,
     });
   } catch (err) {

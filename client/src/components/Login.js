@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login } from "../services/auth.js";
+import { useUserContext } from "../contexts/UserContext.js";
 import { useLoginContext } from "../contexts/LoginContext.js";
 import { useRegisterContext } from "../contexts/RegisterContext.js";
 import Alert from "./Alert.js";
@@ -30,6 +31,8 @@ const LoginBox = styled(Box)(({ theme }) => ({
 }));
 
 const Login = ({ toggleForm }) => {
+  const { setToken } = useUserContext();
+
   const {
     loginData,
     setLoginData,
@@ -66,10 +69,13 @@ const Login = ({ toggleForm }) => {
     e.preventDefault();
     setLoginPending(true);
     try {
-      const responseStatus = await login(loginData);
+      const response = await login(loginData);
+      const responseStatus = response.status;
+      const token = await response.data.token;
 
       if (responseStatus === 200) {
         setLoggedIn(true);
+        setToken(token);
         navigate("/");
       } else if (responseStatus === 403) {
         setLoginFailMessage("User does not exist");
