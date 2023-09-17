@@ -16,6 +16,7 @@
 - crowdfunding feature to donate to environmental charities
 - fun facts about the environment
 - a forum
+- a weekly/monthly challenge and scoreboard
 
 
 - Since the platform is about recycling, we can have a section for popular articles related to the subject.
