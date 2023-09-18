@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { register } from "../services/auth.js";
 import { useRegisterContext } from "../contexts/RegisterContext.js";
 import Alert from "./Alert.js";
@@ -38,7 +38,6 @@ const Register = ({ toggleForm }) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
   const [err, setErr] = useState("");
-  const navigate = useNavigate();
 
   const clearData = () => {
     setRegisterData((prevState) => ({ ...prevState, password: "" }));
@@ -67,8 +66,9 @@ const Register = ({ toggleForm }) => {
     }
     try {
       const res = await register(registerData);
+
       if (res.status === 201) {
-        navigate("/login");
+        toggleForm();
         setRegisterSuccessMessageVisible(true);
       } else if (res.status === 400) {
         const json = await res.json();
