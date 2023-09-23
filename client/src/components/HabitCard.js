@@ -9,8 +9,37 @@ import {
   Typography,
 } from "@mui/material";
 
+import { useUserContext } from "../contexts/UserContext";
+const API_URL = process.env.REACT_APP_API_URL;
+
 const HabitCard = ({ habit }) => {
   let habitCategory = habit.category.toLowerCase();
+
+  const { user, token } = useUserContext();
+  // select an answer from habit options
+  const createAnswer = async (selectedOption) => {
+    try {
+      const URL = `${API_URL}/answer`;
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          answer: selectedOption,
+          user: user.id,
+          habit: habit.id,
+        }),
+      });
+      if (response.ok) {
+        // do something with recorded answer
+        return;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -59,7 +88,7 @@ const HabitCard = ({ habit }) => {
         }}
       >
         {habit.answerOptions.map((option, index) => (
-          <Button size="small" key={index}>
+          <Button size="small" key={index} onClick={() => createAnswer(option)}>
             {option}
           </Button>
         ))}
