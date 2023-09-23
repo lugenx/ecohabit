@@ -11,7 +11,7 @@ const Homepage = () => {
   // Habits from server
   const [habits, setHabits] = useState([]);
   // user data
-  const { user, setUser } = useUserContext();
+  const { user, setUser, token } = useUserContext();
   // User specific habits
   const [myHabits, setMyHabits] = useState([]);
   const [showHabitForm, setShowHabitForm] = useState(false);
@@ -26,8 +26,6 @@ const Homepage = () => {
 
   /* TEMPORARY: Move to separate folder with other requests when implementing state management */
   const API_URL = process.env.REACT_APP_API_URL;
-
-  const token = localStorage.getItem("token");
 
   useEffect(() => {
     if (!loginPending && !loggedIn && !token) {
