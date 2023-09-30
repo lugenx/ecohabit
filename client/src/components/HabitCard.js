@@ -72,7 +72,7 @@ const HabitCard = ({ habit }) => {
   };
 
   useEffect(() => {
-    // TODO: Fetch current answer (with habit id?), so answers persist in between renders.
+    // TODO: Fetch todays answers and setAnswer
   });
 
   return (
