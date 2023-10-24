@@ -23,10 +23,9 @@ It will visualize users' habits by tracking their activities (recycling, commuti
 
 It also targets to be users' go-to place to find the closest recycling locations and give them clear instructions about how to divide and recycle each material.
 
-
 ## Tech Stack
 
-*   **Front End:** [React](https://reactjs.org/), [Material UI](https://mui.com/) (JavaScript)
+*   **Frontend:** [React](https://reactjs.org/), [Material UI](https://mui.com/) (JavaScript)
 *   **Backend:** [NodeJS](https://nodejs.org/en/docs)/[ExpressJS](https://expressjs.com/) (JavaScript)
 *   **Database:** [MongoDB](https://www.mongodb.com/docs/)
 
@@ -43,7 +42,7 @@ It also targets to be users' go-to place to find the closest recycling locations
 
 If you prefer the command line way of downloading and installing things, then feel free to do so. Otherwise, the instructions above should get you up and running.
 
-### How to run
+### How to Run
 
 - Clone the repository for this project by running the following command in a terminal: 
   ##### `git clone https://github.com/lugenx/ecohabit.git`
@@ -87,7 +86,7 @@ If you prefer the command line way of downloading and installing things, then fe
 
 ## Contribute
 
-- ECOHABIT appreciates your contribution in any aspects of project development like documenting, UI/UX design, Frontend/Backend development etc.
+- EcoHabit appreciates your contribution in any aspects of project development like documenting, UI/UX design, Frontend/Backend development etc.
 - Please try and follow below guidelines while creating a new PR:
   - Keep the PR size smaller(max 8 files).
   - Each PR should be atomic in nature and should be focused on single issue only.
@@ -95,10 +94,10 @@ If you prefer the command line way of downloading and installing things, then fe
   - If there's no existing Issue for which PR needs to be raised, first create an Issue in the project and then wait for it to get assigned.
   - Before starting work on a new pull request, make sure you have been assigned to the related issue. To get assigned, please comment on the issue.
   - Naming conventions and folder structure shall remain consistent.
-- If you have some GIT experience but do not know how to contribute on a team project, we have a [beginner friendly guide](CONTRIBUTING.md)
+- If you have some Git experience but do not know how to contribute on a team project, we have a [beginner friendly guide](CONTRIBUTING.md)
 
 ## Discuss
 
-We are always looking for new members to join our community. One way to get involved is by joining our [Discord server](https://discord.gg/2RMs6zWw4b). On Discord, you can discuss the project, ask questions, and receive support from other members of the community.
+We are always looking for new members to join our community. One way to get involved is by joining our [Discord server](https://discord.gg/2RMs6zWw4b). On Discord, you can discuss the project, ask questions and receive support from other members of the community.
 
 [![Discord Shield](https://discordapp.com/api/guilds/1038198557150285914/widget.png?style=shield)](https://discord.gg/2RMs6zWw4b)
