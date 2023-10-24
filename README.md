@@ -21,7 +21,7 @@ EcoHabit is a web app project that aims to create awareness of the environment a
 
 It will visualize users' habits by tracking their activities (recycling, commuting, eating, etc.) and encourage them to improve their habits with better alternative options.
 
-It also aims to become users' preferred destination for locating the nearest recycling centers while providing them with concise instructions on how to sort and recycle various materials.
+It also targets to be users' go-to place to find the closest recycling locations and give them clear instructions about how to divide and recycle each material.
 
 ## Tech Stack
 
