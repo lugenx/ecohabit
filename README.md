@@ -49,18 +49,21 @@ If you prefer the command line way of downloading and installing things, then fe
 - Open the cloned folder in VS Code. Open the terminal and make sure its pointing to the root of the cloned project.
 
 
-- Database creation
+- Create Database for development use:
+
   - Create a mongodb account through the [MongoDB Website](https://www.mongodb.com)
   - Create a cluster (by default is Cluster0 which can be used)
-  - Once the cluster is up, you need to click on the 'Connect' tab and follow the drivers section to retrieve the mongodb connection url and save it for the next steps
+  - Once the cluster is up, you need to click on the 'Connect' tab
+  - Follow the drivers section to retrieve the mongodb connection url and save it for the next steps
+  - Connection url - mongodb+srv://<username>:<password>@cluster0.xqzlrqf.mongodb.net/<databasename>?retryWrites=true&w=majority
+  - Replace the username and password you used for the mongo db account and put a databasename (eg. ecohabit)
 
-<br>
 
-- Running Backend Node JS Application:
+- Run the backend NodeJS application:
 
   - Change the directory to server folder using terminal command: `cd server`
   - At the root of the server directory, create an .env file and copy the content from .env.example into the new .env file. 
-  - update the 'MONGODB_URL' property in the .env file with the mongodb connection url saved during Database creation
+  - Update the 'MONGODB_URL' property in the .env file with the mongodb connection url saved
   - In the server directory, you can run:
 
   ##### `npm install`
@@ -91,9 +94,10 @@ If you prefer the command line way of downloading and installing things, then fe
 
 - Insert habit dummy data:
 
-  - Go back to the MongoDB website to your project you created.
-  - You will see a 'test' collection populated
-  - Inside 'test', you will find 'habit' as a subcollection, open it and you can insert the below dummy documents
+  - Go back to the MongoDB website to your project.
+  - The collection with the databasename you provided will be present (created when you started the server app)
+  - Inside the collection, you will find 'habits' as a subcollection
+  - Open it and you can insert the below dummy documents
 
 ```
 {
