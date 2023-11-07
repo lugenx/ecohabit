@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardActions,
@@ -9,8 +9,71 @@ import {
   Typography,
 } from "@mui/material";
 
+import { useUserContext } from "../contexts/UserContext";
+const API_URL = process.env.REACT_APP_API_URL;
+
 const HabitCard = ({ habit }) => {
+  const [answer, setAnswer] = useState(null);
+
   let habitCategory = habit.category.toLowerCase();
+  const { user, token } = useUserContext();
+  // select an answer from habit options
+  const createAnswer = async (selectedOption) => {
+    try {
+      const URL = `${API_URL}/answer`;
+      const response = await fetch(URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+          answer: selectedOption,
+          user: user.id,
+          habit: habit._id,
+        }),
+      });
+      if (response.ok) {
+        const responseAnswer = await response.json();
+        setAnswer(responseAnswer);
+
+        return;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const removeAnswer = async (id) => {
+    try {
+      const URL = `${API_URL}/answer/${id}`;
+      const response = await fetch(URL, {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.ok) {
+        setAnswer(null);
+        return;
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const toggleAnswer = (opt) => {
+    if (!answer) {
+      createAnswer(opt);
+    } else {
+      removeAnswer(answer._id);
+    }
+  };
+
+  useEffect(() => {
+    // TODO: Fetch todays answers and setAnswer
+  });
 
   return (
     <Card sx={{ maxWidth: 345 }}>
@@ -59,7 +122,14 @@ const HabitCard = ({ habit }) => {
         }}
       >
         {habit.answerOptions.map((option, index) => (
-          <Button size="small" key={index}>
+          <Button
+            disabled={answer && answer.answer !== option}
+            size="small"
+            key={index}
+            onClick={() => {
+              toggleAnswer(option);
+            }}
+          >
             {option}
           </Button>
         ))}
