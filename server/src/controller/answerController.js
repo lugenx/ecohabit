@@ -39,6 +39,11 @@ const getAnswer = async (req, res) => {
       return res.status(403).json({ error: "Access denied" });
     }
 
+    const { date } = req.query;
+    if(date) {
+      return getAnswerByDate(req, res, date);
+    }
+
     res.status(200).json(answer);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -92,6 +97,26 @@ const deleteAnswer = async (req, res) => {
     }
     await Answer.findOneAndDelete({ _id: id });
     res.status(200).json(answer);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+const getAnswerByDate = async (req, res, date) => {
+  try {
+    // Get the authenticated user's ID from the request object
+    const userId = req.user.id;
+
+    // Find all answers for the specified date and user ID
+    const answers = await Answer.find({
+      user: userId,
+      createdAt: {
+        $gte: new Date(date),
+        $lt: new Date(date + 'T23:59:59'),
+      },
+    });
+
+    res.status(200).json(answers);
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
