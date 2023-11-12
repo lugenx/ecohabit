@@ -55,7 +55,7 @@ If you prefer the command line way of downloading and installing things, then fe
   - Create a cluster (by default is Cluster0 which can be used)
   - Once the cluster is up, you need to click on the 'Connect' tab
   - Follow the drivers section to retrieve the mongodb connection url and save it for the next steps
-  - Connection url - mongodb+srv://<username>:<password>@cluster0.xqzlrqf.mongodb.net/<databasename>?retryWrites=true&w=majority
+  - Connection url - mongodb+srv://(username):(password)@cluster0.xqzlrqf.mongodb.net/(databasename)?retryWrites=true&w=majority
   - Replace the username and password you used for the mongo db account and put a databasename (eg. ecohabit)
 
 
