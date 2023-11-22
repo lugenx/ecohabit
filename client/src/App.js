@@ -7,7 +7,7 @@ import { UserContextProvider } from "./contexts/UserContext";
  *To avoid bloated App.js component, page routes created at Routes.js component.
  */
 
- // This is a change made by a human - one of the last of its kinds
+ // This is a change made by a human - one of the last of its kinds version 2
 
 function App() {
   return (
