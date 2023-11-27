@@ -100,33 +100,30 @@ If you prefer the command line way of downloading and installing things, then fe
   - Open it and you can insert the below dummy documents
 
 ```
-{
-  category: "Recycle",
-  description: "Reduce the amount of waste by using reusable bags!",
-  question: "Which one of these did you use today?",
-  answerOptions: ["clothbag"],
-  __v:0
-}
+  {
+    "category": "Recycle",
+    "description": "Reduce the amount of waste by using reusable bags!",
+    "question": "Which one of these did you use today?",
+    "answerOptions": ["Reusable bag", "Plastic bag", "Both", "None"]
+  }
 ```
 
 ```
-{
-  category: "Commute",
-  description: "Carpool with coworker or friends",
-  question: "How did you commute to work today?",
-  answerOptions: ["Uber", "Lyft"],
-  __v:0
-}
+  {
+    "category": "Commute",
+    "description": "Carpool with coworker or friends",
+    "question": "How did you commute to work today?",
+    "answerOptions": ["Drived", "Carpooled", "Bike", "Public Transport"]
+  }
 ```
 
 ```
-{
-  category: "Recycle",
-  description: "Separate bin for recycle stuff",
-  question: "How much did you dump today for recycle",
-  answerOptions: ["3boxes", "4boxes"],
-  __v:0
-}
+  {
+    "category": "Recycle",
+    "description": "Separate your recycble materials",
+    "question": "Did you separate your recycble materials today?",
+    "answerOptions": ["Yes", "No"]
+  }
 ```
 - Note: When you insert a document, append the above json fields to the already defined unique id in the document
 
