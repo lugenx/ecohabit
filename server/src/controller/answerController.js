@@ -39,11 +39,6 @@ const getAnswer = async (req, res) => {
       return res.status(403).json({ error: "Access denied" });
     }
 
-    const { date } = req.query;
-    if(date) {
-      return getAnswerByDate(req, res, date);
-    }
-
     res.status(200).json(answer);
   } catch (err) {
     res.status(400).json({ error: err.message });
@@ -102,19 +97,32 @@ const deleteAnswer = async (req, res) => {
   }
 };
 
-const getAnswerByDate = async (req, res, date) => {
+const getUserAnswers = async (req, res) => {
+  // Check if the user is authenticated
+  if (!req.user) {
+    return res.status(401).json({ error: "Unauthorized User" });
+  }
+
   try {
-    // Get the authenticated user's ID from the request object
     const userId = req.user.id;
 
-    // Find all answers for the specified date and user ID
-    const answers = await Answer.find({
-      user: userId,
-      createdAt: {
-        $gte: new Date(date),
-        $lt: new Date(date + 'T23:59:59'),
-      },
-    });
+    const { date } = req.query;
+    //If date parameter is provided then user's answer of that particular date will be returned
+    if (date) {
+      // Find all answers for the specified date and user ID
+      const answers = await Answer.find({
+        user: userId,
+        createdAt: {
+          $gte: new Date(date),
+          $lt: new Date(date + "T23:59:59"),
+        },
+      });
+      
+      return res.status(200).json(answers);
+    }
+
+    // Find all answers for the authenticated user
+    const answers = await Answer.find({ user: userId });
 
     res.status(200).json(answers);
   } catch (err) {
@@ -122,4 +130,4 @@ const getAnswerByDate = async (req, res, date) => {
   }
 };
 
-export { createAnswer, getAnswer, updateAnswer, deleteAnswer };
+export { createAnswer, getAnswer, updateAnswer, deleteAnswer, getUserAnswers };
