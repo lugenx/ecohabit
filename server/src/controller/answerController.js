@@ -110,11 +110,15 @@ const getUserAnswers = async (req, res) => {
     //If date parameter is provided then user's answer of that particular date will be returned
     if (date) {
       // Find all answers for the specified date and user ID
+      const startDate = new Date(date);
+      const endDate = new Date(date);
+      endDate.setUTCHours(23, 59, 59, 999);
+
       const answers = await Answer.find({
         user: userId,
         createdAt: {
-          $gte: new Date(date),
-          $lt: new Date(date + "T23:59:59"),
+          $gte: startDate,
+          $lt: endDate,
         },
       });
       
