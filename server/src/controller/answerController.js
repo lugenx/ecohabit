@@ -97,4 +97,41 @@ const deleteAnswer = async (req, res) => {
   }
 };
 
-export { createAnswer, getAnswer, updateAnswer, deleteAnswer };
+const getUserAnswers = async (req, res) => {
+  // Check if the user is authenticated
+  if (!req.user) {
+    return res.status(401).json({ error: "Unauthorized User" });
+  }
+
+  try {
+    const userId = req.user.id;
+
+    const { date } = req.query;
+    //If date parameter is provided then user's answer of that particular date will be returned
+    if (date) {
+      // Find all answers for the specified date and user ID
+      const startDate = new Date(date);
+      const endDate = new Date(date);
+      endDate.setUTCHours(23, 59, 59, 999);
+
+      const answers = await Answer.find({
+        user: userId,
+        createdAt: {
+          $gte: startDate,
+          $lt: endDate,
+        },
+      });
+      
+      return res.status(200).json(answers);
+    }
+
+    // Find all answers for the authenticated user
+    const answers = await Answer.find({ user: userId });
+
+    res.status(200).json(answers);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+};
+
+export { createAnswer, getAnswer, updateAnswer, deleteAnswer, getUserAnswers };
