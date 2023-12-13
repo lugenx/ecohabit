@@ -71,9 +71,28 @@ const HabitCard = ({ habit }) => {
     }
   };
 
+  // TODO: This is not efficient way to fetch inside each habit card, fetching will be moved to parent (Homepage) component.
   useEffect(() => {
-    // TODO: Fetch todays answers and setAnswer
-  });
+    const getTodaysAnswers = async () => {
+      try {
+        const today = new Date().toISOString().slice(0, 10);
+        const response = await fetch(`${API_URL}/answer?date=${today}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const todaysAnswers = await response.json();
+        const todaysAnswer = await todaysAnswers.find(
+          (answer) => habit._id === answer.habit
+        );
+        setAnswer(todaysAnswer);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getTodaysAnswers();
+  }, [habit]);
 
   return (
     <Card sx={{ maxWidth: 345 }}>
