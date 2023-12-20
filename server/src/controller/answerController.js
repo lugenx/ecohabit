@@ -106,7 +106,8 @@ const getUserAnswers = async (req, res) => {
   try {
     const userId = req.user.id;
 
-    const { date } = req.query;
+    const { date, lastNDays } = req.query;
+
     //If date parameter is provided then user's answer of that particular date will be returned
     if (date) {
       // Find all answers for the specified date and user ID
@@ -121,7 +122,19 @@ const getUserAnswers = async (req, res) => {
           $lt: endDate,
         },
       });
-      
+
+      return res.status(200).json(answers);
+    }
+
+    if (lastNDays) {
+      let nDaysBefore = new Date();
+      nDaysBefore.setDate(nDaysBefore.getDate() - lastNDays);
+
+      const answers = await Answer.find({
+        createdAt: {
+          $gte: nDaysBefore,
+        },
+      });
       return res.status(200).json(answers);
     }
 
