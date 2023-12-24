@@ -15,6 +15,7 @@ const Homepage = () => {
   // User specific habits
   const [myHabits, setMyHabits] = useState([]);
   const [showHabitForm, setShowHabitForm] = useState(false);
+  const [last7DaysAnswers, setLast7DaysAnswers] = useState([]);
   const { loginPending, loggedIn, setLoggedIn } = useLoginContext();
   const navigate = useNavigate();
 
@@ -108,7 +109,63 @@ const Homepage = () => {
       console.log(err);
     }
   };
+  //------------TODO-----------------------------
+  const week = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
 
+  const currentDate = new Date();
+
+  // Calculates first date of the week
+  const startDay = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    currentDate.getDate() - currentDate.getDay()
+  );
+
+  const getLast7DaysAnswers = async () => {
+    try {
+      const url = `${API_URL}/answer?lastNDays=7`;
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.ok) {
+        const json = response.json();
+        setLast7DaysAnswers(json);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getLast7DaysAnswers();
+  }, []);
+
+  const weekDaysWithAnswers = week.map((day, index) => {
+    const date = new Date(startDay);
+    date.setDate(date.getDate() + index);
+    const selectedHabitsCount = myHabits.length;
+    // TODO: filter last7DaysAnswers to get todays answers, after that, count and calculate completed percentage and map it below
+    let newDay = {};
+    newDay.weekDay = day;
+    newDay.monthDay = date.getDate();
+    newDay.completedPercentage = 0; // TODO: Update hard-coded value
+    newDay.selectedHabitsCount = selectedHabitsCount;
+    return newDay;
+  });
+  console.log(weekDaysWithAnswers);
+  // -----------------------------------------------------------
   return (
     <Box
       sx={{
