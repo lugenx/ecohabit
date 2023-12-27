@@ -8,17 +8,6 @@ import {
 } from "@mui/material";
 
 const Weekbar = ({ weekDaysWithAnswers }) => {
-  // TODO: Eliminate this, use weekDaysWithAsnwers instead
-  const week = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
   const currentDate = new Date();
 
   // Calculates first date of the week
@@ -36,11 +25,6 @@ const Weekbar = ({ weekDaysWithAnswers }) => {
   // Adds zero before single digit dates
   const pad = (num, len) => {
     return String(num).padStart(len, "0");
-  };
-
-  // Determines whether to add second letter to label
-  const checkFirstLetter = (arr, str, substr) => {
-    return arr.some((item) => item !== str && item.startsWith(substr));
   };
 
   const theme = useTheme();
@@ -65,7 +49,8 @@ const Weekbar = ({ weekDaysWithAnswers }) => {
         }}
       >
         {weekDaysWithAnswers.map((day, index) => {
-          let completedPercentage = day.completedPercentage;
+          const completedPercentage = day.completedPercentage;
+          const weekDayShortName = day.weekDay;
           return (
             <Box
               key={index}
@@ -110,7 +95,7 @@ const Weekbar = ({ weekDaysWithAnswers }) => {
                 color="text.secondary"
                 sx={{ fontSize: isDesktop ? "14px" : "10px" }} // Adjust the font size based on desktop or mobile
               >
-                {checkFirstLetter(week, day, day[0]) ? day.slice(0, 2) : day[0]}
+                {weekDayShortName}
               </Typography>
               <Typography
                 variant="subtitle2"

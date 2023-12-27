@@ -6,7 +6,6 @@ import UserHabitForm from "../components/UserHabitForm";
 import HabitCard from "../components/HabitCard";
 import Weekbar from "../components/WeekBar";
 import { useUserContext } from "../contexts/UserContext";
-import { RestoreFromTrashRounded } from "@mui/icons-material";
 
 const Homepage = () => {
   // Habits from server
@@ -111,15 +110,7 @@ const Homepage = () => {
     }
   };
   //------------TODO-----------------------------
-  const week = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
+  const week = ["Su", "M", "Tu", "W", "Th", "F", "Sa"];
 
   const currentDate = new Date();
 
