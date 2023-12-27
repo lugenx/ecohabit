@@ -7,7 +7,8 @@ import {
   useTheme,
 } from "@mui/material";
 
-const Weekbar = () => {
+const Weekbar = ({ weekDaysWithAnswers }) => {
+  // TODO: Eliminate this, use weekDaysWithAsnwers instead
   const week = [
     "Sunday",
     "Monday",
@@ -63,9 +64,8 @@ const Weekbar = () => {
           justifyContent: "space-between",
         }}
       >
-        {week.map((day, index) => {
-          let randomNum = Math.floor(Math.random() * 100) + 1;
-
+        {weekDaysWithAnswers.map((day, index) => {
+          let completedPercentage = day.completedPercentage;
           return (
             <Box
               key={index}
@@ -103,7 +103,7 @@ const Weekbar = () => {
                 }}
                 variant="determinate"
                 // Temporary: the value will be calculated later
-                value={randomNum}
+                value={completedPercentage}
               />
               <Typography
                 variant="subtitle2"

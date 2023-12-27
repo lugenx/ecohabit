@@ -62,7 +62,7 @@ const HabitCard = ({ habit }) => {
       console.log(err);
     }
   };
-
+  // TODO: Lift this up, or move this to the context to use to render parent component
   const toggleAnswer = (opt) => {
     if (!answer) {
       createAnswer(opt);

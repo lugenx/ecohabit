@@ -6,6 +6,7 @@ import UserHabitForm from "../components/UserHabitForm";
 import HabitCard from "../components/HabitCard";
 import Weekbar from "../components/WeekBar";
 import { useUserContext } from "../contexts/UserContext";
+import { RestoreFromTrashRounded } from "@mui/icons-material";
 
 const Homepage = () => {
   // Habits from server
@@ -140,7 +141,7 @@ const Homepage = () => {
         },
       });
       if (response.ok) {
-        const json = response.json();
+        const json = await response.json();
         setLast7DaysAnswers(json);
       }
     } catch (error) {
@@ -152,16 +153,29 @@ const Homepage = () => {
     getLast7DaysAnswers();
   }, []);
 
-  const weekDaysWithAnswers = week.map((day, index) => {
+  const weekDaysWithAnswers = week.map((weekDay, index) => {
     const date = new Date(startDay);
     date.setDate(date.getDate() + index);
+
     const selectedHabitsCount = myHabits.length;
-    // TODO: filter last7DaysAnswers to get todays answers, after that, count and calculate completed percentage and map it below
+
+    const monthDay = date.getDate();
+
+    const todaysAnswers = last7DaysAnswers.filter((elem) => {
+      const createdAt = new Date(elem.createdAt);
+      const answerMonthDay = createdAt.getDate();
+      return answerMonthDay == monthDay;
+    });
+
+    const todaysAnswersCount = todaysAnswers.length;
+
     let newDay = {};
-    newDay.weekDay = day;
-    newDay.monthDay = date.getDate();
-    newDay.completedPercentage = 0; // TODO: Update hard-coded value
-    newDay.selectedHabitsCount = selectedHabitsCount;
+    newDay.weekDay = weekDay;
+    newDay.monthDay = monthDay;
+    newDay.completedPercentage =
+      (todaysAnswersCount / selectedHabitsCount) * 100;
+    newDay.todaysAnswers = todaysAnswers;
+
     return newDay;
   });
   console.log(weekDaysWithAnswers);
@@ -172,7 +186,7 @@ const Homepage = () => {
         padding: 3,
       }}
     >
-      <Weekbar />
+      <Weekbar weekDaysWithAnswers={weekDaysWithAnswers} />
       <Typography
         gutterBottom
         variant="h5"
