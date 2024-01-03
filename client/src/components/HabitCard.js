@@ -12,7 +12,7 @@ import {
 import { useUserContext } from "../contexts/UserContext";
 const API_URL = process.env.REACT_APP_API_URL;
 
-const HabitCard = ({ habit }) => {
+const HabitCard = ({ habit, fetchAnswers }) => {
   const [answer, setAnswer] = useState(null);
 
   let habitCategory = habit.category.toLowerCase();
@@ -36,6 +36,7 @@ const HabitCard = ({ habit }) => {
       if (response.ok) {
         const responseAnswer = await response.json();
         setAnswer(responseAnswer);
+        fetchAnswers();
 
         return;
       }
@@ -56,13 +57,14 @@ const HabitCard = ({ habit }) => {
       });
       if (response.ok) {
         setAnswer(null);
+        fetchAnswers();
         return;
       }
     } catch (err) {
       console.log(err);
     }
   };
-
+  // TODO: Lift this up, or move this to the context to use to render parent component
   const toggleAnswer = (opt) => {
     if (!answer) {
       createAnswer(opt);
@@ -71,9 +73,28 @@ const HabitCard = ({ habit }) => {
     }
   };
 
+  // TODO: This is not efficient way to fetch inside each habit card, fetching will be moved to parent (Homepage) component.
   useEffect(() => {
-    // TODO: Fetch todays answers and setAnswer
-  });
+    const getTodaysAnswers = async () => {
+      try {
+        const today = new Date().toISOString().slice(0, 10);
+        const response = await fetch(`${API_URL}/answer?date=${today}`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const todaysAnswers = await response.json();
+        const todaysAnswer = await todaysAnswers.find(
+          (answer) => habit._id === answer.habit
+        );
+        setAnswer(todaysAnswer);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getTodaysAnswers();
+  }, [habit]);
 
   return (
     <Card sx={{ maxWidth: 345 }}>

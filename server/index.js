@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
-import {} from "dotenv/config";
+import { } from "dotenv/config";
 import earth911Router from "./src/routes/earth911routes.js";
 import userRouter from "./src/routes/userRoutes.js";
 import habitRouter from "./src/routes/habitRoutes.js";

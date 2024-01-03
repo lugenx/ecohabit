@@ -15,6 +15,8 @@ const Homepage = () => {
   // User specific habits
   const [myHabits, setMyHabits] = useState([]);
   const [showHabitForm, setShowHabitForm] = useState(false);
+  const [last7DaysAnswers, setLast7DaysAnswers] = useState([]);
+  const [answersFetchTrigger, setAnswersFetchTrigger] = useState(false);
   const { loginPending, loggedIn, setLoggedIn } = useLoginContext();
   const navigate = useNavigate();
 
@@ -108,14 +110,75 @@ const Homepage = () => {
       console.log(err);
     }
   };
+  //------------TODO-----------------------------
+  const week = ["Su", "M", "Tu", "W", "Th", "F", "Sa"];
 
+  const currentDate = new Date();
+
+  // Calculates first date of the week
+  const startDay = new Date(
+    currentDate.getFullYear(),
+    currentDate.getMonth(),
+    currentDate.getDate() - currentDate.getDay()
+  );
+
+  const getLast7DaysAnswers = async () => {
+    try {
+      const url = `${API_URL}/answer?lastNDays=7`;
+      const response = await fetch(url, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      if (response.ok) {
+        const json = await response.json();
+        setLast7DaysAnswers(json);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    getLast7DaysAnswers();
+  }, [answersFetchTrigger]);
+
+  const fetchAnswers = () => {
+    setAnswersFetchTrigger(!answersFetchTrigger);
+  };
+  const weekDaysWithAnswers = week.map((weekDay, index) => {
+    const date = new Date(startDay);
+    date.setDate(date.getDate() + index);
+
+    const selectedHabitsCount = myHabits.length;
+
+    const monthDay = date.getDate();
+    const todaysAnswers = last7DaysAnswers.filter((elem) => {
+      const createdAt = new Date(elem.createdAt);
+      const answerMonthDay = createdAt.getDate();
+      return answerMonthDay === monthDay;
+    });
+
+    const todaysAnswersCount = todaysAnswers.length;
+    let newDay = {};
+    newDay.weekDay = weekDay;
+    newDay.monthDay = monthDay;
+    newDay.completedPercentage =
+      (todaysAnswersCount / selectedHabitsCount) * 100;
+    newDay.todaysAnswers = todaysAnswers;
+
+    return newDay;
+  });
+  console.log(weekDaysWithAnswers);
+  // -----------------------------------------------------------
   return (
     <Box
       sx={{
         padding: 3,
       }}
     >
-      <Weekbar />
+      <Weekbar weekDaysWithAnswers={weekDaysWithAnswers} />
       <Typography
         gutterBottom
         variant="h5"
@@ -169,7 +232,7 @@ const Homepage = () => {
           >
             {myHabits.map((habit, index) => (
               <Grid key={index} item sx={{ width: "320px" }}>
-                <HabitCard habit={habit} />
+                <HabitCard habit={habit} fetchAnswers={fetchAnswers} />
               </Grid>
             ))}
           </Grid>

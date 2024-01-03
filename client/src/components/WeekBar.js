@@ -7,41 +7,7 @@ import {
   useTheme,
 } from "@mui/material";
 
-const Weekbar = () => {
-  const week = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday",
-  ];
-
-  const currentDate = new Date();
-
-  // Calculates first date of the week
-  const startDay = new Date(
-    currentDate.getFullYear(),
-    currentDate.getMonth(),
-    currentDate.getDate() - currentDate.getDay()
-  );
-
-  // Sets the following dates accordingly
-  const setDate = (a, b) => {
-    return a + b;
-  };
-
-  // Adds zero before single digit dates
-  const pad = (num, len) => {
-    return String(num).padStart(len, "0");
-  };
-
-  // Determines whether to add second letter to label
-  const checkFirstLetter = (arr, str, substr) => {
-    return arr.some((item) => item !== str && item.startsWith(substr));
-  };
-
+const Weekbar = ({ weekDaysWithAnswers }) => {
   const theme = useTheme();
   const isDesktop = useMediaQuery(theme.breakpoints.up("md"));
 
@@ -63,9 +29,9 @@ const Weekbar = () => {
           justifyContent: "space-between",
         }}
       >
-        {week.map((day, index) => {
-          let randomNum = Math.floor(Math.random() * 100) + 1;
-
+        {weekDaysWithAnswers.map((day, index) => {
+          const completedPercentage = day.completedPercentage;
+          const weekDayShortName = day.weekDay;
           return (
             <Box
               key={index}
@@ -103,21 +69,21 @@ const Weekbar = () => {
                 }}
                 variant="determinate"
                 // Temporary: the value will be calculated later
-                value={randomNum}
+                value={completedPercentage}
               />
               <Typography
                 variant="subtitle2"
                 color="text.secondary"
                 sx={{ fontSize: isDesktop ? "14px" : "10px" }} // Adjust the font size based on desktop or mobile
               >
-                {checkFirstLetter(week, day, day[0]) ? day.slice(0, 2) : day[0]}
+                {weekDayShortName}
               </Typography>
               <Typography
                 variant="subtitle2"
                 color="text.secondary"
                 sx={{ fontSize: isDesktop ? "14px" : "10px" }} // Adjust the font size based on desktop or mobile
               >
-                {pad(setDate(startDay.getDate(), index), 2)}
+                {day.monthDay}
               </Typography>
             </Box>
           );
