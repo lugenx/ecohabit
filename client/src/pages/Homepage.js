@@ -16,6 +16,7 @@ const Homepage = () => {
   const [myHabits, setMyHabits] = useState([]);
   const [showHabitForm, setShowHabitForm] = useState(false);
   const [last7DaysAnswers, setLast7DaysAnswers] = useState([]);
+  const [answersFetchTrigger, setAnswersFetchTrigger] = useState(false);
   const { loginPending, loggedIn, setLoggedIn } = useLoginContext();
   const navigate = useNavigate();
 
@@ -139,11 +140,13 @@ const Homepage = () => {
       console.log(error);
     }
   };
-
   useEffect(() => {
     getLast7DaysAnswers();
-  }, []);
+  }, [answersFetchTrigger]);
 
+  const fetchAnswers = () => {
+    setAnswersFetchTrigger(!answersFetchTrigger);
+  };
   const weekDaysWithAnswers = week.map((weekDay, index) => {
     const date = new Date(startDay);
     date.setDate(date.getDate() + index);
@@ -151,20 +154,14 @@ const Homepage = () => {
     const selectedHabitsCount = myHabits.length;
 
     const monthDay = date.getDate();
-    console.log("last7DaysAnswers---", last7DaysAnswers);
     const todaysAnswers = last7DaysAnswers.filter((elem) => {
       const createdAt = new Date(elem.createdAt);
       const answerMonthDay = createdAt.getDate();
-      console.log("answerMonthDay", answerMonthDay, "monthDay", monthDay);
       return answerMonthDay === monthDay;
     });
 
-    console.log("todaysAnswers----------", todaysAnswers);
     const todaysAnswersCount = todaysAnswers.length;
-    console.log("todaysAnswersCount------", todaysAnswersCount);
     let newDay = {};
-    newDay.todaysAnswersCount = todaysAnswersCount;
-    newDay.selectedHabitsCount = selectedHabitsCount;
     newDay.weekDay = weekDay;
     newDay.monthDay = monthDay;
     newDay.completedPercentage =
@@ -235,7 +232,7 @@ const Homepage = () => {
           >
             {myHabits.map((habit, index) => (
               <Grid key={index} item sx={{ width: "320px" }}>
-                <HabitCard habit={habit} />
+                <HabitCard habit={habit} fetchAnswers={fetchAnswers} />
               </Grid>
             ))}
           </Grid>

@@ -12,7 +12,7 @@ import {
 import { useUserContext } from "../contexts/UserContext";
 const API_URL = process.env.REACT_APP_API_URL;
 
-const HabitCard = ({ habit }) => {
+const HabitCard = ({ habit, fetchAnswers }) => {
   const [answer, setAnswer] = useState(null);
 
   let habitCategory = habit.category.toLowerCase();
@@ -36,6 +36,7 @@ const HabitCard = ({ habit }) => {
       if (response.ok) {
         const responseAnswer = await response.json();
         setAnswer(responseAnswer);
+        fetchAnswers();
 
         return;
       }
@@ -56,6 +57,7 @@ const HabitCard = ({ habit }) => {
       });
       if (response.ok) {
         setAnswer(null);
+        fetchAnswers();
         return;
       }
     } catch (err) {
