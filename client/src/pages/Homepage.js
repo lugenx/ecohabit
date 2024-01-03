@@ -151,16 +151,20 @@ const Homepage = () => {
     const selectedHabitsCount = myHabits.length;
 
     const monthDay = date.getDate();
-
+    console.log("last7DaysAnswers---", last7DaysAnswers);
     const todaysAnswers = last7DaysAnswers.filter((elem) => {
       const createdAt = new Date(elem.createdAt);
       const answerMonthDay = createdAt.getDate();
-      return answerMonthDay == monthDay;
+      console.log("answerMonthDay", answerMonthDay, "monthDay", monthDay);
+      return answerMonthDay === monthDay;
     });
 
+    console.log("todaysAnswers----------", todaysAnswers);
     const todaysAnswersCount = todaysAnswers.length;
-
+    console.log("todaysAnswersCount------", todaysAnswersCount);
     let newDay = {};
+    newDay.todaysAnswersCount = todaysAnswersCount;
+    newDay.selectedHabitsCount = selectedHabitsCount;
     newDay.weekDay = weekDay;
     newDay.monthDay = monthDay;
     newDay.completedPercentage =
