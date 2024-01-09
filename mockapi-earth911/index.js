@@ -5,7 +5,7 @@ import { router as getPostalDataMethod } from "./methods/getPostalData.js";
 import { router as searchLocationsMethod } from "./methods/searchLocations.js";
 import { router as getLocationDetailsMethod } from "./methods/getLocationDetails.js";
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3002;
 const app = express();
 
 const apiRequestLimiter = rateLimit({
