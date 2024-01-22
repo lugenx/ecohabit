@@ -11,6 +11,11 @@
 - environment-friendly online stores (+1)
 - environment-friendly events
 - environment-friendly alternatives of popular products and services
+- When it comes to flying, tracking peoples monthly or half-yearly travels, whether they use economy or business
+  (business classes emits 3 times more CO2 than economy class)
+- Help them to track their energy bills thus help them keep their energy usage as per the need (so less fuel usage and less greenhouse gases emission)
+
+- We could also provide some broader analysis (across the world or across US) as a analytics dashboard tab for them to understand the big picture and also means of attracting people to use the app
 
 - links to environmental charities (+1)
 - crowdfunding feature to donate to environmental charities
