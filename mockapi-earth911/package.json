@@ -15,5 +15,8 @@
   "author": "",
   "license": "ISC",
   "description": "",
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "prettier": "^3.0.1"
+  }
 }

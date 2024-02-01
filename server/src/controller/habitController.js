@@ -34,9 +34,7 @@ const getHabit = async (req, res) => {
   try {
     //check if string format is correct
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res
-        .status(400)
-        .json({ error: "Bad Request" });
+      return res.status(400).json({ error: "Bad Request" });
     }
 
     const habit = await Habit.findById(id);
@@ -57,9 +55,7 @@ const updateHabit = async (req, res) => {
 
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res
-        .status(400)
-        .json({ error: "Bad Request" });
+      return res.status(400).json({ error: "Bad Request" });
     }
 
     const habit = await Habit.findOneAndUpdate({ _id: id }, { ...req.body });
@@ -78,9 +74,7 @@ const deleteHabit = async (req, res) => {
 
   try {
     if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res
-        .status(400)
-        .json({ error: "Bad Request" });
+      return res.status(400).json({ error: "Bad Request" });
     }
 
     const habit = await Habit.findOneAndDelete({ _id: id });

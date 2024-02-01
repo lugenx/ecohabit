@@ -19,5 +19,8 @@
     "node-fetch": "^3.3.0",
     "validator": "^13.9.0"
   },
-  "type": "module"
+  "type": "module",
+  "devDependencies": {
+    "prettier": "^3.0.1"
+  }
 }

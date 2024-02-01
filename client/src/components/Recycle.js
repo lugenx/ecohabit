@@ -58,7 +58,7 @@ const Recycle = () => {
         sx={{
           display: "flex",
           flexFlow: "row wrap",
-          justifyContent: "center", 
+          justifyContent: "center",
           gap: 2,
           m: "0 0 20px 0",
         }}

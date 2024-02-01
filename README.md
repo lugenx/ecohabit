@@ -48,6 +48,8 @@ If you prefer the command line way of downloading and installing things, then fe
   ##### `git clone https://github.com/lugenx/ecohabit.git`
 - Open the cloned folder in VS Code. Open the terminal and make sure its pointing to the root of the cloned project.
 
+- Set custom path for git hooks using terminal command `git config core.hooksPath .git-hooks`  in the root directory of the cloned repository;
+
 - Running Backend Node JS Application:
 
   - Change the directory to server folder using terminal command: `cd server`

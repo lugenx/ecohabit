@@ -30,7 +30,8 @@ const Main = () => {
         flexDirection="column"
         minHeight="550px"
         justifyContent="space-between"
-        marginTop="auto">
+        marginTop="auto"
+      >
         <Box>
           <Typography
             variant="h2"
@@ -45,19 +46,15 @@ const Main = () => {
             </Box>
             .
           </Typography>
-          <Typography
-            fontSize = "1.3rem"
-            mt={2} 
-            variant="subtitle2"
-          >
-            Join a community of like-minded individuals and make a positive impact
-            on the planet &rarr;
+          <Typography fontSize="1.3rem" mt={2} variant="subtitle2">
+            Join a community of like-minded individuals and make a positive
+            impact on the planet &rarr;
           </Typography>
         </Box>
         <Box
           sx={{
-            display:"flex",
-            width:"100%",
+            display: "flex",
+            width: "100%",
             justifyContent: "space-between",
           }}
         >
